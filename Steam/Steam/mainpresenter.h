@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QPixmap>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainPresenter; }

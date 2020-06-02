@@ -1,6 +1,7 @@
-QT       += core gui
+QT -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+TEMPLATE = lib
+DEFINES += STORE_LIBRARY
 
 CONFIG += c++11
 
@@ -16,25 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    mainpresenter.cpp
+    store.cpp
 
 HEADERS += \
-    mainpresenter.h
-
-FORMS += \
-    mainview.ui
-
+    Store_global.h \
+    store.h
 
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
+unix {
+    target.path = /usr/lib
+}
 !isEmpty(target.path): INSTALLS += target
-
-
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Store/ -lStore
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Store/ -lStore
-
-
-INCLUDEPATH += $$PWD/../ViewsAndPresenters/Store
-DEPENDPATH += $$PWD/../ViewsAndPresenters/Store

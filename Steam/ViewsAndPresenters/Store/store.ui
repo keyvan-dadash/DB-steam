@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Store</class>
+ <widget class="QWidget" name="Store">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1254</width>
+    <height>621</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Store</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget 
+{
+	background: qlineargradient(x1:0, y1:0, x2:1, y2:1,stop:0 #008abd,stop:0.9 black);
+}</string>
+  </property>
+  <widget class="QWidget" name="widgetMenu" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>1210</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget
+{
+	background-color:rgba( 62, 126, 167, 0.8);
+}</string>
+   </property>
+   <widget class="QComboBox" name="comboBoxGames">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>0</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{
+	background-color: transparent;
+	border: none;
+	border-right-color:black;
+	border-right-width: 1px;
+	border-right-style: solid;
+	padding-left:32px;
+	color: #d9dadd;
+	font-size:20px;
+	font-family: Sans-serif;
+}
+QComboBox:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+}
+QComboBox::drop-down {
+	image: url('D:/fucking uni/DB/project/arrow.png');
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+	padding-right:10px;
+    border-left-style: solid;
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+ }
+QAbstractItemView
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+	selection-background-color: #212d3d;
+	outline: 0px;
+	margin-top: 5px;
+	padding: 3px;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Games</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Top Ten</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Last Updated</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Free to Play</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Early Access</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBoxStore">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{
+	background-color: transparent;
+	border: none;
+	border-right-color:black;
+	border-right-width: 1px;
+	border-right-style: solid;
+	padding-left:38px;
+	color: #d9dadd;
+	font-size:20px;
+	font-family: Sans-serif;
+}
+QComboBox:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+}
+QComboBox::drop-down {
+	image: url('D:/fucking uni/DB/project/arrow.png');
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+	padding-right:10px;
+    border-left-style: solid;
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+ }
+QAbstractItemView
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+	selection-background-color: #212d3d;
+	outline: 0px;
+	margin-top: 5px;
+	padding: 3px;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Store</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Best offers</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Free to Play</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBoxSoftware">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>0</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{
+	background-color: transparent;
+	border: none;
+	border-right-color:black;
+	border-right-width: 1px;
+	border-right-style: solid;
+	padding-left:20px;
+	color: #d9dadd;
+	font-size:20px;
+	font-family: Sans-serif;
+}
+QComboBox:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+}
+QComboBox::drop-down {
+	image: url('D:/fucking uni/DB/project/arrow.png');
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+	padding-right:10px;
+    border-left-style: solid;
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+ }
+QAbstractItemView
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+	selection-background-color: #212d3d;
+	outline: 0px;
+	margin-top: 5px;
+	padding: 3px;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Software</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Audio Production</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Photo Editing</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="comboBoxCompany">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>0</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox
+{
+	background-color: transparent;
+	border: none;
+	border-right-color:black;
+	border-right-width: 1px;
+	border-right-style: solid;
+	padding-left:12px;
+	color: #d9dadd;
+	font-size:20px;
+	font-family: Sans-serif;
+}
+QComboBox:hover
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+}
+QComboBox::drop-down {
+	image: url('D:/fucking uni/DB/project/arrow.png');
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 20px;
+	padding-right:10px;
+    border-left-style: solid;
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+ }
+QAbstractItemView
+{
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                stop:0 #e3eaef, stop:1 #c7d5e0);
+	color:black;
+	selection-background-color: #212d3d;
+	outline: 0px;
+	margin-top: 5px;
+	padding: 3px;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Company</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Top Company</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>UK</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="btnSearch">
+    <property name="geometry">
+     <rect>
+      <x>1170</x>
+      <y>5</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+	background-image: url('D://fucking uni//DB//project//new_search.jpg');
+	background-repeat: no-repeat;
+	border: none;
+	border-radius: 3px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditSearch">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>5</y>
+      <width>270</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit
+{
+	background-color: #316282;
+	border: 1px solid #000;
+	border-radius: 3px;
+	color:black;
+	font-family: 'sans-serif';
+	font-size:15px;
+}
+QLineEdit:hover
+{
+	border: 1px solid #4c9acc;
+	border-radius: 3px;
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>search the store</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

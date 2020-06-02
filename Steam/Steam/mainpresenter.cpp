@@ -1,5 +1,6 @@
 #include "mainpresenter.h"
 #include "ui_mainview.h"
+#include "store.h"
 
 MainPresenter::MainPresenter(QWidget *parent)
     : QDialog(parent)
@@ -17,7 +18,14 @@ MainPresenter::~MainPresenter()
 
 void MainPresenter::on_btnStore_clicked()
 {
-
+    for(QObject *child : ui->frameWidget->children()) {
+        delete child;
+    }
+    Store *store = new Store(ui->frameWidget);
+    store->setFixedSize(ui->frameWidget->size());
+    ui->frameWidget->stackUnder(store);
+    ui->frameWidget->setStyleSheet(store->styleSheet());
+    store->show();
 }
 
 void MainPresenter::on_btnLibrary_clicked()

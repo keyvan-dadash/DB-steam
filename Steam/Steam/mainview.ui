@@ -116,25 +116,6 @@ QPushButton:hover
     <string>LIBRARY</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frameWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>91</y>
-     <width>1254</width>
-     <height>621</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color:green;</string>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="frameShadow">
-    <enum>QFrame::Raised</enum>
-   </property>
-  </widget>
   <widget class="QLabel" name="labelLogoImg">
    <property name="geometry">
     <rect>
@@ -152,6 +133,25 @@ QPushButton:hover
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frameWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>91</y>
+     <width>1254</width>
+     <height>622</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background:none;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
   </widget>
  </widget>
