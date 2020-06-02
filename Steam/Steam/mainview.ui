@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainPresenter</class>
+ <widget class="QDialog" name="MainPresenter">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1254</width>
+    <height>713</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainPresenter</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #171A21;</string>
+  </property>
+  <widget class="QPushButton" name="btnStore">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>24</y>
+     <width>131</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+   </property>
+   <property name="text">
+    <string>STORE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnProfile">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>24</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+   </property>
+   <property name="text">
+    <string>DDSSEE71</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCommunity">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>24</y>
+     <width>191</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+   </property>
+   <property name="text">
+    <string>COMMUNITY</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnLibrary">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>24</y>
+     <width>161</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+   </property>
+   <property name="text">
+    <string>LIBRARY</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frameWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>91</y>
+     <width>1254</width>
+     <height>621</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:green;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelLogoImg">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>241</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+	/*background-image:url('D:\\fucking uni\\DB\\project\\globalheader_logo.png');
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
