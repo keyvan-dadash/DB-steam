@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>GameCard.qml</file>
+        <file>D:/fucking uni/DB/project/colored_body_top2.png</file>
+        <file>D:/fucking uni/DB/project/arrowsLeft.png</file>
+        <file>D:/fucking uni/DB/project/arrowsRight.png</file>
+        <file>D:/fucking uni/DB/project/ex1.jpg</file>
+        <file>D:/fucking uni/DB/project/ex2.jpg</file>
+        <file>D:/fucking uni/DB/project/ex3.jpg</file>
+        <file>D:/fucking uni/DB/project/ex4.jpg</file>
+        <file>D:/fucking uni/DB/project/exx1.jpg</file>
+        <file>D:/fucking uni/DB/project/exx2.jpg</file>
+        <file>D:/fucking uni/DB/project/exx3.jpg</file>
+        <file>D:/fucking uni/DB/project/exx4.jpg</file>
+        <file>D:/fucking uni/DB/project/exx5.jpg</file>
+        <file>D:/fucking uni/DB/project/exxx1.jpg</file>
+        <file>D:/fucking uni/DB/project/exxx2.jpg</file>
+        <file>D:/fucking uni/DB/project/exxx3.jpg</file>
+        <file>D:/fucking uni/DB/project/exxx4.jpg</file>
+        <file>D:/fucking uni/DB/project/exxx5.jpg</file>
+        <file>GameCardPage.qml</file>
+    </qresource>
+</RCC>

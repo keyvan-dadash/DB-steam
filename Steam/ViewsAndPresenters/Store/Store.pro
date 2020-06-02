@@ -1,4 +1,4 @@
-QT += gui
+QT += gui quickwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,5 +35,10 @@ FORMS += \
     store.ui
 
 DISTFILES += \
-    gameCard.qml \
-    gameCardPage.qml
+    D:/fucking uni/DB/project/arrowsLeft.png \
+    D:/fucking uni/DB/project/arrowsLeft.png \
+    D:/fucking uni/DB/project/arrowsRight.png \
+    D:/fucking uni/DB/project/colored_body_top2.png
+
+RESOURCES += \
+    resourse.qrc

@@ -3,7 +3,7 @@
 
 #include "Store_global.h"
 #include <QWidget>
-
+#include <QQmlContext>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Store; }
