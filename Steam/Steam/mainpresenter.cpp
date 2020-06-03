@@ -1,6 +1,7 @@
 #include "mainpresenter.h"
 #include "ui_mainview.h"
 #include "store.h"
+#include "profile.h"
 
 MainPresenter::MainPresenter(QWidget *parent)
     : QDialog(parent)
@@ -40,7 +41,14 @@ void MainPresenter::on_btnCommunity_clicked()
 
 void MainPresenter::on_btnProfile_clicked()
 {
-
+    for(QObject *child : ui->frameWidget->children()) {
+        delete child;
+    }
+    Profile *profile = new Profile(ui->frameWidget);
+    profile->setFixedSize(ui->frameWidget->size());
+    ui->frameWidget->stackUnder(profile);
+    ui->frameWidget->setStyleSheet(profile->styleSheet());
+    profile->show();
 }
 
 void MainPresenter::initialize()

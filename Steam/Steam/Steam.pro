@@ -38,3 +38,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresente
 
 INCLUDEPATH += $$PWD/../ViewsAndPresenters/Store
 DEPENDPATH += $$PWD/../ViewsAndPresenters/Store
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Profile/ -lProfile
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Profile/ -lProfile
+
+INCLUDEPATH += $$PWD/../ViewsAndPresenters/Profile
+DEPENDPATH += $$PWD/../ViewsAndPresenters/Profile
