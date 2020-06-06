@@ -16,106 +16,6 @@
   <property name="styleSheet">
    <string notr="true">background-color: #171A21;</string>
   </property>
-  <widget class="QPushButton" name="btnStore">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>24</y>
-     <width>131</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{ 
-	background-color: transparent;
-	font-size: 28px;
-	color: #b8b6b4;
-}
-QPushButton:hover
-{
-	color: palette(light);
-}</string>
-   </property>
-   <property name="text">
-    <string>STORE</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnProfile">
-   <property name="geometry">
-    <rect>
-     <x>750</x>
-     <y>24</y>
-     <width>191</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{ 
-	background-color: transparent;
-	font-size: 28px;
-	color: #b8b6b4;
-}
-QPushButton:hover
-{
-	color: palette(light);
-}</string>
-   </property>
-   <property name="text">
-    <string>DDSSEE71</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnCommunity">
-   <property name="geometry">
-    <rect>
-     <x>560</x>
-     <y>24</y>
-     <width>191</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{ 
-	background-color: transparent;
-	font-size: 28px;
-	color: #b8b6b4;
-}
-QPushButton:hover
-{
-	color: palette(light);
-}</string>
-   </property>
-   <property name="text">
-    <string>COMMUNITY</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="btnLibrary">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>24</y>
-     <width>161</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{ 
-	background-color: transparent;
-	font-size: 28px;
-	color: #b8b6b4;
-}
-QPushButton:hover
-{
-	color: palette(light);
-}</string>
-   </property>
-   <property name="text">
-    <string>LIBRARY</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="labelLogoImg">
    <property name="geometry">
     <rect>
@@ -154,7 +54,252 @@ QPushButton:hover
     <enum>QFrame::Raised</enum>
    </property>
   </widget>
+  <widget class="WidgetHoverNotify" name="widgetStore" native="true">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>24</y>
+     <width>131</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget
+{
+	background:none;
+}</string>
+   </property>
+   <widget class="CustomButton" name="btnStore">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+    </property>
+    <property name="text">
+     <string>STORE</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetStore">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>51</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget
+{
+	border: none;
+	background:none;
+}</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="WidgetHoverNotify" name="widgetLibrary" native="true">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>24</y>
+     <width>161</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget
+{
+	background:none;
+}</string>
+   </property>
+   <widget class="CustomButton" name="btnLibrary">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+    </property>
+    <property name="text">
+     <string>LIBRARY</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetLibrary">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>51</y>
+      <width>141</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget
+{
+	border: none;
+	background:none;
+}</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="WidgetHoverNotify" name="widgetCommunity" native="true">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>24</y>
+     <width>191</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget
+{
+	background:none;
+}</string>
+   </property>
+   <widget class="CustomButton" name="btnCommunity">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+    </property>
+    <property name="text">
+     <string>COMMUNITY</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetCommunity">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>51</y>
+      <width>181</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget
+{
+	border: none;
+	background:none;
+}</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="WidgetHoverNotify" name="widgetProfile" native="true">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>24</y>
+     <width>191</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QWidget
+{
+	background:none;
+}</string>
+   </property>
+   <widget class="CustomButton" name="btnProfile">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{ 
+	background-color: transparent;
+	font-size: 28px;
+	color: #b8b6b4;
+}
+QPushButton:hover
+{
+	color: palette(light);
+}</string>
+    </property>
+    <property name="text">
+     <string>DDSSEE71</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetProfile">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>51</y>
+      <width>171</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QListWidget
+{
+	border: none;
+	background:none;
+}</string>
+    </property>
+   </widget>
+  </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomButton</class>
+   <extends>QPushButton</extends>
+   <header>custombutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WidgetHoverNotify</class>
+   <extends>QWidget</extends>
+   <header>widgethovernotify.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

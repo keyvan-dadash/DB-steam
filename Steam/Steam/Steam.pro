@@ -16,11 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    custombutton.cpp \
+    customlistwidget.cpp \
     main.cpp \
-    mainpresenter.cpp
+    mainpresenter.cpp \
+    widgethovernotify.cpp
 
 HEADERS += \
-    mainpresenter.h
+    custombutton.h \
+    customlistwidget.h \
+    mainpresenter.h \
+    widgethovernotify.h
 
 FORMS += \
     mainview.ui
