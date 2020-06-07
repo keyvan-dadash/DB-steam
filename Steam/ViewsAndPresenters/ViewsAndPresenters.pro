@@ -1,6 +1,7 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+    Friends \
     Profile \
     Store
 
@@ -16,3 +17,9 @@ else:unix: LIBS += -L$$OUT_PWD/Profile/ -lProfile
 
 INCLUDEPATH += $$PWD/Profile
 DEPENDPATH += $$PWD/Profile
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/Friends/ -lFriends
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/Friends/ -lFriendsd
+
+INCLUDEPATH += $$PWD/Friends
+DEPENDPATH += $$PWD/Friends

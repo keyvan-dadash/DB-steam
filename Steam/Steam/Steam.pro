@@ -16,15 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    custombutton.cpp \
-    customlistwidget.cpp \
+    copyablewidget.cpp \
     main.cpp \
     mainpresenter.cpp \
     widgethovernotify.cpp
 
 HEADERS += \
-    custombutton.h \
-    customlistwidget.h \
+    copyablewidget.h \
     mainpresenter.h \
     widgethovernotify.h
 
@@ -50,3 +48,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresente
 
 INCLUDEPATH += $$PWD/../ViewsAndPresenters/Profile
 DEPENDPATH += $$PWD/../ViewsAndPresenters/Profile
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Friends/ -lFriends
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Friends/ -lFriends
+
+INCLUDEPATH += $$PWD/../ViewsAndPresenters/Friends
+DEPENDPATH += $$PWD/../ViewsAndPresenters/Friends

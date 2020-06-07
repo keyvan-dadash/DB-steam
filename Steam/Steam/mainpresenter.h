@@ -6,8 +6,13 @@
 #include <QDebug>
 #include <QListWidget>
 
-#include "custombutton.h"
-#include "customlistwidget.h"
+#include "widgethovernotify.h"
+#include "copyablewidget.h"
+
+//library
+#include "store.h"
+#include "profile.h"
+#include "friends.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainPresenter; }
@@ -22,13 +27,50 @@ public:
 
     ~MainPresenter();
 
-    QStringList storeSubButtonTexts = {"Featured", "News", "Top Games", "Top Sales"};
+    struct ButtonAndPresenterPair
+    {
+        QString buttonText;
+        CopyableWidget *presenter;
 
-    QStringList librarySubButtonTexts = {"Home", "Collections"};
+        ButtonAndPresenterPair(QString buttonText, CopyableWidget *presenter):buttonText(buttonText), presenter(presenter) {};
+    };
 
-    QStringList communitySubButtonTexts = {"Home", "Discussions", "Workshop"};
+    QList<ButtonAndPresenterPair> storeSubButtonTexts = {
+        ButtonAndPresenterPair{"Featured", nullptr},
+        ButtonAndPresenterPair{"News", nullptr},
+        ButtonAndPresenterPair{"Top Games", nullptr},
+        ButtonAndPresenterPair{"Top Sales", nullptr}
+    };
 
-    QStringList profileSubButtonTexts = {"Profile", "Friends", "Inventory"};
+    QList<ButtonAndPresenterPair> librarySubButtonTexts = {
+        ButtonAndPresenterPair{"Home", nullptr},
+        ButtonAndPresenterPair{"Collections", nullptr}
+    };
+
+    QList<ButtonAndPresenterPair> communitySubButtonTexts = {
+        ButtonAndPresenterPair{"Home", nullptr},
+        ButtonAndPresenterPair{"Discussions", nullptr},
+        ButtonAndPresenterPair{"Workshop", nullptr}
+    };
+
+    QList<ButtonAndPresenterPair> profileSubButtonTexts = {
+        ButtonAndPresenterPair{"Profile", new Profile()},
+        ButtonAndPresenterPair{"Friends", new Friends()},
+        ButtonAndPresenterPair{"Inventory", nullptr}
+    };
+
+    QString dropDownButtonStyleSheet = "QPushButton"
+                                       "{"
+                                           "color:#b8b6b4;"
+                                           "background:#171a21;"
+                                           "text-align:left;"
+                                           "padding-left:5px;"
+                                       "}"
+                                       "QPushButton:hover"
+                                       "{"
+                                           "color:#fff;"
+                                       "}";
+
 
 private slots:
     void on_btnStore_clicked();
@@ -48,7 +90,9 @@ private:
 
     void initialize();
 
-    void addButtonToListWidget(QListWidget *listWidget, QString buttonText);
+    void changePresenter(QWidget *widget); //set presenter widget
+
+    void addButtonToListWidget(QListWidget *listWidget, ButtonAndPresenterPair &btnPresenter);
 
     void makeStoreDropDownButtons();
 

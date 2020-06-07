@@ -3,7 +3,7 @@
 
 
 Profile::Profile(QWidget *parent) :
-    QWidget(parent), ui(new Ui::Profile)
+    CopyableWidget(parent), ui(new Ui::Profile)
 {
     ui->setupUi(this);
 }
@@ -11,4 +11,9 @@ Profile::Profile(QWidget *parent) :
 Profile::~Profile()
 {
     delete ui;
+}
+
+CopyableWidget *Profile::copy()
+{
+    return new Profile();
 }

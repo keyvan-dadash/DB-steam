@@ -1,7 +1,9 @@
-QT += widgets gui
+QT += gui quickwidgets
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TEMPLATE = lib
-DEFINES += PROFILE_LIBRARY
+DEFINES += FRIENDS_LIBRARY
 
 CONFIG += c++11
 
@@ -17,12 +19,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    profile.cpp \
+    friends.cpp \
     ../../Steam/copyablewidget.cpp
 
 HEADERS += \
-    Profile_global.h \
-    profile.h \
+    Friends_global.h \
+    friends.h \
     ../../Steam/copyablewidget.h
 
 # Default rules for deployment.
@@ -32,4 +34,7 @@ unix {
 !isEmpty(target.path): INSTALLS += target
 
 FORMS += \
-    profile.ui
+    friends.ui
+
+RESOURCES += \
+    resource.qrc

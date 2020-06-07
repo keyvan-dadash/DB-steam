@@ -1,7 +1,6 @@
 #include "mainpresenter.h"
 #include "ui_mainview.h"
-#include "store.h"
-#include "profile.h"
+
 
 MainPresenter::MainPresenter(QWidget *parent)
     : QDialog(parent)
@@ -19,14 +18,7 @@ MainPresenter::~MainPresenter()
 
 void MainPresenter::on_btnStore_clicked()
 {
-    for(QObject *child : ui->frameWidget->children()) {
-        delete child;
-    }
-    Store *store = new Store(ui->frameWidget);
-    store->setFixedSize(ui->frameWidget->size());
-    ui->frameWidget->stackUnder(store);
-    ui->frameWidget->setStyleSheet(store->styleSheet());
-    store->show();
+    changePresenter(new Store());
 }
 
 void MainPresenter::on_btnLibrary_clicked()
@@ -41,14 +33,7 @@ void MainPresenter::on_btnCommunity_clicked()
 
 void MainPresenter::on_btnProfile_clicked()
 {
-    for(QObject *child : ui->frameWidget->children()) {
-        delete child;
-    }
-    Profile *profile = new Profile(ui->frameWidget);
-    profile->setFixedSize(ui->frameWidget->size());
-    ui->frameWidget->stackUnder(profile);
-    ui->frameWidget->setStyleSheet(profile->styleSheet());
-    profile->show();
+    changePresenter(new Profile());
 }
 
 void MainPresenter::widgetEnterHover()
@@ -84,28 +69,35 @@ void MainPresenter::initialize()
     makeConnectionForHoverWidget(ui->widgetProfile);
 }
 
-void MainPresenter::addButtonToListWidget(QListWidget *listWidget, QString buttonText)
+void MainPresenter::changePresenter(QWidget *widget)
+{
+    for(QObject *child : ui->frameWidget->children()) {
+        delete child;
+    }
+    widget->setParent(ui->frameWidget);
+    widget->setFixedSize(ui->frameWidget->size());
+    ui->frameWidget->stackUnder(widget);
+    ui->frameWidget->setStyleSheet(widget->styleSheet());
+    widget->show();
+}
+
+void MainPresenter::addButtonToListWidget(QListWidget *listWidget, ButtonAndPresenterPair &btnPresenter)
 {
     QListWidgetItem *list = new QListWidgetItem(listWidget);
     list->setSizeHint(QSize(listWidget->width(), 25));
     list->setBackground(QColor(0, 0, 0));
     listWidget->addItem(list);
     QPushButton *btn = new QPushButton();
-    btn->setText(buttonText);
-    btn->setStyleSheet("QPushButton"
-    "{"
-        "color:#b8b6b4;"
-        "background:#171a21;"
-        "text-align:left;"
-        "padding-left:5px;"
-    "}"
-    "QPushButton:hover"
-    "{"
-        "color:#fff;"
-    "}");
+    btn->setText(btnPresenter.buttonText);
+    btn->setStyleSheet(dropDownButtonStyleSheet);
     btn->setFlat(true);
     listWidget->setItemWidget(list, btn);
-
+    btn->connect(btn, &QPushButton::clicked, this, [=](){
+        if(btnPresenter.presenter != nullptr) {
+            qInfo() << btnPresenter.presenter;
+            this->changePresenter(btnPresenter.presenter->copy());
+        }
+    });
     int height = 0;
     for(int i = 0; i < listWidget->count(); ++i)
     {
@@ -117,29 +109,29 @@ void MainPresenter::addButtonToListWidget(QListWidget *listWidget, QString butto
 
 void MainPresenter::makeStoreDropDownButtons()
 {
-    for(QString text : storeSubButtonTexts) {
-        addButtonToListWidget(ui->listWidgetStore, text);
+    for(ButtonAndPresenterPair item : storeSubButtonTexts) {
+        addButtonToListWidget(ui->listWidgetStore, item);
     }
 }
 
 void MainPresenter::makeLibraryDropDownButtons()
 {
-    for(QString text : librarySubButtonTexts) {
-        addButtonToListWidget(ui->listWidgetLibrary, text);
+    for(ButtonAndPresenterPair item : librarySubButtonTexts) {
+        addButtonToListWidget(ui->listWidgetLibrary, item);
     }
 }
 
 void MainPresenter::makeCommunityDropDownButtons()
 {
-    for(QString text : communitySubButtonTexts) {
-        addButtonToListWidget(ui->listWidgetCommunity, text);
+    for(ButtonAndPresenterPair item : communitySubButtonTexts) {
+        addButtonToListWidget(ui->listWidgetCommunity, item);
     }
 }
 
 void MainPresenter::makeProfileDropDownButtons()
 {
-    for(QString text : profileSubButtonTexts) {
-        addButtonToListWidget(ui->listWidgetProfile, text);
+    for(ButtonAndPresenterPair item : profileSubButtonTexts) {
+        addButtonToListWidget(ui->listWidgetProfile, item);
     }
 }
 

@@ -69,7 +69,7 @@
 	background:none;
 }</string>
    </property>
-   <widget class="CustomButton" name="btnStore">
+   <widget class="QPushButton" name="btnStore">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -127,7 +127,7 @@ QPushButton:hover
 	background:none;
 }</string>
    </property>
-   <widget class="CustomButton" name="btnLibrary">
+   <widget class="QPushButton" name="btnLibrary">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -185,7 +185,7 @@ QPushButton:hover
 	background:none;
 }</string>
    </property>
-   <widget class="CustomButton" name="btnCommunity">
+   <widget class="QPushButton" name="btnCommunity">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -243,7 +243,7 @@ QPushButton:hover
 	background:none;
 }</string>
    </property>
-   <widget class="CustomButton" name="btnProfile">
+   <widget class="QPushButton" name="btnProfile">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -288,11 +288,6 @@ QPushButton:hover
   </widget>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>CustomButton</class>
-   <extends>QPushButton</extends>
-   <header>custombutton.h</header>
-  </customwidget>
   <customwidget>
    <class>WidgetHoverNotify</class>
    <extends>QWidget</extends>
