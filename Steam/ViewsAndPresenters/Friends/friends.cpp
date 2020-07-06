@@ -5,7 +5,7 @@ Friends::Friends(QWidget *parent):
     CopyableWidget(parent), ui(new Ui::Friends)
 {
     ui->setupUi(this);
-    ui->quickWidgetFriends->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
+    ui->quickWidgetFriends->setSource(QUrl(QStringLiteral("qrc:/friendMain.qml")));
 }
 
 Friends::~Friends()

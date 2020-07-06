@@ -13,6 +13,7 @@
 #include "store.h"
 #include "profile.h"
 #include "friends.h"
+#include "hub.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainPresenter; }

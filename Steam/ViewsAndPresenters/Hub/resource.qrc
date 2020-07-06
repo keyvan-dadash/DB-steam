@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/">
+        <file>DiscussionCommentComponent.qml</file>
+        <file>DiscussionComponent.qml</file>
+        <file>DiscussionContentPage.qml</file>
+        <file>DiscussionPage.qml</file>
+        <file>DiscussionPreViewComponent.qml</file>
+        <file>IntroPage.qml</file>
+        <file>hubMain.qml</file>
+        <file>NewsComponent.qml</file>
+        <file>NewsPage.qml</file>
+        <file>VideoPlayerComponent.qml</file>
+        <file>VideosPage.qml</file>
+        <file>D:/fucking uni/DB/project/HubPage/forum_op_gradient.png</file>
+        <file>D:/fucking uni/DB/project/HubPage/header.jpg</file>
+        <file>D:/fucking uni/DB/project/HubPage/icon_rate.png</file>
+        <file>D:/fucking uni/DB/project/HubPage/video.mp4</file>
+        <file>D:/fucking uni/DB/project/colored_body_top2.png</file>
+    </qresource>
+</RCC>

@@ -28,7 +28,8 @@ void MainPresenter::on_btnLibrary_clicked()
 
 void MainPresenter::on_btnCommunity_clicked()
 {
-
+    qInfo() << "wtf";
+    changePresenter(new Hub());
 }
 
 void MainPresenter::on_btnProfile_clicked()
