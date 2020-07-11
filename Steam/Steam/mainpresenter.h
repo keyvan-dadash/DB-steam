@@ -14,6 +14,8 @@
 #include "profile.h"
 #include "friends.h"
 #include "hub.h"
+#include "library.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainPresenter; }
@@ -44,7 +46,7 @@ public:
     };
 
     QList<ButtonAndPresenterPair> librarySubButtonTexts = {
-        ButtonAndPresenterPair{"Home", nullptr},
+        ButtonAndPresenterPair{"Home", new Library()},
         ButtonAndPresenterPair{"Collections", nullptr}
     };
 

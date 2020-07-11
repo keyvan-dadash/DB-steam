@@ -10,6 +10,25 @@ Item {
     property var originalHeight: height
     property Button currentButton
 
+    //friend page variables
+    property var friendNames
+    property var friendLastOnlineTime
+
+    //blocked page variables
+    property var blockedNames
+    property var blockedLastOnlineTime
+
+    //pending page variables
+    property var pendingNames
+    property var pendingLastOnlineTime
+
+    //recive page variables
+    property var receiveNames
+    property var receiveLastOnlineTime
+
+    //invite code
+    property var inviteCode
+
     Component.onCompleted: {
         originalHeight = originalHeight
     }
@@ -93,7 +112,13 @@ Item {
             }
             Component.onCompleted: currentButton = this
             onClicked: {
-                viewLoader.setSource("YourFriendPage.qml", {"changeHeightFunction": pageFlickable.changeHeight, "parentHeight": y})
+                viewLoader.setSource("YourFriendPage.qml",
+                                     {
+                                         "changeHeightFunction": pageFlickable.changeHeight,
+                                         "parentHeight": y,
+                                         "names": friendNames,
+                                         "lastOnlineTimes": friendLastOnlineTime
+                                     })
                 currentButton = this
             }
         }
@@ -119,8 +144,13 @@ Item {
                 button: currentButton == this ?  Qt.rgba(255, 255, 255, 0.1) : (this.hovered ? Qt.rgba(255, 255, 255, 0.2) : "transparent")
             }
             onClicked: {
-                viewLoader.setSource("AddFriendPage.qml", {"changeHeightFunction": pageFlickable.changeHeight, "parentHeight": y})
-                currentButton = this
+                viewLoader.setSource("AddFriendPage.qml",
+                                     {
+                                         "changeHeightFunction": pageFlickable.changeHeight,
+                                         "parentHeight": y,
+                                         "inviteCode": inviteCode
+                                     })
+                currentButton = this 
             }
         }
 
@@ -145,7 +175,15 @@ Item {
                 button: currentButton == this ?  Qt.rgba(255, 255, 255, 0.1) : (this.hovered ? Qt.rgba(255, 255, 255, 0.2) : "transparent")
             }
             onClicked: {
-                viewLoader.setSource("PendingInvitePage.qml", {"changeHeightFunction": pageFlickable.changeHeight, "parentHeight": y})
+                viewLoader.setSource("PendingInvitePage.qml",
+                                     {
+                                         "changeHeightFunction": pageFlickable.changeHeight,
+                                         "parentHeight": y,
+                                         "receiveNames": receiveNames,
+                                         "receiveLastOnlineTimes": receiveLastOnlineTime,
+                                         "pendingNames": pendingNames,
+                                         "pendingLastOnlineTimes": pendingLastOnlineTime
+                                     })
                 currentButton = this
             }
         }
@@ -171,7 +209,13 @@ Item {
                 button: currentButton == this ?  Qt.rgba(255, 255, 255, 0.1) : (this.hovered ? Qt.rgba(255, 255, 255, 0.2) : "transparent")
             }
             onClicked: {
-                viewLoader.setSource("BlockedProfilesPage.qml", {"changeHeightFunction": pageFlickable.changeHeight, "parentHeight": y})
+                viewLoader.setSource("BlockedProfilesPage.qml",
+                                     {
+                                         "changeHeightFunction": pageFlickable.changeHeight,
+                                         "parentHeight": y,
+                                         "names": blockedNames,
+                                         "lastOnlineTimes": blockedLastOnlineTime
+                                     })
                 currentButton = this
             }
         }
@@ -183,7 +227,13 @@ Item {
             width: 889
             height: 373
             Component.onCompleted: {
-                viewLoader.setSource("YourFriendPage.qml", {"changeHeightFunction": pageFlickable.changeHeight, "parentHeight": y})
+                viewLoader.setSource("YourFriendPage.qml",
+                                     {
+                                         "changeHeightFunction": pageFlickable.changeHeight,
+                                         "parentHeight": y,
+                                         "names": friendNames,
+                                         "lastOnlineTimes": friendLastOnlineTime
+                                     })
             }
         }
     }

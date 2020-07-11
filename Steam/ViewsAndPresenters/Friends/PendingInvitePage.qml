@@ -9,6 +9,14 @@ Item {
     property int sentInvitesHeight
     property var changeHeightFunction
     property var parentHeight
+
+    property var receiveNames
+    property var receiveLastOnlineTimes
+
+    property var pendingNames
+    property var pendingLastOnlineTimes
+
+
     property var ne: function*(){
         var n = 0
         while(true){
@@ -142,10 +150,11 @@ Item {
                     x: 0
                     y: 0
                     anchors.fill: parent
-                    model: 10
+                    model: receiveNames.length
                     cellWidth: parent.width / 2
                     delegate: FriendProfileComponent {
-
+                        name: receiveNames[index]
+                        lastOnlineTime: receiveLastOnlineTimes[index]
                     }
                     Component.onCompleted: {
                         receivedInvitesHeight = receivedInvitesListGridView.contentHeight + receivedInvitesBackgroundRectangle.height + receivedInvitesBackgroundRectangle.y + 5
@@ -239,10 +248,11 @@ Item {
                     x: 0
                     y: 0
                     anchors.fill: parent
-                    model: 83
+                    model: pendingNames.length
                     cellWidth: parent.width / 2
                     delegate: FriendProfileComponent {
-
+                        name: pendingNames[index]
+                        lastOnlineTime: pendingLastOnlineTimes[index]
                     }
                     Component.onCompleted: {
                         sentInvitesHeight = sentInvitesListGridView.contentHeight + sentInvitesBackgroundRectangle.height + sentInvitesBackgroundRectangle.y + 5

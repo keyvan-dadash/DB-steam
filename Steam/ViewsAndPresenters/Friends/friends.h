@@ -4,6 +4,9 @@
 #include "Friends_global.h"
 #include <QWidget>
 #include <QQmlContext>
+#include <QQuickItem>
+#include <QQuickView>
+#include <QList>
 
 #include "../../Steam/copyablewidget.h"
 
@@ -20,8 +23,24 @@ public:
 
     CopyableWidget * copy() override;
 
+    void setProperty(QString property, QList<QString> &list);
+
+    void setUpFriends(QList<QString> frinedList, QList<QString> lastOnlineList);
+
+    void setUpBlocked(QList<QString> blockedList, QList<QString> lastOnlineList);
+
+    void setUpPending(QList<QString> pendingList, QList<QString> lastOnlineList);
+
+    void setUpReceive(QList<QString> receiveList, QList<QString> lastOnlineList);
+
+    void setUpInviteCode(QString inviteCode);
+
+    template <typename T>
+    QVariantList toVariantList(const QList<T> &list);
+
 private:
     Ui::Friends *ui;
+    QObject *obj; //this is root object of qtquickview
 };
 
 #endif // FRIENDS_H

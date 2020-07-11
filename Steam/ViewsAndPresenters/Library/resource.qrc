@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>GameCardComponents.qml</file>
+        <file>GameNameComponent.qml</file>
+        <file>GamePreViewComponent.qml</file>
+        <file>libraryMain.qml</file>
+        <file>D:/fucking uni/DB/project/collection.png</file>
+        <file>D:/fucking uni/DB/project/collectionHover.png</file>
+    </qresource>
+</RCC>

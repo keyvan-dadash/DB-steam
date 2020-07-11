@@ -8,6 +8,9 @@ Item {
     signal changeHeightOfParent(int height)
     property var changeHeightFunction
     property var parentHeight
+
+    //invite code
+    property var inviteCode
     Rectangle {
         id: headerRectangle
         x: 0
@@ -82,7 +85,7 @@ Item {
                 width: parent.width
                 height: 64
                 color: "whitesmoke"
-                text: "17361273"
+                text: inviteCode
                 font.pixelSize: 30
                 verticalAlignment: Text.AlignVCenter
                 leftPadding: 10

@@ -3,6 +3,8 @@ import QtQuick 2.0
 Item {
     width: 350
     height: 65
+    property var name
+    property var lastOnlineTime
 
     Rectangle {
         anchors.fill: parent
@@ -34,7 +36,7 @@ Item {
             width: 274
             height: 31
             color: "#57cbde"
-            text: qsTr("ddssee71")
+            text: name
             font.family: "Sans-serif"
             font.pixelSize: 22
             verticalAlignment: Qt.AlignVCenter
@@ -47,7 +49,7 @@ Item {
             width: 266
             height: 20
             color: "#898989"
-            text: qsTr("last online 4 days ago")
+            text: "last online " + lastOnlineTime
             font.family: "Sans-serif"
             font.pixelSize: 14
             verticalAlignment: Qt.AlignVCenter

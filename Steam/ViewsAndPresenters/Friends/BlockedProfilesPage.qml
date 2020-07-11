@@ -8,6 +8,10 @@ Item {
     property int blockedProfilesHeight
     property var changeHeightFunction
     property var parentHeight
+
+    property var names
+    property var lastOnlineTimes
+
     Rectangle {
         id: blockedProfilesBackgroundRectangle
         x: 0
@@ -82,10 +86,11 @@ Item {
             x: 0
             y: 0
             anchors.fill: parent
-            model: 83
+            model: names.length
             cellWidth: parent.width / 2
             delegate: FriendProfileComponent {
-
+                name: names[index]
+                lastOnlineTime: lastOnlineTimes[index]
             }
             Component.onCompleted: {
                 blockedProfilesHeight = blockedProfilesListGridView.contentHeight + blockedProfilesBackgroundRectangle.height + blockedProfilesBackgroundRectangle.y + 5

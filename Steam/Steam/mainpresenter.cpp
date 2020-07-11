@@ -23,12 +23,11 @@ void MainPresenter::on_btnStore_clicked()
 
 void MainPresenter::on_btnLibrary_clicked()
 {
-
+    changePresenter(new Library());
 }
 
 void MainPresenter::on_btnCommunity_clicked()
 {
-    qInfo() << "wtf";
     changePresenter(new Hub());
 }
 

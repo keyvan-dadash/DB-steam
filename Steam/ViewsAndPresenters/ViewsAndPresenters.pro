@@ -3,6 +3,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
     Friends \
     Hub \
+    Library \
     Profile \
     Store
 
@@ -30,3 +31,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/Hub/ -lHubd
 
 INCLUDEPATH += $$PWD/Hub
 DEPENDPATH += $$PWD/Hub
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/Library/ -lLibrary
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/Library/ -lLibraryd
+
+INCLUDEPATH += $$PWD/Library
+DEPENDPATH += $$PWD/Library
