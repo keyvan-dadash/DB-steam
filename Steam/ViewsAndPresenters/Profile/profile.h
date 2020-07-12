@@ -37,9 +37,9 @@ public:
 
     void setVisiableEditButton(bool visiable);
 
-    void addGameCard();
+    void addGameCard(QString gameImagePath, QString gamePlayHours, QString gameName, QString lastTimePlayed);
 
-    void addFriendCrad();
+    void addFriendCrad(QString profileImagePath, QString profileName, QString lastSeen);
 
 
 private:

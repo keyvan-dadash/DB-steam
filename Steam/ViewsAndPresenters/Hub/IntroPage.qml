@@ -7,6 +7,14 @@ import QtGraphicalEffects 1.14
 Item {
     property var changeParentHeight
 
+    property var newsCount
+    property var discussionCount
+    property var description
+    property var gamePrice
+    property var gameHeaderImg
+    property var purchase
+
+
     id: itemView
     width: 1190
     height: 345
@@ -38,7 +46,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: qsTr("54 News")
+                text: newsCount + " News"
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -50,7 +58,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: qsTr("219 Discussions")
+                text: discussionCount + " Discussions"
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -62,7 +70,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: qsTr("1,684 In-Game")
+                text: purchase + " purchases"
                 color: "#7cc53f"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -76,7 +84,7 @@ Item {
             width: 485
             height: 215
             fillMode: Image.PreserveAspectFit
-            source: "qrc:/D:/fucking uni/DB/project/HubPage/header.jpg"
+            source: gameHeaderImg
         }
 
         TextArea {
@@ -85,7 +93,7 @@ Item {
             y: 100
             width: 642
             height: 158
-            text: qsTr("ASSASSIN’S CREED® ORIGINS IS A NEW BEGINNING *The Discovery Tour by Assassin’s Creed®: Ancient Egypt is available now as a free update!* Ancient Egypt, a land of majesty and intrigue, is disappearing in a ruthless fight for power.")
+            text: description
             wrapMode: TextArea.Wrap
             readOnly: true
             color: "#8c8b8a"
@@ -127,7 +135,7 @@ Item {
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: qsTr("$59.99")
+                text: "$" + gamePrice
                 color: "#636363"
                 font.pixelSize: 18
             }

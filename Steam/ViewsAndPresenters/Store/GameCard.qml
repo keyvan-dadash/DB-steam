@@ -8,6 +8,28 @@ Item {
     width: 1254
     height: 520
 
+    property int numberOfPage: 0
+
+
+    property var objects : []
+    function setObjectsArray(objArray) {
+        for (var i=0; i < objArray.length; i++) {
+            objects.push(objArray[i])
+        }
+    }
+
+    function createFeatureGamesView() {
+        gameCards.addFetureGamesPage(objects)
+    }
+
+    function createTop100GamesView() {
+        gameCards.addTop100GamesPage(objects)
+    }
+
+    function createNewGamesView() {
+
+    }
+
     Rectangle {
         id: backgroundRectangle
         x: 0
@@ -27,56 +49,47 @@ Item {
         currentIndex: 0
         anchors.fill: parent
 
-
-        Item {
-            id: firstPage
-
-            GameCardPage {
-                anchors.rightMargin: 38
-                anchors.fill: parent
-                mainImageSourceProperty: "qrc:/D:/fucking uni/DB/project/ex4.jpg"
-                image1Property: "qrc:/D:/fucking uni/DB/project/ex1.jpg"
-                image2Property: "qrc:/D:/fucking uni/DB/project/ex2.jpg"
-                image3Property: "qrc:/D:/fucking uni/DB/project/ex3.jpg"
-                image4Property: "qrc:/D:/fucking uni/DB/project/ex4.jpg"
-                gameNameProperty: "A Plague Tale: Innocence"
-                priceProperty: "$49.99"
-                descriptionProperty: "About 2 sister and brother"
-            }
+        function addPage(page) {
+            addItem(page)
+            page.visible = true
         }
-        Item {
-            id: secondPage
 
-            GameCardPage {
-                anchors.rightMargin: 38
-                anchors.fill: parent
-                mainImageSourceProperty: "qrc:/D:/fucking uni/DB/project/exx5.jpg"
-                image1Property: "qrc:/D:/fucking uni/DB/project/exx1.jpg"
-                image2Property: "qrc:/D:/fucking uni/DB/project/exx2.jpg"
-                image3Property: "qrc:/D:/fucking uni/DB/project/exx3.jpg"
-                image4Property: "qrc:/D:/fucking uni/DB/project/exx4.jpg"
-                gameNameProperty: "Bulletstorm: Full Clip Edition"
-                priceProperty: "$4.00"
-                descriptionProperty: "I Dont know"
-            }
-
+        //feature games functions
+        function createFeatureGamesPage(obj) {
+            var component = Qt.createComponent("GameCardPage.qml");
+            var page = component.createObject(gameCards,
+                                              {
+                                                  "images": obj.images,
+                                                  "_gameName": obj.title,
+                                                  "_price": obj.price,
+                                                  "gameDescription": obj.description,
+                                                  "anchors.rightMargin": 38
+                                              });
+            return page
         }
-        Item {
-            id: thirdPage
 
-            GameCardPage {
-                anchors.rightMargin: 38
-                anchors.fill: parent
-                mainImageSourceProperty: "qrc:/D:/fucking uni/DB/project/exxx5.jpg"
-                image1Property: "qrc:/D:/fucking uni/DB/project/exxx1.jpg"
-                image2Property: "qrc:/D:/fucking uni/DB/project/exxx2.jpg"
-                image3Property: "qrc:/D:/fucking uni/DB/project/exxx3.jpg"
-                image4Property: "qrc:/D:/fucking uni/DB/project/exxx4.jpg"
-                gameNameProperty: "Fallout 76"
-                priceProperty: "$59.00"
-                descriptionProperty: "Famouse Fallout Series"
+        function addFetureGamesPage(objects) {
+            for (var i=0; i < objects.length; i++) {
+                addPage(createFeatureGamesPage(objects[i]))
             }
+            numberOfPage = objects.length
+        }
 
+        //Top 100 Games functions
+        function createTop100GamesPage(objArray) {
+            var component = Qt.createComponent("Page.qml");
+            var page = component.createObject(gameCards,
+                                              {
+                                                  "objects" : objArray
+                                              });
+            return page
+        }
+
+        function addTop100GamesPage(objects) {
+            for (var i=0; i < objects.length; i = i + 10) {
+                addPage(createTop100GamesPage(objects.slice(i, i + 10)))
+            }
+            numberOfPage = (objects.length / 10)
         }
     }
 
@@ -105,7 +118,7 @@ Item {
         interval: 5000
         running: true
         repeat: true
-        onTriggered: gameCards.currentIndex = (gameCards.currentIndex + 1) % 3
+        onTriggered: gameCards.currentIndex = (gameCards.currentIndex + 1) % numberOfPage
     }
     Button {
         id: leftButton
@@ -126,7 +139,7 @@ Item {
             }
         }
         onClicked: {
-            gameCards.currentIndex = (gameCards.currentIndex +  2) % 3
+            gameCards.currentIndex = (gameCards.currentIndex +  2) % numberOfPage
         }
     }
     Button {
@@ -150,7 +163,7 @@ Item {
         }
 
         onClicked: {
-            gameCards.currentIndex = (gameCards.currentIndex + 1) % 3
+            gameCards.currentIndex = (gameCards.currentIndex + 1) % numberOfPage
         }
     }
 }

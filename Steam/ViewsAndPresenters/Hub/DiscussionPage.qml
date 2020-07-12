@@ -8,6 +8,8 @@ Item {
 
     property var changeParentHeight
     property var componentHeight: 65 //sry i have no choice but to hardcode this
+
+    property var discussion
     width: 1200
     ListView {
         id: listViewDiscussion

@@ -4,14 +4,19 @@ import QtQuick.Window 2.12
 import QtGraphicalEffects 1.0
 
 Item {
-    property string mainImageSourceProperty
-    property string image1Property
-    property string image2Property
-    property string image3Property
-    property string image4Property
-    property string gameNameProperty
-    property string priceProperty
-    property string descriptionProperty
+    property string mainImageSourceProperty : images[0]
+    property var index : 0
+
+    property var images
+    property var _gameName
+    property var _price
+    property var gameDescription
+
+    function getImageSource() {
+        var imgSource = images[index % images.length]
+        index = index + 1
+        return imgSource
+    }
 
 
     Image {
@@ -40,7 +45,7 @@ Item {
         y: 37
         width: 342
         height: 43
-        text: qsTr(gameNameProperty)
+        text: _gameName
         font.pixelSize: 24
         font.family: "Sans-serif"
         color: "#FFF"
@@ -53,7 +58,11 @@ Item {
         width: 173
         height: 100
         fillMode: Image.PreserveAspectFit
-        source: image1Property
+        source: "ff"
+        Component.onCompleted: {
+            source = getImageSource()
+        }
+
         MouseArea {
             hoverEnabled: true
             anchors.fill: parent
@@ -73,7 +82,10 @@ Item {
         width: 203
         height: 100
         fillMode: Image.PreserveAspectFit
-        source: image2Property
+        source: "ff"
+        Component.onCompleted: {
+            source = getImageSource()
+        }
         MouseArea {
             hoverEnabled: true
             anchors.fill: parent
@@ -93,7 +105,10 @@ Item {
         width: 173
         height: 100
         fillMode: Image.PreserveAspectFit
-        source: image3Property
+        source: "ff"
+        Component.onCompleted: {
+            source = getImageSource()
+        }
         MouseArea {
             hoverEnabled: true
             anchors.fill: parent
@@ -113,7 +128,10 @@ Item {
         width: 203
         height: 100
         fillMode: Image.PreserveAspectFit
-        source: image4Property
+        source: "ff"
+        Component.onCompleted: {
+            source = getImageSource()
+        }
         MouseArea {
             hoverEnabled: true
             anchors.fill: parent
@@ -132,7 +150,7 @@ Item {
         y: 489
         width: 52
         height: 20
-        text: qsTr(priceProperty)
+        text: _price
         font.pixelSize: 11
         color: "#acdbf5"
     }
@@ -142,7 +160,7 @@ Item {
         y: 389
         width: 342
         height: 86
-        text: qsTr(descriptionProperty)
+        text: gameDescription
         font.pixelSize: 17
         font.family: "Sans-serif"
         wrapMode: Text.Wrap

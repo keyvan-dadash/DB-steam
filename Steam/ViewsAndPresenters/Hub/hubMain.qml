@@ -9,6 +9,16 @@ Item {
     property var loaderHeight
     property var currentBackgroundRectangle
 
+    property var gameName
+
+    //intro page properties
+
+    //discussion page properties
+
+    //news page properties
+
+    //videos page properties
+
     id: mainView
     visible: true
     width: 1254
@@ -76,7 +86,7 @@ Item {
             y: 23
             width: 978
             height: 59
-            text: qsTr("Assassin's Creed Origins")
+            text: gameName
             font.family: "Verdana"
             font.pixelSize: 30
             color: "#fff"

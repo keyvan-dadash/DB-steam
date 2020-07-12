@@ -19,5 +19,7 @@
         <file>D:/fucking uni/DB/project/exxx4.jpg</file>
         <file>D:/fucking uni/DB/project/exxx5.jpg</file>
         <file>GameCardPage.qml</file>
+        <file>GameCardComponent.qml</file>
+        <file>Page.qml</file>
     </qresource>
 </RCC>
