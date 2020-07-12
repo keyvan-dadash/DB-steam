@@ -3,8 +3,13 @@
 
 #include "Profile_global.h"
 #include <QtWidgets>
+#include <QList>
+#include <QString>
+
 
 #include "../../Steam/copyablewidget.h"
+#include "gamecard.h"
+#include "friendcard.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Profile; }
@@ -19,6 +24,23 @@ public:
     ~Profile();
 
     CopyableWidget * copy() override;
+
+    void setName(QString name);
+
+    void setLevel(QString level);
+
+    void setBio(QString bio);
+
+    void setProfileImage(QString path);
+
+    void setLastOnlineTime(QString lastTime);
+
+    void setVisiableEditButton(bool visiable);
+
+    void addGameCard();
+
+    void addFriendCrad();
+
 
 private:
     Ui::Profile *ui;

@@ -10,6 +10,10 @@ Item {
     width: 1254
     height: 622
 
+    property var gamesList
+    property var imagesList
+    property var totalGamePlayList
+
     Rectangle {
         id: gamelistAndSearchRectangle
         x: 0
@@ -142,7 +146,7 @@ Item {
                 y: 0
                 width: 39
                 height: 31
-                text: "(2)"
+                text: "(" + gamesList.length + ")"
                 verticalAlignment: Label.AlignVCenter
                 horizontalAlignment: Label.AlignLeft
                 color: "#484d57"
@@ -157,9 +161,9 @@ Item {
             width: 402
             height: 431
             anchors.leftMargin: 3
-            model: 20
+            model: gamesList.length
             delegate: GameNameComponent {
-
+                gameName: gamesList[index]
             }
         }
     }
@@ -191,7 +195,7 @@ Item {
         y: 0
         width: 855
         height: 622
-        contentHeight: gameListGridView.contentHeight + gameListGridView.y
+        contentHeight: gameListGridView.contentHeight + gameListGridView.y > 622 ? gameListGridView.contentHeight + gameListGridView.y : 622
         Rectangle {
             id: gameListBackgroundRectangle
             color: "#2b3039"
@@ -217,7 +221,7 @@ Item {
             y: 33
             width: 46
             height: 36
-            text: "(2)"
+            text: "(" + gamesList.length + ")"
             verticalAlignment: Label.AlignVCenter
             horizontalAlignment: Label.AlignLeft
             color: "#484b50"
@@ -233,10 +237,13 @@ Item {
             interactive: false
             cellHeight: 220
             cellWidth: 200
-            model: 40
+            model: gamesList.length
             delegate: GameCardComponents {
                 posIndex: index
                 z: 2
+                images: imagesList[index]
+                gameName: gamesList[index]
+                totalGamePlay: totalGamePlayList[index]
             }
         }
     }

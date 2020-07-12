@@ -6,8 +6,10 @@ import QtQuick.Controls.Styles 1.4
 
 Item {
 
-    property var imageList : ["qrc:/D:/fucking uni/DB/project/ex1.jpg", "qrc:/D:/fucking uni/DB/project/ex2.jpg",
-    "qrc:/D:/fucking uni/DB/project/ex3.jpg", "qrc:/D:/fucking uni/DB/project/ex4.jpg"]
+    property var images
+    property var gameName
+    property var totalGamePlay
+
     property var xPos
     property var yPos
     property var imageIndex: 0
@@ -15,7 +17,7 @@ Item {
     height: 320
 
     function nextImage() {
-        gameImages.source = imageList[imageIndex % imageList.length]
+        gameImages.source = images[imageIndex % images.length]
         imageIndex = imageIndex + 1
     }
 
@@ -34,7 +36,7 @@ Item {
         y: 8
         width: 244
         height: 52
-        text: qsTr("Tom Clancy's Rainbow Six Siege")
+        text: gameName
         color: "#fff"
         font.pixelSize: 20
         wrapMode: Text.Wrap
@@ -47,7 +49,7 @@ Item {
         width: 260
         height: 126
         fillMode: Image.PreserveAspectFit
-        source: "qrc:/D:/fucking uni/DB/project/ex1.jpg"
+        source: images[0]
     }
 
     Label {
@@ -105,7 +107,7 @@ Item {
         width: 203
         height: 24
         color: "#5e6266"
-        text: qsTr("257 h")
+        text: totalGamePlay + "h"
         font.pixelSize: 14
         verticalAlignment: Label.AlignVCenter
     }

@@ -4,6 +4,11 @@
 #include "Library_global.h"
 #include <QWidget>
 #include <QQmlContext>
+#include <QQuickItem>
+#include <QQuickView>
+#include <QList>
+#include <QDebug>
+#include <QQmlEngine>
 
 #include "../../Steam/copyablewidget.h"
 
@@ -20,8 +25,14 @@ public:
 
     CopyableWidget * copy() override;
 
+    template <typename T>
+    QVariantList toVariantList(const QList<T> &list);
+
+    void setUpLibrary(QList<QString> gamesList, QList<QString> totalGamePlayList, QList<QList<QString>> imagesList);
+
 private:
     Ui::Library *ui;
+    QObject *obj; //rootobject of qtquickview
 };
 
 

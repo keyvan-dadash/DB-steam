@@ -64,7 +64,7 @@
 	background-image: url('D:/fucking uni/DB/project/profile_header_bg_texture.jpg');
 }</string>
      </property>
-     <widget class="QLabel" name="labelLevelNumber">
+     <widget class="QLabel" name="levelNumberLabel">
       <property name="geometry">
        <rect>
         <x>1030</x>
@@ -106,7 +106,7 @@
        <string>profileImg</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelName">
+     <widget class="QLabel" name="nameLabel">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -127,7 +127,7 @@
        <string>ddssee71</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelBioEx">
+     <widget class="QLabel" name="bioExLabel">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -272,7 +272,7 @@
        <string>Currently Offline</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="lastOnlineLabel">
       <property name="geometry">
        <rect>
         <x>820</x>
@@ -292,7 +292,7 @@
        <string>Last Online 4 hrs, 56 mins ago</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="gamesPushButton">
       <property name="geometry">
        <rect>
         <x>820</x>
@@ -318,7 +318,7 @@ QPushButton:hover
        <string>Games</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="achievementsPushButton">
       <property name="geometry">
        <rect>
         <x>820</x>
@@ -364,7 +364,7 @@ QListWidget::item
 }</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="friendPushButton">
       <property name="geometry">
        <rect>
         <x>820</x>

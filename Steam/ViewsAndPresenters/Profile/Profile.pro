@@ -17,11 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    friendcard.cpp \
+    gamecard.cpp \
     profile.cpp \
     ../../Steam/copyablewidget.cpp
 
 HEADERS += \
     Profile_global.h \
+    friendcard.h \
+    gamecard.h \
     profile.h \
     ../../Steam/copyablewidget.h
 
