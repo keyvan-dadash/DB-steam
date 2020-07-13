@@ -7,6 +7,10 @@ import QtMultimedia 5.14
 
 Item {
     property var changeParentHeight
+
+    property var videos
+
+
     Rectangle {
         anchors.fill: parent
         color: "transparent"
@@ -84,11 +88,12 @@ Item {
         y: 100
         width: parent.width
         height: videosGridView.contentHeight
-        model: 16
+        model: videos.length
         cellWidth: videosGridView.width / 2
         cellHeight: 465
         delegate: VideoPlayerComponent {
             index: model.index
+            video: videos[index]
         }
 
         Component.onCompleted: {

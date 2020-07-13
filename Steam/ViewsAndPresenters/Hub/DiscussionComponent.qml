@@ -4,6 +4,9 @@ Item {
     id: component
     width: 770
     height: 65
+
+    property var discussion
+
     Rectangle {
         id: backgroundRectangle
         x: 0
@@ -22,6 +25,7 @@ Item {
                     id: preViewComponent
                     visible: false
                     z: component.z + 1
+                    discussionObj: discussion
                 }
                 onEntered: {
                     parent.color = Qt.rgba( 117, 204, 255, 0.5)
@@ -60,7 +64,7 @@ Item {
         width: 482
         height: 31
         color: "#ffffff"
-        text: qsTr("Assassins Creed Origin")
+        text: discussion.title
         font.pixelSize: 20
         verticalAlignment: Text.AlignVCenter
     }
@@ -72,7 +76,7 @@ Item {
         width: 151
         height: 15
         color: "#8ED1F9"
-        text: qsTr("stYuo1")
+        text: discussion.author.nickname
         font.pixelSize: 15
     }
 
@@ -83,7 +87,7 @@ Item {
         width: 89
         height: 15
         color: "#8ED1F9"
-        text: qsTr("jun 11 @ 11:54 pm")
+        text: discussion.last_comment_date;
         font.pixelSize: 13
     }
 
@@ -104,7 +108,7 @@ Item {
         width: 73
         height: 15
         color: "#dcdcdc"
-        text: qsTr("1754")
+        text: discussion.number_of_comments
         font.pixelSize: 14
     }
 

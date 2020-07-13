@@ -7,14 +7,15 @@ import QtGraphicalEffects 1.14
 Item {
     property var changeParentHeight
 
+    property var news
+
     ListView {
         id: newsListView
         anchors.fill: parent
         spacing: 10
-        model:28
+        model: news.length
         delegate: NewsComponent {
-
-
+            news: news[index]
         }
         Component.onCompleted: {
             changeParentHeight(newsListView.contentHeight)

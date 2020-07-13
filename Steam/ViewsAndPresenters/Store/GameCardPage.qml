@@ -13,7 +13,7 @@ Item {
     property var gameDescription
 
     function getImageSource() {
-        var imgSource = images[index % images.length]
+        var imgSource = images[index % images.length].url
         index = index + 1
         return imgSource
     }

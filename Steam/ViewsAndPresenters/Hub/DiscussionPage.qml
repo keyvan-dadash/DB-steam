@@ -9,13 +9,14 @@ Item {
     property var changeParentHeight
     property var componentHeight: 65 //sry i have no choice but to hardcode this
 
-    property var discussion
+    property var discussions
+
     width: 1200
     ListView {
         id: listViewDiscussion
         //anchors.fill: parent
         spacing: 10
-        model:40
+        model: discussions.length
         width: 770
         height: parent.height
         anchors.rightMargin: 480
@@ -23,8 +24,7 @@ Item {
         y: 0
         delegate: DiscussionComponent {
             z: (listViewDiscussion.count - index)
-
-
+            discussion: discussions[index]
         }
         Component.onCompleted: {
             changeParentHeight((componentHeight + listViewDiscussion.spacing) * listViewDiscussion.count + 200)

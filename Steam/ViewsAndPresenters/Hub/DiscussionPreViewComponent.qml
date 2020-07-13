@@ -7,6 +7,9 @@ import QtGraphicalEffects 1.14
 Item {
     width: 300
     height: 200
+
+    property var discussionObj
+
     Rectangle {
         id: backgroundRectangle
         anchors.fill: parent
@@ -18,10 +21,7 @@ Item {
         width: 300
         height: 146
         color: "#dcdcdc"
-        text: qsTr("Game crashes
-Description: We’ are currently investigating various user reports of crashes on all platforms.
-Status: Under Investigation
-PC specific note: Pl...")
+        text: discussionObj.body
         wrapMode: TextArea.Wrap
         font.pixelSize: 18
     }
@@ -44,7 +44,7 @@ PC specific note: Pl...")
         width: 83
         height: 15
         color: "#dcdcdc"
-        text: qsTr("slifhne")
+        text: discussionObj.author.nickname
         font.pixelSize: 14
         leftPadding: 3
         verticalAlignment: Text.AlignVCenter
@@ -57,7 +57,7 @@ PC specific note: Pl...")
         width: 142
         height: 15
         color: "#8F98A0"
-        text: qsTr("Oct 26, 2017 @ 10:55am")
+        text: discussionObj.discussion_start_date
         font.pixelSize: 13
     }
 
@@ -79,7 +79,7 @@ PC specific note: Pl...")
         width: 83
         height: 15
         color: "#dcdcdc"
-        text: qsTr("wtftftf")
+        text: discussionObj.last_comment_username
         font.pixelSize: 14
         leftPadding: 3
         verticalAlignment: Text.AlignVCenter
@@ -92,7 +92,7 @@ PC specific note: Pl...")
         width: 142
         height: 15
         color: "#8F98A0"
-        text: qsTr("Jun 11 @ 12:55p")
+        text: discussionObj.last_comment_date
         font.pixelSize: 13
     }
 }

@@ -10,6 +10,10 @@
 #include <QQuickView>
 #include <QList>
 
+
+#include "../../DataBase/models.h"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class Store; }
 QT_END_NAMESPACE
@@ -21,22 +25,6 @@ class STORE_EXPORT Store : public QWidget
 public:
     Store(QWidget *parent = nullptr);
     ~Store();
-
-    struct Game
-    {
-        QString title;
-        //QString date_of_publish;
-        QString description;
-        //QString likes;
-        //QString dislikes;
-        //QString attr;
-        QString price;
-        //QString update_id;
-        //QString number_of_purchase;
-        QList<QString> images;
-    };
-
-    QVariantMap gameToVariantMap(Game game);
 
     template <typename T>
     QVariantList toVariantList(const QList<T> &list);

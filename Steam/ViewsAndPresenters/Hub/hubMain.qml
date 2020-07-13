@@ -9,7 +9,13 @@ Item {
     property var loaderHeight
     property var currentBackgroundRectangle
 
-    property var gameName
+    property var hub
+
+    property var discussions
+
+    property var news
+
+    property var videos
 
     //intro page properties
 
@@ -118,7 +124,10 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
-                viewLoader.setSource("IntroPage.qml", {"changeParentHeight": changePageHeight})
+                viewLoader.setSource("IntroPage.qml", {
+                                         "changeParentHeight": changePageHeight,
+                                         "hub": hub
+                                     })
                 currentBackgroundRectangle.visible = false
                 introButtonBackgroundRectangle.visible = true
                 currentBackgroundRectangle = introButtonBackgroundRectangle
@@ -150,7 +159,10 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
-                viewLoader.setSource("DiscussionPage.qml", {"changeParentHeight": changePageHeight})
+                viewLoader.setSource("DiscussionPage.qml", {
+                                         "changeParentHeight": changePageHeight,
+                                         "discussions": discussions
+                                     })
                 currentBackgroundRectangle.visible = false
                 discussionsButtonBackgroundRectangle.visible = true
                 currentBackgroundRectangle = discussionsButtonBackgroundRectangle
@@ -182,7 +194,10 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
-                viewLoader.setSource("NewsPage.qml", {"changeParentHeight": changePageHeight})
+                viewLoader.setSource("NewsPage.qml", {
+                                         "changeParentHeight": changePageHeight,
+                                         "news": news
+                                     })
                 currentBackgroundRectangle.visible = false
                 newsButtonBackgroundRectangle.visible = true
                 currentBackgroundRectangle = newsButtonBackgroundRectangle
@@ -215,7 +230,10 @@ Item {
             }
 
             onClicked: {
-                viewLoader.setSource("VideosPage.qml", {"changeParentHeight": changePageHeight})
+                viewLoader.setSource("VideosPage.qml", {
+                                         "changeParentHeight": changePageHeight,
+                                         "videos": videos
+                                     })
                 currentBackgroundRectangle.visible = false
                 videosButtonBackgroundRectangle.visible = true
                 currentBackgroundRectangle = videosButtonBackgroundRectangle
@@ -257,7 +275,10 @@ Item {
             asynchronous: true
             visible: status == Loader.Ready
             Component.onCompleted: {
-                viewLoader.setSource("IntroPage.qml", {"changeParentHeight": changePageHeight})
+                viewLoader.setSource("IntroPage.qml", {
+                                         "changeParentHeight": changePageHeight,
+                                         "hub": hub
+                                     })
                 currentBackgroundRectangle = introButtonBackgroundRectangle
             }
         }

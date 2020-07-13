@@ -7,12 +7,7 @@ import QtGraphicalEffects 1.14
 Item {
     property var changeParentHeight
 
-    property var newsCount
-    property var discussionCount
-    property var description
-    property var gamePrice
-    property var gameHeaderImg
-    property var purchase
+    property var hub
 
 
     id: itemView
@@ -46,7 +41,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: newsCount + " News"
+                text: hub.news.length + " News"
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -58,7 +53,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: discussionCount + " Discussions"
+                text: hub.discussions.length + " Discussions"
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -70,7 +65,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: purchase + " purchases"
+                text: hub.game.number_of_purchase + " purchases"
                 color: "#7cc53f"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -135,7 +130,7 @@ Item {
                 anchors.fill: parent
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
-                text: "$" + gamePrice
+                text: "$" + hub.game.price
                 color: "#636363"
                 font.pixelSize: 18
             }

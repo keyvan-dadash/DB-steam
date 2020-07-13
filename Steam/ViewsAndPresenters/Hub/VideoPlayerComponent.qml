@@ -9,6 +9,9 @@ Item {
     property var index: 1
     width: 600
     height: 458
+
+    property var video
+
     Rectangle {
         anchors.fill: parent
         anchors.leftMargin: if(index % 2 == 0){
@@ -47,7 +50,7 @@ Item {
                 anchors.leftMargin: 7
                 anchors.rightMargin: 7
                 anchors.topMargin: 7
-                source: "D:/fucking uni/DB/project/HubPage/video.mp4"
+                source: video.url
                 fillMode: VideoOutput.PreserveAspectFit
                 MouseArea {
                     anchors.fill: parent
@@ -73,7 +76,7 @@ Item {
                 width: 28
                 height: 21
                 color: "#7cc5fb"
-                text: qsTr("33")
+                text: video.likes
                 font.pixelSize: 15
                 verticalAlignment: Label.AlignVCenter
                 horizontalAlignment: Label.AlignHCenter
@@ -97,7 +100,7 @@ Item {
                 y: 30
                 width: 571
                 height: 26
-                text: qsTr("Assassin’s Creed® Odyssey | Tempest Boss Fight")
+                text: video.title
                 font.pixelSize: 15
                 color: "#636363"
                 verticalAlignment: Text.AlignVCenter
