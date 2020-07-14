@@ -1,5 +1,5 @@
 QT -= gui
-
+QT += core sql
 TEMPLATE = lib
 DEFINES += DATABASE_LIBRARY
 
@@ -17,12 +17,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    database.cpp
+    database.cpp \
+    userquery.cpp
 
 HEADERS += \
     DataBase_global.h \
+    UserQueryAbstract.h \
     database.h \
-    models.h
+    models.h \
+    userquery.h
 
 # Default rules for deployment.
 unix {

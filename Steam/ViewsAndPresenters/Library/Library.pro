@@ -1,4 +1,4 @@
-QT += gui quickwidgets
+QT += gui quickwidgets sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -40,3 +40,10 @@ RESOURCES += \
     resource.qrc
 
 DISTFILES +=
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
+else:unix: LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
+
+INCLUDEPATH += $$PWD/../../DataBase
+DEPENDPATH += $$PWD/../../DataBase

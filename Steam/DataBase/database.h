@@ -3,10 +3,35 @@
 
 #include "DataBase_global.h"
 
-class DATABASE_EXPORT DataBase
+#include <QObject>
+#include <QtSql>
+#include <QString>
+#include <QDebug>
+
+#include "userquery.h"
+#include "UserQueryAbstract.h"
+
+class DATABASE_EXPORT DataBase : public QObject
 {
+    Q_OBJECT
 public:
-    DataBase();
+    DataBase(const char* driver, QObject *parent = nullptr);
+    ~DataBase();
+
+    QSqlDatabase *connect( const QString& server,
+                               const QString& databaseName,
+                               const QString& userName,
+                               const QString& password,
+                               int port);
+
+    bool executeQuery(QSqlQuery* query);
+
+    void disConnect();
+
+    UserQueryAbstract *getUserQuery();
+
+private:
+    QSqlDatabase* db;
 };
 
 #endif // DATABASE_H

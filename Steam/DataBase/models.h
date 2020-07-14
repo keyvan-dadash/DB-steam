@@ -91,6 +91,57 @@ struct User
     }
 };
 
+struct UserFriends : User {
+    QString since;
+
+    QVariantMap toVariantMap() {
+        QVariantMap map;
+        map.insert("username", username);
+        map.insert("email", email);
+        map.insert("bio", bio);
+        map.insert("level", level);
+        map.insert("last_time_online", last_time_online);
+        map.insert("nickname", nickname);
+        map.insert("inviteCode", inviteCode);
+        map.insert("birth", birth);
+        map.insert("profileImg", profileImg.toVariantMap());
+        map.insert("since", since);
+        return map;
+    }
+};
+
+struct UserBlocked : User {
+    QString since;
+
+    QVariantMap toVariantMap() {
+        QVariantMap map;
+        map.insert("username", username);
+        map.insert("nickname", nickname);
+        map.insert("last_time_online", last_time_online);
+        map.insert("since", since);
+        return map;
+    }
+};
+
+struct UserInvites : User {
+    QString status;
+    QString invite_date;
+    QString sender_nickname;
+    QString receiver_nickname;
+
+    QVariantMap toVariantMap() {
+        QVariantMap map;
+        map.insert("username", username);
+        map.insert("nickname", nickname);
+        map.insert("last_time_online", last_time_online);
+        map.insert("since", status);
+        map.insert("invite_date", invite_date);
+        map.insert("sender_nickname", sender_nickname);
+        map.insert("receiver_nickname", receiver_nickname);
+        return map;
+    }
+};
+
 struct News
 {
     QString title;

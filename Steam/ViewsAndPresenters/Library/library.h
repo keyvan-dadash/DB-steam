@@ -11,6 +11,8 @@
 #include <QQmlEngine>
 
 #include "../../Steam/copyablewidget.h"
+#include "../../DataBase/models.h"
+#include "database.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Library; }
@@ -28,7 +30,7 @@ public:
     template <typename T>
     QVariantList toVariantList(const QList<T> &list);
 
-    void setUpLibrary(QList<QString> gamesList, QList<QString> totalGamePlayList, QList<QList<QString>> imagesList);
+    void setUpLibrary(QList<Game> games);
 
 private:
     Ui::Library *ui;

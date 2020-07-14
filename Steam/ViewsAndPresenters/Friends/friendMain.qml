@@ -10,24 +10,68 @@ Item {
     property var originalHeight: height
     property Button currentButton
 
-    //friend page variables
-    property var friendNames
-    property var friendLastOnlineTime
+    //friend signal
+    signal getFriends()
+    property var friendArray : []
 
-    //blocked page variables
-    property var blockedNames
-    property var blockedLastOnlineTime
+    //blocked signal
+    signal getBlocked()
+    property var blockedArray : []
 
-    //pending page variables
-    property var pendingNames
-    property var pendingLastOnlineTime
+    //pending signal
+    signal getPending()
+    property var pendingArray : []
 
-    //recive page variables
-    property var receiveNames
-    property var receiveLastOnlineTime
+    //recive signal
+    signal getReceive()
+    property var receiveArray : []
 
     //invite code
     property var inviteCode
+
+    property var objects : []
+    property var lengthOfModels: 0
+
+    function fillArrayWithArray(sourceArray, destinationArray) {
+        for (var i=0; i < sourceArray.length; i++) {
+            destinationArray.push(sourceArray[i])
+        }
+        lengthOfModels = objects.length
+    }
+
+    function setObjectsArray(type, objArray) {
+        if (type == 1) {
+            fillArrayWithArray(objArray, friendArray)
+            button.loadView()
+        } else if (type == 2) {
+            fillArrayWithArray(objArray, blockedArray)
+            button3.loadView()
+        } else if (type == 3) {
+            fillArrayWithArray(objArray, pendingArray)
+            preaperPendingPage(3)
+        } else if (type == 4) {
+            fillArrayWithArray(objArray, receiveArray)
+            preaperPendingPage(4)
+        }
+    }
+
+    property var pending : false
+    property var receive : false
+
+    function preaperPendingPage(type) {
+        console.log(pending)
+        console.log(receive)
+        if (type == 3) {
+            pending = true
+        } else if (type == 4) {
+            receive = true
+        }
+        if (pending && receive) {
+            button2.loadView()
+            pending = false
+            receive = false
+        }
+    }
 
     Component.onCompleted: {
         originalHeight = originalHeight
@@ -112,12 +156,14 @@ Item {
             }
             Component.onCompleted: currentButton = this
             onClicked: {
+                getFriends()
+            }
+            function loadView() {
                 viewLoader.setSource("YourFriendPage.qml",
                                      {
                                          "changeHeightFunction": pageFlickable.changeHeight,
                                          "parentHeight": y,
-                                         "names": friendNames,
-                                         "lastOnlineTimes": friendLastOnlineTime
+                                         "objArray": friendArray
                                      })
                 currentButton = this
             }
@@ -175,14 +221,17 @@ Item {
                 button: currentButton == this ?  Qt.rgba(255, 255, 255, 0.1) : (this.hovered ? Qt.rgba(255, 255, 255, 0.2) : "transparent")
             }
             onClicked: {
+                getReceive()
+                getPending()
+            }
+
+            function loadView() {
                 viewLoader.setSource("PendingInvitePage.qml",
                                      {
                                          "changeHeightFunction": pageFlickable.changeHeight,
                                          "parentHeight": y,
-                                         "receiveNames": receiveNames,
-                                         "receiveLastOnlineTimes": receiveLastOnlineTime,
-                                         "pendingNames": pendingNames,
-                                         "pendingLastOnlineTimes": pendingLastOnlineTime
+                                         "receiveObjArray": receiveArray,
+                                         "pendingObjArray": pendingArray
                                      })
                 currentButton = this
             }
@@ -209,12 +258,15 @@ Item {
                 button: currentButton == this ?  Qt.rgba(255, 255, 255, 0.1) : (this.hovered ? Qt.rgba(255, 255, 255, 0.2) : "transparent")
             }
             onClicked: {
+                getBlocked()
+            }
+
+            function loadView() {
                 viewLoader.setSource("BlockedProfilesPage.qml",
                                      {
                                          "changeHeightFunction": pageFlickable.changeHeight,
                                          "parentHeight": y,
-                                         "names": blockedNames,
-                                         "lastOnlineTimes": blockedLastOnlineTime
+                                         "objArray": blockedArray
                                      })
                 currentButton = this
             }
@@ -231,8 +283,7 @@ Item {
                                      {
                                          "changeHeightFunction": pageFlickable.changeHeight,
                                          "parentHeight": y,
-                                         "names": friendNames,
-                                         "lastOnlineTimes": friendLastOnlineTime
+                                         "objArray": friendArray
                                      })
             }
         }

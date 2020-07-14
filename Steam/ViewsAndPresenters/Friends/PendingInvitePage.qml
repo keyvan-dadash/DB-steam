@@ -10,11 +10,8 @@ Item {
     property var changeHeightFunction
     property var parentHeight
 
-    property var receiveNames
-    property var receiveLastOnlineTimes
-
-    property var pendingNames
-    property var pendingLastOnlineTimes
+    property var receiveObjArray
+    property var pendingObjArray
 
 
     property var ne: function*(){
@@ -150,11 +147,11 @@ Item {
                     x: 0
                     y: 0
                     anchors.fill: parent
-                    model: receiveNames.length
+                    model: receiveObjArray.length
                     cellWidth: parent.width / 2
                     delegate: FriendProfileComponent {
-                        name: receiveNames[index]
-                        lastOnlineTime: receiveLastOnlineTimes[index]
+                        name: receiveObjArray[index].nickname
+                        lastOnlineTime: receiveObjArray[index].last_time_online
                     }
                     Component.onCompleted: {
                         receivedInvitesHeight = receivedInvitesListGridView.contentHeight + receivedInvitesBackgroundRectangle.height + receivedInvitesBackgroundRectangle.y + 5
@@ -248,11 +245,11 @@ Item {
                     x: 0
                     y: 0
                     anchors.fill: parent
-                    model: pendingNames.length
+                    model: pendingObjArray.length
                     cellWidth: parent.width / 2
                     delegate: FriendProfileComponent {
-                        name: pendingNames[index]
-                        lastOnlineTime: pendingLastOnlineTimes[index]
+                        name: pendingObjArray[index].nickname
+                        lastOnlineTime: pendingObjArray[index].last_time_online
                     }
                     Component.onCompleted: {
                         sentInvitesHeight = sentInvitesListGridView.contentHeight + sentInvitesBackgroundRectangle.height + sentInvitesBackgroundRectangle.y + 5

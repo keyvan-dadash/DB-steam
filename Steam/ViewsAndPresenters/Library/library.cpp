@@ -8,13 +8,9 @@ Library::Library(QWidget *parent):
     ui->quickWidgetLibrary->setSource(QUrl(QStringLiteral("qrc:/libraryMain.qml")));
     this->obj = ui->quickWidgetLibrary->rootObject();
 
-    this->setUpLibrary(QList<QString>{"tom", "ac", "fifa"},
-                       QList<QString>{"256", "38", "2"},
-                       QList<QList<QString>>{
-                           QList<QString>{"file:///D:\\fucking uni\\DB\\project\\exxx1.jpg", "file:///D:\\fucking uni\\DB\\project\\exxx2.jpg"},
-                           QList<QString>{"file:///D:\\fucking uni\\DB\\project\\ex1.jpg", "file:///D:\\fucking uni\\DB\\project\\ex2.jpg"}
-                       }
-                       );
+    const char* driverName = "QPSQL";
+    DataBase *database = new DataBase(driverName);
+    this->setUpLibrary(database->getUserQuery()->getUserGames("keyvan"));
 }
 
 Library::~Library()
@@ -27,15 +23,15 @@ CopyableWidget *Library::copy()
     return new Library();
 }
 
-void Library::setUpLibrary(QList<QString> gamesList, QList<QString> totalGamePlayList, QList<QList<QString> > imagesList)
+void Library::setUpLibrary(QList<Game> games)
 {
-    this->obj->setProperty("gamesList", this->toVariantList(gamesList));
-    this->obj->setProperty("totalGamePlayList", this->toVariantList(totalGamePlayList));
-    QVariantList wholeList;
-    foreach(QList<QString> list, imagesList) {
-        wholeList.push_back(this->toVariantList(list));
+    QVariantList gameList;
+    foreach(Game game, games) {
+        gameList.push_back(game.toVariantMap());
     }
-    this->obj->setProperty("imagesList", wholeList);
+
+    QMetaObject::invokeMethod(obj, "setObjectsArray",
+                              Q_ARG(QVariant, QVariant::fromValue(gameList)));
 }
 
 template<typename T>

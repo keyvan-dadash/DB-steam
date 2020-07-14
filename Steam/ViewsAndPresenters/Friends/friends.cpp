@@ -10,13 +10,10 @@ Friends::Friends(QWidget *parent):
 
     this->obj = ui->quickWidgetFriends->rootObject(); //get root object of qtquick
 
-    this->setUpFriends(QList<QString>{"hallo", "ali", "amir"}, QList<QString>{"2 days", "5 days", "3 days"});
+    this->makeConnection();
 
-    this->setUpBlocked(QList<QString>{"hallo1", "ali1", "amir1"}, QList<QString>{"12 days", "4 days", "1 days"});
-
-    this->setUpPending(QList<QString>{"hallo2", "ali2", "amir2"}, QList<QString>{"1 days", "online", "2 days"});
-
-    this->setUpReceive(QList<QString>{"hallo3", "ali3", "amir3"}, QList<QString>{"20 days", "15 days", "30 days"});
+    const char* driverName = "QPSQL";
+    database = new DataBase(driverName);
 
     this->setUpInviteCode("8529847");
 }
@@ -36,33 +33,82 @@ void Friends::setProperty(QString property, QList<QString> &list) //we must dele
     obj->setProperty(property.toUtf8().constData(), toVariantList(list));
 }
 
-void Friends::setUpFriends(QList<QString> frinedList, QList<QString> lastOnlineList)
+void Friends::setUpFriends(QList<UserFriends> friends)
 {
-    this->setProperty("friendNames", frinedList);
-    this->setProperty("friendLastOnlineTime", lastOnlineList);
+
+    QVariantList friendList;
+    foreach(UserFriends userFriend, friends) {
+        friendList.push_back(userFriend.toVariantMap());
+    }
+    QMetaObject::invokeMethod(obj, "setObjectsArray",
+                              Q_ARG(QVariant, QVariant::fromValue(1)),
+                              Q_ARG(QVariant, QVariant::fromValue(friendList)));
 }
 
-void Friends::setUpBlocked(QList<QString> blockedList, QList<QString> lastOnlineList)
+void Friends::setUpBlocked(QList<UserBlocked> blocked)
 {
-    this->setProperty("blockedNames", blockedList);
-    this->setProperty("blockedLastOnlineTime", lastOnlineList);
+    QVariantList blockList;
+    foreach(UserBlocked userBlocked, blocked) {
+        blockList.push_back(userBlocked.toVariantMap());
+    }
+    QMetaObject::invokeMethod(obj, "setObjectsArray",
+                              Q_ARG(QVariant, QVariant::fromValue(2)),
+                              Q_ARG(QVariant, QVariant::fromValue(blockList)));
 }
 
-void Friends::setUpPending(QList<QString> pendingList, QList<QString> lastOnlineList)
+void Friends::setUpPending(QList<UserInvites> pending)
 {
-    this->setProperty("pendingNames", pendingList);
-    this->setProperty("pendingLastOnlineTime", lastOnlineList);
+    QVariantList pendingList;
+    foreach(UserInvites userInvite, pending) {
+        pendingList.push_back(userInvite.toVariantMap());
+    }
+    QMetaObject::invokeMethod(obj, "setObjectsArray",
+                              Q_ARG(QVariant, QVariant::fromValue(3)),
+                              Q_ARG(QVariant, QVariant::fromValue(pendingList)));
 }
 
-void Friends::setUpReceive(QList<QString> receiveList, QList<QString> lastOnlineList)
+void Friends::setUpReceive(QList<UserInvites> receives)
 {
-    this->setProperty("receiveNames", receiveList);
-    this->setProperty("receiveLastOnlineTime", lastOnlineList);
+    QVariantList receiveList;
+    foreach(UserInvites userInvite, receives) {
+        receiveList.push_back(userInvite.toVariantMap());
+    }
+    QMetaObject::invokeMethod(obj, "setObjectsArray",
+                              Q_ARG(QVariant, QVariant::fromValue(4)),
+                              Q_ARG(QVariant, QVariant::fromValue(receiveList)));
 }
 
 void Friends::setUpInviteCode(QString inviteCode)
 {
     this->obj->setProperty("inviteCode", QVariant(inviteCode));
+}
+
+void Friends::makeConnection()
+{
+    QObject::connect(obj, SIGNAL(getFriends()), this, SLOT(getFriendsSlot()));
+    QObject::connect(obj, SIGNAL(getBlocked()), this, SLOT(getBlockedSlot()));
+    QObject::connect(obj, SIGNAL(getPending()), this, SLOT(getPendingSlot()));
+    QObject::connect(obj, SIGNAL(getReceive()), this, SLOT(getReceiveSlot()));
+}
+
+void Friends::getFriendsSlot()
+{
+    this->setUpFriends(this->database->getUserQuery()->getUserFriends("keyvan"));
+}
+
+void Friends::getPendingSlot()
+{
+    this->setUpPending(this->database->getUserQuery()->getUserPending("keyvan"));
+}
+
+void Friends::getReceiveSlot()
+{
+    this->setUpReceive(this->database->getUserQuery()->getUserReceive("keyvan"));
+}
+
+void Friends::getBlockedSlot()
+{
+    this->setUpBlocked(this->database->getUserQuery()->getUserBlocked("keyvan"));
 }
 
 template <typename T>

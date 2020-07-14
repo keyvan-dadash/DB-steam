@@ -10,9 +10,15 @@ Item {
     width: 1254
     height: 622
 
-    property var gamesList
-    property var imagesList
-    property var totalGamePlayList
+    property var objects : []
+    property var lengthOfModels: 0
+
+    function setObjectsArray(objArray) {
+        for (var i=0; i < objArray.length; i++) {
+            objects.push(objArray[i])
+        }
+        lengthOfModels = objects.length
+    }
 
     Rectangle {
         id: gamelistAndSearchRectangle
@@ -146,7 +152,7 @@ Item {
                 y: 0
                 width: 39
                 height: 31
-                text: "(" + gamesList.length + ")"
+                text: "(" + lengthOfModels + ")"
                 verticalAlignment: Label.AlignVCenter
                 horizontalAlignment: Label.AlignLeft
                 color: "#484d57"
@@ -161,9 +167,9 @@ Item {
             width: 402
             height: 431
             anchors.leftMargin: 3
-            model: gamesList.length
+            model: lengthOfModels
             delegate: GameNameComponent {
-                gameName: gamesList[index]
+                gameName: objects[index].title
             }
         }
     }
@@ -221,7 +227,7 @@ Item {
             y: 33
             width: 46
             height: 36
-            text: "(" + gamesList.length + ")"
+            text: "(" + lengthOfModels + ")"
             verticalAlignment: Label.AlignVCenter
             horizontalAlignment: Label.AlignLeft
             color: "#484b50"
@@ -237,13 +243,11 @@ Item {
             interactive: false
             cellHeight: 220
             cellWidth: 200
-            model: gamesList.length
+            model: lengthOfModels
             delegate: GameCardComponents {
                 posIndex: index
                 z: 2
-                images: imagesList[index]
-                gameName: gamesList[index]
-                totalGamePlay: totalGamePlayList[index]
+                gameObj: objects[index]
             }
         }
     }

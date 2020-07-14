@@ -16,9 +16,7 @@ Item {
     property var gamePreViewComponentObj
 
     //list for game name and image lists
-    property var images
-    property var gameName
-    property var totalGamePlay
+    property var gameObj
 
 
     function getXPos(index) {
@@ -47,13 +45,14 @@ Item {
         if (gamePreViewComponent.status == Component.Ready) {
             var xLocal = getXPos(index)
             var yLocal = getYPos(index)
+            console.log(gameObj.title)
             gamePreViewComponentObj = gamePreViewComponent.createObject(item.parent, {
                                                                             xPos: xLocal,
                                                                             yPos: yLocal,
                                                                             z: 10,
-                                                                            images: images,
-                                                                            gameName: gameName,
-                                                                            totalGamePlay: totalGamePlay
+                                                                            images: gameObj.images,
+                                                                            gameName: gameObj.title,
+                                                                            totalGamePlay: gameObj.totalGamePlay
                                                                         });
             if (gamePreViewComponentObj == null) {
                 console.log("Error creating object");
@@ -82,7 +81,7 @@ Item {
     Image {
         id: gameImage
         anchors.fill: parent
-        source: images[0]
+        source: gameObj.images[0]
         z: 3
         MouseArea {
             anchors.fill: parent

@@ -1,4 +1,4 @@
-QT       += core gui quickwidgets
+QT       += core gui quickwidgets sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -66,3 +66,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresente
 
 INCLUDEPATH += $$PWD/../ViewsAndPresenters/Library
 DEPENDPATH += $$PWD/../ViewsAndPresenters/Library
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../DataBase/ -lDataBase
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../DataBase/ -lDataBase
+
+INCLUDEPATH += $$PWD/../DataBase
+DEPENDPATH += $$PWD/../DataBase

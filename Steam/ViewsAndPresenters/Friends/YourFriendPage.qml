@@ -10,9 +10,7 @@ Item {
     property var parentHeight
 
     //list friends
-    property var names
-    property var lastOnlineTimes
-
+    property var objArray
     Rectangle {
         id: textBackground
         x: 0
@@ -84,11 +82,11 @@ Item {
         y: textInputBackground.height + textInputBackground.y + 20
         width: parent.width
         height: listView.contentHeight
-        model: names.length
+        model: objArray.length
         cellWidth: listView.width / 2
         delegate: FriendProfileComponent {
-            name: names[index]
-            lastOnlineTime: lastOnlineTimes[index]
+            name: objArray[index].nickname
+            lastOnlineTime: objArray[index].last_time_online
 
         }
         Component.onCompleted: {
