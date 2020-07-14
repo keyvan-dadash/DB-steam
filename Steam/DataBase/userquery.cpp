@@ -44,6 +44,29 @@ int UserQuery::getUserId(QString username)
     return model.record(0).value("id").toInt();
 }
 
+User UserQuery::getUser(QString username)
+{
+    QSqlQuery userQ;
+    userQ.prepare("select * from users where id = :id;");
+    userQ.bindValue(":id", this->getUserId(username));
+    userQ.exec();
+
+    QList<UserFriends> userFriendList;
+    QSqlQueryModel model;
+    model.setQuery(userQ);
+    qInfo() << userQ.executedQuery();
+    User user;
+    user.username = model.record(0).value("username").toString();
+    user.email = model.record(0).value("email").toString();
+    user.bio = model.record(0).value("bio").toString();
+    user.wallet = model.record(0).value("wallet").toString();
+    user.level = model.record(0).value("level").toString();
+    user.last_time_online = model.record(0).value("last_time_online").toString();
+    user.nickname = model.record(0).value("nickname").toString();
+    user.birth = model.record(0).value("birth").toString();
+    return user;
+}
+
 QList<UserFriends> UserQuery::getUserFriends(QString username)
 {
     QSqlQuery userFriends;

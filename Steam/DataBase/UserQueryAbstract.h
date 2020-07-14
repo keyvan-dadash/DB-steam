@@ -14,6 +14,8 @@ public:
 
     virtual int getUserId(QString username) = 0;
 
+    virtual User getUser(QString username) = 0;
+
     virtual QList<UserFriends> getUserFriends(QString username) = 0;
 
     virtual QList<UserBlocked> getUserBlocked(QString username) = 0;

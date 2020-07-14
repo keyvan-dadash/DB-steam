@@ -5,11 +5,13 @@
 #include <QtWidgets>
 #include <QList>
 #include <QString>
+#include <algorithm>
 
 
 #include "../../Steam/copyablewidget.h"
 #include "gamecard.h"
 #include "friendcard.h"
+#include "database.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Profile; }
@@ -41,9 +43,15 @@ public:
 
     void addFriendCrad(QString profileImagePath, QString profileName, QString lastSeen);
 
+    void filterUserGames(QList<Game> gameList);
+
+    void filterUserFriends(QList<UserFriends> friendList);
+
 
 private:
     Ui::Profile *ui;
+
+    DataBase *database;
 };
 
 #endif // PROFILE_H

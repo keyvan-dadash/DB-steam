@@ -1,4 +1,4 @@
-QT += widgets gui
+QT += widgets gui sql
 
 TEMPLATE = lib
 DEFINES += PROFILE_LIBRARY
@@ -37,3 +37,10 @@ unix {
 
 FORMS += \
     profile.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
+else:unix: LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
+
+INCLUDEPATH += $$PWD/../../DataBase
+DEPENDPATH += $$PWD/../../DataBase

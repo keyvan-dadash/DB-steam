@@ -17,6 +17,8 @@ public:
 
     int getUserId(QString username) override;
 
+    User getUser(QString username) override;
+
     QList<UserFriends> getUserFriends(QString username) override;
 
     QList<UserBlocked> getUserBlocked(QString username) override;
