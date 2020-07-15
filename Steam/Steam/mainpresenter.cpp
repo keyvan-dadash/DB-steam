@@ -2,8 +2,8 @@
 #include "ui_mainview.h"
 
 
-MainPresenter::MainPresenter(QWidget *parent)
-    : QDialog(parent)
+MainPresenter::MainPresenter(DataBase *database, QWidget *parent)
+    : QDialog(parent), database(database)
     , ui(new Ui::MainPresenter)
 {
     ui->setupUi(this);
@@ -18,12 +18,12 @@ MainPresenter::~MainPresenter()
 
 void MainPresenter::on_btnStore_clicked()
 {
-    changePresenter(new Store());
+    changePresenter(new Store(database));
 }
 
 void MainPresenter::on_btnLibrary_clicked()
 {
-    changePresenter(new Library());
+    changePresenter(new Library(database));
 }
 
 void MainPresenter::on_btnCommunity_clicked()
@@ -33,7 +33,7 @@ void MainPresenter::on_btnCommunity_clicked()
 
 void MainPresenter::on_btnProfile_clicked()
 {
-    changePresenter(new Profile());
+    changePresenter(new Profile(database));
 }
 
 void MainPresenter::widgetEnterHover()
@@ -153,4 +153,9 @@ void MainPresenter::makeConnectionForHoverWidget(QWidget *widget)
 {
     connect(widget, SIGNAL(enterHover()), this, SLOT(widgetEnterHover()));
     connect(widget, SIGNAL(exitHover()), this, SLOT(widgetExitHover()));
+}
+
+void MainPresenter::on_listWidgetStore_currentRowChanged(int currentRow)
+{
+    changePresenter(new Store(database, currentRow));
 }

@@ -45,7 +45,6 @@ Item {
         if (gamePreViewComponent.status == Component.Ready) {
             var xLocal = getXPos(index)
             var yLocal = getYPos(index)
-            console.log(gameObj.title)
             gamePreViewComponentObj = gamePreViewComponent.createObject(item.parent, {
                                                                             xPos: xLocal,
                                                                             yPos: yLocal,
@@ -81,7 +80,7 @@ Item {
     Image {
         id: gameImage
         anchors.fill: parent
-        source: gameObj.images[0]
+        source: "file:///" + gameObj.images[0].url
         z: 3
         MouseArea {
             anchors.fill: parent

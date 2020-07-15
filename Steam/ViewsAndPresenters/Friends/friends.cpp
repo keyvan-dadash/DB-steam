@@ -1,8 +1,8 @@
 #include "friends.h"
 #include "ui_friends.h"
 
-Friends::Friends(QWidget *parent):
-    CopyableWidget(parent), ui(new Ui::Friends)
+Friends::Friends(DataBase *database, QWidget *parent):
+    CopyableWidget(parent), ui(new Ui::Friends), database(database)
 {
     ui->setupUi(this);
     ui->quickWidgetFriends->setSource(QUrl(QStringLiteral("qrc:/friendMain.qml")));
@@ -12,10 +12,7 @@ Friends::Friends(QWidget *parent):
 
     this->makeConnection();
 
-    const char* driverName = "QPSQL";
-    database = new DataBase(driverName);
-
-    this->setUpInviteCode("8529847");
+    this->setUpInviteCode(database->getUserQuery()->getUser("keyvan").inviteCode);
 }
 
 Friends::~Friends()
@@ -25,7 +22,7 @@ Friends::~Friends()
 
 CopyableWidget *Friends::copy()
 {
-    return new Friends();
+    return new Friends(database);
 }
 
 void Friends::setProperty(QString property, QList<QString> &list) //we must delete this method

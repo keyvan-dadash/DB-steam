@@ -87,7 +87,7 @@ Item {
         delegate: FriendProfileComponent {
             name: objArray[index].nickname
             lastOnlineTime: objArray[index].last_time_online
-
+            profileImageUrl: objArray[index].profileImg.url
         }
         Component.onCompleted: {
             parent.changeHeightOfParent.connect(changeHeightFunction)

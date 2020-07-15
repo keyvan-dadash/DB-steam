@@ -5,6 +5,7 @@ Item {
     height: 65
     property var name
     property var lastOnlineTime
+    property var profileImageUrl
 
     Rectangle {
         anchors.fill: parent
@@ -17,7 +18,7 @@ Item {
             width: 65
             height: 65
             fillMode: Image.Stretch
-            source: "qrc:/qtquickplugin/images/template_image.png"
+            source: "file:///" + profileImageUrl
             clip: true
             Rectangle {
                 anchors.leftMargin:  -border.width

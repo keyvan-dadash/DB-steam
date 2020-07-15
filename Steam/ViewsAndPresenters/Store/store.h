@@ -12,6 +12,7 @@
 
 
 #include "../../DataBase/models.h"
+#include "database.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -23,7 +24,14 @@ class STORE_EXPORT Store : public QWidget
 {
     Q_OBJECT
 public:
-    Store(QWidget *parent = nullptr);
+    enum MainView {
+        featuredGames,
+        newGames,
+        topGames,
+        topSales
+    };
+
+    Store(DataBase *database, int view = 0, QWidget *parent = nullptr);
     ~Store();
 
     template <typename T>
@@ -37,7 +45,10 @@ public:
 
     private:
         Ui::Store *ui;
+
         QObject *obj;
+
+        DataBase *database;
 };
 
 #endif // STORE_H

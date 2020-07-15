@@ -22,7 +22,7 @@ class PROFILE_EXPORT Profile : public CopyableWidget
 {
     Q_OBJECT
 public:
-    Profile(QWidget *parent = nullptr);
+    Profile(DataBase *database, QWidget *parent = nullptr);
     ~Profile();
 
     CopyableWidget * copy() override;

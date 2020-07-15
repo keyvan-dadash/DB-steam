@@ -1,15 +1,13 @@
 #include "library.h"
 #include "ui_library.h"
 
-Library::Library(QWidget *parent):
-    CopyableWidget(parent), ui(new Ui::Library)
+Library::Library(DataBase *database, QWidget *parent):
+    CopyableWidget(parent), ui(new Ui::Library), database(database)
 {
     ui->setupUi(this);
     ui->quickWidgetLibrary->setSource(QUrl(QStringLiteral("qrc:/libraryMain.qml")));
     this->obj = ui->quickWidgetLibrary->rootObject();
 
-    const char* driverName = "QPSQL";
-    DataBase *database = new DataBase(driverName);
     this->setUpLibrary(database->getUserQuery()->getUserGames("keyvan"));
 }
 
@@ -20,7 +18,7 @@ Library::~Library()
 
 CopyableWidget *Library::copy()
 {
-    return new Library();
+    return new Library(database);
 }
 
 void Library::setUpLibrary(QList<Game> games)

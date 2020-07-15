@@ -21,6 +21,8 @@ public:
 
     QList<Game> toGameList(QSqlQuery gameQ);
 
+    QList<File> getGameFiles(QString name) override;
+
     Game getGameByName(QString name) override;
 
     QList<Game> getGamesOrderedByLikes() override;

@@ -20,7 +20,7 @@ class FRIENDS_EXPORT Friends : public CopyableWidget
 {
     Q_OBJECT
 public:
-    Friends(QWidget *parent = nullptr);
+    Friends(DataBase *database, QWidget *parent = nullptr);
     ~Friends();
 
     CopyableWidget * copy() override;

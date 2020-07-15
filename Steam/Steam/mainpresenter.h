@@ -26,7 +26,7 @@ class MainPresenter : public QDialog
     Q_OBJECT
 
 public:
-    MainPresenter(QWidget *parent = nullptr);
+    MainPresenter(DataBase *database, QWidget *parent = nullptr);
 
     ~MainPresenter();
 
@@ -46,7 +46,7 @@ public:
     };
 
     QList<ButtonAndPresenterPair> librarySubButtonTexts = {
-        ButtonAndPresenterPair{"Home", new Library()},
+        ButtonAndPresenterPair{"Home", new Library(database)},
         ButtonAndPresenterPair{"Collections", nullptr}
     };
 
@@ -57,8 +57,8 @@ public:
     };
 
     QList<ButtonAndPresenterPair> profileSubButtonTexts = {
-        ButtonAndPresenterPair{"Profile", new Profile()},
-        ButtonAndPresenterPair{"Friends", new Friends()},
+        ButtonAndPresenterPair{"Profile", new Profile(database)},
+        ButtonAndPresenterPair{"Friends", new Friends(database)},
         ButtonAndPresenterPair{"Inventory", nullptr}
     };
 
@@ -88,8 +88,12 @@ private slots:
 
     void widgetExitHover();
 
+    void on_listWidgetStore_currentRowChanged(int currentRow);
+
 private:
     Ui::MainPresenter *ui;
+
+    DataBase *database;
 
     void initialize();
 

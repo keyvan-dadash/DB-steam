@@ -42,7 +42,7 @@ Item {
             y: 51
             width: 200
             height: 150
-            source: obj.images[0].url
+            source: "file:///" + obj.images[0].url
             fillMode: Image.Stretch
         }
 

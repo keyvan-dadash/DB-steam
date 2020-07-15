@@ -89,7 +89,7 @@ Item {
             for (var i=0; i < objects.length; i = i + 10) {
                 addPage(createTop100GamesPage(objects.slice(i, i + 10)))
             }
-            numberOfPage = (objects.length / 10)
+            numberOfPage = Math.ceil(objects.length / 10)
         }
     }
 
@@ -139,7 +139,7 @@ Item {
             }
         }
         onClicked: {
-            gameCards.currentIndex = (gameCards.currentIndex +  2) % numberOfPage
+            gameCards.currentIndex = (gameCards.currentIndex +  (numberOfPage - 1)) % numberOfPage
         }
     }
     Button {

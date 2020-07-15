@@ -14,6 +14,8 @@ public:
 
     virtual Game getGameByName(QString name) = 0;
 
+    virtual QList<File> getGameFiles(QString name) = 0;
+
     virtual QList<Game> getGamesOrderedByLikes() = 0;
 
     virtual QList<Game> getGamesOrderedByNumberOfPurchase() = 0;

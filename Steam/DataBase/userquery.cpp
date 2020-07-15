@@ -27,6 +27,7 @@ QList<Game> UserQuery::getUserGames(QString username)
         game.price = model.record(i).value("price").toString();
         game.update_id = model.record(i).value("update_id").toString();
         game.number_of_purchase = model.record(i).value("number_of_purchase").toString();
+        game.images = this->getGameImages(game.title);
         userGameList.push_back(game);
     }
     return userGameList;
@@ -44,10 +45,31 @@ int UserQuery::getUserId(QString username)
     return model.record(0).value("id").toInt();
 }
 
+QList<File> UserQuery::getGameImages(QString name)
+{
+    QList<File> gameImages;
+
+    QSqlQuery gameImage;
+    gameImage.prepare("select * from file where file.party_id = (select game.contents from game where game.title = :name);");
+    gameImage.bindValue(":name", name);
+    gameImage.exec();
+    QSqlQueryModel model;
+    model.setQuery(gameImage);
+    qInfo() << gameImage.executedQuery();
+    for (int i = 0; i < model.rowCount(); ++i) {
+        File file;
+        file.size = model.record(i).value("size").toString();
+        file.type = model.record(i).value("type").toString();
+        file.url = model.record(i).value("file_url").toString();
+        gameImages.push_back(file);
+    }
+    return gameImages;
+}
+
 User UserQuery::getUser(QString username)
 {
     QSqlQuery userQ;
-    userQ.prepare("select * from users where id = :id;");
+    userQ.prepare("select * from users left join file on file.party_id = users.profile_image where users.id = :id;");
     userQ.bindValue(":id", this->getUserId(username));
     userQ.exec();
 
@@ -64,6 +86,7 @@ User UserQuery::getUser(QString username)
     user.last_time_online = model.record(0).value("last_time_online").toString();
     user.nickname = model.record(0).value("nickname").toString();
     user.birth = model.record(0).value("birth").toString();
+    user.profileImg.url = model.record(0).value("file_url").toString();
     return user;
 }
 
@@ -75,7 +98,7 @@ QList<UserFriends> UserQuery::getUserFriends(QString username)
                             " union"
                             " select friend_2_id as users_id from friend where friend_1_id = :id"
                             ")"
-                            " select users.* from friends left join users on users_id = users.id;");
+                            " select users.*, file.* from friends left join users on users_id = users.id left join file on file.party_id = users.id;");
     userFriends.bindValue(":id", this->getUserId(username));
     userFriends.exec();
 
@@ -92,6 +115,7 @@ QList<UserFriends> UserQuery::getUserFriends(QString username)
         friends.level = model.record(i).value("level").toString();
         friends.nickname = model.record(i).value("nickname").toString();
         friends.birth = model.record(i).value("birth").toString();
+        friends.profileImg.url = model.record(i).value("file_url").toString();
         userFriendList.push_back(friends);
     }
     return userFriendList;

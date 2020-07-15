@@ -22,7 +22,7 @@ class LIBRARY_EXPORT Library : public CopyableWidget
 {
     Q_OBJECT
 public:
-    Library(QWidget *parent = nullptr);
+    Library(DataBase *database, QWidget *parent = nullptr);
     ~Library();
 
     CopyableWidget * copy() override;
@@ -34,7 +34,10 @@ public:
 
 private:
     Ui::Library *ui;
+
     QObject *obj; //rootobject of qtquickview
+
+    DataBase *database;
 };
 
 

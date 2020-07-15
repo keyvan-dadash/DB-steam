@@ -12,13 +12,17 @@ Item {
 
     property var xPos
     property var yPos
-    property var imageIndex: 0
+    property var imageIndex: 1
     width: 260
     height: 320
 
     function nextImage() {
-        gameImages.source = images[imageIndex % images.length]
+        gameImages.source = "file:///" + images[imageIndex % images.length].url
         imageIndex = imageIndex + 1
+        if (imageIndex % images.length == 0) {
+            imageIndex = imageIndex + 1
+        }
+
     }
 
     x: xPos

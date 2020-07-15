@@ -1,32 +1,33 @@
 #include "store.h"
 #include "ui_store.h"
 
-Store::Store(QWidget *parent):
-    QWidget(parent), ui(new Ui::Store)
+Store::Store(DataBase *database, int view, QWidget *parent):
+    QWidget(parent), ui(new Ui::Store), database(database)
 {
     ui->setupUi(this);
     ui->quickCard->setSource(QUrl(QStringLiteral("qrc:/GameCard.qml")));
 
     obj = ui->quickCard->rootObject();
 
-    Game game,game1;
+    MainView mv = MainView(view);
 
-    File file1,file2;
-    file1.url = "file:///D:/fucking uni/DB/project/ex4.jpg";
-    file2.url = "file:///D:/fucking uni/DB/project/exxx4.jpg";
-
-    game.title = "A Plague Tale: Innocence";
-    game.price = "$49.99";
-    game.description = "About 2 sister and brother";
-    game.images = QList<File>{file1};
-
-    game1.title = "Fallout 76";
-    game1.price = "$59.99";
-    game1.description = "Famouse Fallout Series";
-    game1.images = QList<File>{file2};
-
-    QList<Game> gg{game, game1};
-    this->setUpTop100GamesView(gg);
+    switch (mv) {
+    case featuredGames:
+        this->setUpFeatureGamesView(this->database->getGameQuery()->getFeaturedGames().mid(0, 5));
+        break;
+    case newGames:
+        this->setUpTop100GamesView(this->database->getGameQuery()->getNewGames());
+        break;
+    case topGames:
+        this->setUpTop100GamesView(this->database->getGameQuery()->getGamesOrderedByLikes());
+        break;
+    case topSales:
+        this->setUpTop100GamesView(this->database->getGameQuery()->getGamesOrderedByNumberOfPurchase());
+        break;
+    default:
+        this->setUpFeatureGamesView(this->database->getGameQuery()->getFeaturedGames().mid(0, 5));
+        break;
+    }
 }
 
 Store::~Store()

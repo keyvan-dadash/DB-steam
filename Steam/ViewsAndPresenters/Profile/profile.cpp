@@ -2,17 +2,16 @@
 #include "ui_profile.h"
 
 
-Profile::Profile(QWidget *parent) :
-    CopyableWidget(parent), ui(new Ui::Profile)
+Profile::Profile(DataBase *database, QWidget *parent) :
+    CopyableWidget(parent), ui(new Ui::Profile), database(database)
 {
     ui->setupUi(this);
-    const char* driverName = "QPSQL";
-    database = new DataBase(driverName);
     User user = database->getUserQuery()->getUser("keyvan");
     this->setName(user.username);
     this->setLevel(user.level);
     this->setBio(user.bio);
     this->setLastOnlineTime(user.last_time_online);
+    this->setProfileImage(user.profileImg.url);
 
     this->filterUserFriends(database->getUserQuery()->getUserFriends("keyvan"));
     this->filterUserGames(database->getUserQuery()->getUserGames("keyvan"));
@@ -25,7 +24,7 @@ Profile::~Profile()
 
 CopyableWidget *Profile::copy()
 {
-    return new Profile();
+    return new Profile(database);
 }
 
 void Profile::setName(QString name)

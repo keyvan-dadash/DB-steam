@@ -12,8 +12,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     const char* driverName = "QPSQL";
     DataBase *database = new DataBase(driverName);
-    qInfo() << database->getGameQuery()->getGamesByGenres(QList<QString>{"Adventure", "Simulation"})[0].description;
-    MainPresenter w;
+    MainPresenter w(database);
     w.show();
     return a.exec();
 }

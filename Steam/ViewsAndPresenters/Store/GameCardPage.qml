@@ -4,7 +4,7 @@ import QtQuick.Window 2.12
 import QtGraphicalEffects 1.0
 
 Item {
-    property string mainImageSourceProperty : images[0]
+    property string mainImageSourceProperty : "file:///" + images[0].url
     property var index : 0
 
     property var images
@@ -13,7 +13,7 @@ Item {
     property var gameDescription
 
     function getImageSource() {
-        var imgSource = images[index % images.length].url
+        var imgSource = "file:///" + images[index % images.length].url
         index = index + 1
         return imgSource
     }

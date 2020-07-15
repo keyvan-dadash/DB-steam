@@ -17,6 +17,8 @@ public:
 
     int getUserId(QString username) override;
 
+    QList<File> getGameImages(QString name) override;
+
     User getUser(QString username) override;
 
     QList<UserFriends> getUserFriends(QString username) override;
