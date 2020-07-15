@@ -15,7 +15,7 @@ Item {
         spacing: 10
         model: news.length
         delegate: NewsComponent {
-            news: news[index]
+            newsObj: news[index]
         }
         Component.onCompleted: {
             changeParentHeight(newsListView.contentHeight)

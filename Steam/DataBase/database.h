@@ -10,8 +10,10 @@
 
 #include "userquery.h"
 #include "gamequery.h"
+#include "hubquery.h"
 #include "UserQueryAbstract.h"
 #include "GameQueryAbstract.h"
+#include "HubQueryAbstract.h"
 
 class DATABASE_EXPORT DataBase : public QObject
 {
@@ -33,6 +35,8 @@ public:
     UserQueryAbstract *getUserQuery();
 
     GameQueryAbstract *getGameQuery();
+
+    HubQueryAbstract *getHubQuery();
 
 private:
     QSqlDatabase* db;

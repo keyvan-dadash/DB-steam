@@ -9,21 +9,41 @@ Item {
     property var loaderHeight
     property var currentBackgroundRectangle
 
+    signal getHub(hubName: string)
+    signal getDiscussions(hubName: string)
+    signal getNews(hubName: string)
+    signal getVideos(hubName: string)
+
+
+    function setObjectsArray(sourceArray, destinationArray) {
+        for (var i=0; i < sourceArray.length; i++) {
+            destinationArray.push(sourceArray[i])
+        }
+    }
+
     property var hub
+    function setHub(obj) {
+        hub = obj
+        introButton.loadView()
+    }
 
-    property var discussions
+    property var discussions : []
+    function setDiscussionArray(objArray) {
+        setObjectsArray(objArray, discussions)
+        discussionsButton.loadView()
+    }
 
-    property var news
+    property var news : []
+    function setNewsArray(objArray) {
+        setObjectsArray(objArray, news)
+        newsButton.loadView()
+    }
 
-    property var videos
-
-    //intro page properties
-
-    //discussion page properties
-
-    //news page properties
-
-    //videos page properties
+    property var videos : []
+    function setVideosArray(objArray) {
+        setObjectsArray(objArray, videos)
+        videosButton.loadView()
+    }
 
     id: mainView
     visible: true
@@ -124,6 +144,10 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
+                getHub("sfs")
+            }
+
+            function loadView() {
                 viewLoader.setSource("IntroPage.qml", {
                                          "changeParentHeight": changePageHeight,
                                          "hub": hub
@@ -159,6 +183,10 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
+                getDiscussions("fdsf")
+            }
+
+            function loadView() {
                 viewLoader.setSource("DiscussionPage.qml", {
                                          "changeParentHeight": changePageHeight,
                                          "discussions": discussions
@@ -194,6 +222,10 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
+                getNews("sfs")
+            }
+
+            function loadView() {
                 viewLoader.setSource("NewsPage.qml", {
                                          "changeParentHeight": changePageHeight,
                                          "news": news
@@ -230,6 +262,10 @@ Item {
             }
 
             onClicked: {
+                getVideos("sfdf")
+            }
+
+            function loadView() {
                 viewLoader.setSource("VideosPage.qml", {
                                          "changeParentHeight": changePageHeight,
                                          "videos": videos

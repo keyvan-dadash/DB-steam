@@ -28,7 +28,7 @@ void MainPresenter::on_btnLibrary_clicked()
 
 void MainPresenter::on_btnCommunity_clicked()
 {
-    changePresenter(new Hub());
+    changePresenter(new Hub(database));
 }
 
 void MainPresenter::on_btnProfile_clicked()

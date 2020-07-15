@@ -59,3 +59,8 @@ GameQueryAbstract *DataBase::getGameQuery()
 {
     return new GameQuery();
 }
+
+HubQueryAbstract *DataBase::getHubQuery()
+{
+    return new HubQuery();
+}

@@ -18,7 +18,7 @@ struct UserBlocked;
 struct UserInvites;
 struct News;
 struct Discussion;
-struct comment;
+struct Comment;
 struct HubStruct;
 
 
@@ -34,6 +34,22 @@ struct File
         map.insert("type", type);
         map.insert("size", size);
         map.insert("url", url);
+        return map;
+    }
+};
+
+struct Video : File
+{
+    int likes;
+    QString name;
+
+    QVariantMap toVariantMap() {
+        QVariantMap map;
+        map.insert("type", type);
+        map.insert("size", size);
+        map.insert("url", url);
+        map.insert("likes", likes);
+        map.insert("name", name);
         return map;
     }
 };
@@ -201,7 +217,7 @@ struct Discussion
     QString body;
     QString discussion_start_date;
     QString last_comment_date;
-    QString last_comment_username;
+    QString last_comment_nickname;
     User author;
 
     QVariantMap toVariantMap() {
@@ -210,13 +226,13 @@ struct Discussion
         map.insert("body", body);
         map.insert("discussion_start_date", discussion_start_date);
         map.insert("last_comment_date", last_comment_date);
-        map.insert("last_comment_username", last_comment_username);
+        map.insert("last_comment_username", last_comment_nickname);
         map.insert("author", author.toVariantMap());
         return map;
     }
 };
 
-struct comment
+struct Comment
 {
     QString type;
     QString body;
@@ -240,30 +256,16 @@ struct HubStruct
     QString name;
     QString description;
     Game game;
-    QList<QString> videosPath;
-    QList<Discussion> discussions;
-    QList<News> news;
+    int numberOfDiscussions;
+    int numberOfNews;
 
     QVariantMap toVariantMap() {
         QVariantMap map;
         map.insert("name", name);
         map.insert("description", description);
         map.insert("game", game.toVariantMap());
-        QVariantList videosPathList;
-        foreach(QString path, videosPath) {
-            videosPath << path;
-        }
-        map.insert("videosPath", videosPathList);
-        QVariantList discussionsList;
-        foreach(Discussion discussion, discussions) {
-            discussionsList << discussion.toVariantMap();
-        }
-        map.insert("discussions", discussionsList);
-        QVariantList newsList;
-        foreach(News lNews, news) {
-            newsList << lNews.toVariantMap();
-        }
-        map.insert("news", newsList);
+        map.insert("numberOfDiscussions", numberOfDiscussions);
+        map.insert("numberOfNews", numberOfNews);
         return map;
     }
 };

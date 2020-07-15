@@ -41,7 +41,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: hub.news.length + " News"
+                text: hub.numberOfNews + " News"
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -53,7 +53,7 @@ Item {
                 y: 24
                 width: 125
                 height: 30
-                text: hub.discussions.length + " Discussions"
+                text: hub.numberOfDiscussions + " Discussions"
                 color: "white"
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: 16
@@ -88,7 +88,7 @@ Item {
             y: 100
             width: 642
             height: 158
-            text: description
+            text: hub.description
             wrapMode: TextArea.Wrap
             readOnly: true
             color: "#8c8b8a"

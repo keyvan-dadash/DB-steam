@@ -8,7 +8,7 @@ Item {
     width: 1200
     height: 480
 
-    property var news
+    property var newsObj
 
 
     Rectangle {
@@ -22,7 +22,7 @@ Item {
         y: 8
         width: 1184
         height: 31
-        text: news.title
+        text: newsObj.title
         font.pixelSize: 20
         color: '#fff'
         verticalAlignment: Text.AlignVCenter
@@ -34,7 +34,7 @@ Item {
         y: 53
         width: 133
         height: 19
-        text: news.publish_date
+        text: newsObj.publish_date
         font.pixelSize: 12
         color: '#737271'
         verticalAlignment: Text.AlignVCenter
@@ -50,6 +50,6 @@ Item {
         wrapMode: TextArea.Wrap
         font.pixelSize: 15
         color: "#8c8b8a"
-        text: news.body
+        text: newsObj.body
     }
 }
