@@ -54,3 +54,8 @@ UserQueryAbstract *DataBase::getUserQuery()
 {
     return new UserQuery();
 }
+
+GameQueryAbstract *DataBase::getGameQuery()
+{
+    return new GameQuery();
+}

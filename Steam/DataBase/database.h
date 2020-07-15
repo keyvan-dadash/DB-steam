@@ -9,7 +9,9 @@
 #include <QDebug>
 
 #include "userquery.h"
+#include "gamequery.h"
 #include "UserQueryAbstract.h"
+#include "GameQueryAbstract.h"
 
 class DATABASE_EXPORT DataBase : public QObject
 {
@@ -29,6 +31,8 @@ public:
     void disConnect();
 
     UserQueryAbstract *getUserQuery();
+
+    GameQueryAbstract *getGameQuery();
 
 private:
     QSqlDatabase* db;

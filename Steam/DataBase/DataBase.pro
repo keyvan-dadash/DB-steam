@@ -18,12 +18,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     database.cpp \
+    gamequery.cpp \
     userquery.cpp
 
 HEADERS += \
     DataBase_global.h \
+    GameQueryAbstract.h \
     UserQueryAbstract.h \
     database.h \
+    gamequery.h \
     models.h \
     userquery.h
 

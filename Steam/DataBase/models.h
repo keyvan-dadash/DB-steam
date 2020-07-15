@@ -8,6 +8,21 @@
 #include <QVariantList>
 #include <QDebug>
 
+
+struct File;
+struct Game;
+struct Company;
+struct User;
+struct UserFriends;
+struct UserBlocked;
+struct UserInvites;
+struct News;
+struct Discussion;
+struct comment;
+struct HubStruct;
+
+
+
 struct File
 {
     QString type;
@@ -35,6 +50,7 @@ struct Game
     QString update_id;
     QString number_of_purchase;
     QList<File> images;
+    QString companyName;
 
     QVariantMap toVariantMap() {
         QVariantMap map;
@@ -52,6 +68,28 @@ struct Game
             files << file.toVariantMap();
         }
         map.insert("images", files);
+        map.insert("company", companyName);
+        return map;
+    }
+};
+
+struct Company
+{
+    QString name;
+    QString bio;
+    QList<Game> games;
+    File companyImage;
+
+    QVariantMap toVariantMap() {
+        QVariantMap map;
+        map.insert("name", name);
+        map.insert("bio", bio);
+        QVariantList gamesList;
+        foreach(Game game, games) {
+            gamesList << game.toVariantMap();
+        }
+        map.insert("games", gamesList);
+        map.insert("companyImage", companyImage.toVariantMap());
         return map;
     }
 };
