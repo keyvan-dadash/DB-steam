@@ -20,12 +20,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ../../Steam/copyablewidget.cpp \
-    hub.cpp
+    hub.cpp \
+    hubcard.cpp \
+    resultcard.cpp
 
 HEADERS += \
     ../../Steam/copyablewidget.h \
     Hub_global.h \
-    hub.h
+    hub.h \
+    hubcard.h \
+    resultcard.h
 
 # Default rules for deployment.
 unix {

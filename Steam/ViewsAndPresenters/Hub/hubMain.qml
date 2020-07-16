@@ -9,6 +9,8 @@ Item {
     property var loaderHeight
     property var currentBackgroundRectangle
 
+    property var hubName
+
     signal getHub(hubName: string)
     signal getDiscussions(hubName: string)
     signal getNews(hubName: string)
@@ -16,6 +18,7 @@ Item {
 
 
     function setObjectsArray(sourceArray, destinationArray) {
+        destinationArray.length = 0
         for (var i=0; i < sourceArray.length; i++) {
             destinationArray.push(sourceArray[i])
         }
@@ -24,6 +27,7 @@ Item {
     property var hub
     function setHub(obj) {
         hub = obj
+        hubName = hub.name
         introButton.loadView()
     }
 
@@ -144,7 +148,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
-                getHub("sfs")
+                getHub(hubName)
             }
 
             function loadView() {
@@ -183,7 +187,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
-                getDiscussions("fdsf")
+                getDiscussions(hubName)
             }
 
             function loadView() {
@@ -222,7 +226,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
             }
             onClicked: {
-                getNews("sfs")
+                getNews(hubName)
             }
 
             function loadView() {
@@ -262,7 +266,7 @@ Item {
             }
 
             onClicked: {
-                getVideos("sfdf")
+                getVideos(hubName)
             }
 
             function loadView() {
