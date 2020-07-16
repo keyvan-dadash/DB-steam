@@ -57,6 +57,11 @@ public slots:
 
     void setUpHubQmlFromRecentList(QListWidgetItem *item);
 
+private slots:
+    void on_hubButton_clicked();
+
+    void on_discussionButton_clicked();
+
 private:
     Ui::Hub *ui;
 
@@ -68,9 +73,9 @@ private:
 
     void stackSbilingWidget(QWidget *top, QWidget *bottom);
 
-    void addCard(QString hubName, QString numberOfRecentDiscussion, QString imagePath, QListWidget *listwidget);
+    QListWidgetItem* addCard(QString hubName, QString numberOfRecentDiscussion, QString imagePath, QListWidget *listwidget);
 
-    void addResultCard(QString title, QString extra, QString imagePath, QListWidget *listwidget);
+    QListWidgetItem* addResultCard(QString title, QString extra, QString imagePath, QListWidget *listwidget);
 
     void styleListWidgetsAndScrollBar();
 

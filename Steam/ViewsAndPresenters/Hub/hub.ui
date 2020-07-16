@@ -147,7 +147,7 @@
         <string>Find Hubs</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="hubSearchLine">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -169,7 +169,7 @@
         <string>Search for hubs</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="discussionSearchLine">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -212,7 +212,7 @@
         <string>Find Discussions</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="hubButton">
        <property name="geometry">
         <rect>
          <x>380</x>
@@ -235,7 +235,7 @@
         <string/>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="discussionButton">
        <property name="geometry">
         <rect>
          <x>380</x>

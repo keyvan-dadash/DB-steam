@@ -29,8 +29,18 @@ public:
 
     QList<Comment> getDiscussionComments(int discussionId) override;
 
+    QList<HubStruct> getPopularHub() override;
+
+    QList<HubStruct> getUserLastActivity(QString username) override;
+
+    QList<HubStruct> getHubsBySimilarity(QString hubName) override;
+
+    QList<Discussion> getDiscussionBySimilarity(QString discussionTitle) override;
+
 private:
     HubStruct toHub(QSqlRecord hubQ);
+
+    HubStruct toOnlyHub(QSqlRecord hubQ);
 
     Discussion toDiscussion(QSqlRecord discussionQ);
 

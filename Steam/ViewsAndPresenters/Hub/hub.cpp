@@ -6,21 +6,31 @@ Hub::Hub(DataBase *database, QWidget *parent):
 {
     ui->setupUi(this);
     this->styleListWidgetsAndScrollBar();
+    this->hideResult();
+
+    //fit quickwidget and get rootobject
     ui->quickWidgetHub->resize(this->width(), this->height());
     ui->quickWidgetHub->setSource(QUrl(QStringLiteral("qrc:/hubMain.qml")));
     this->obj = ui->quickWidgetHub->rootObject();
+
+    //create connection between qml and hub and hub with listwidgets
     this->makeConnection();
     this->listWidgetConnections();
 
+    //set scroll are on top of quickwidget
     this->stackSbilingWidget(ui->scrollArea, ui->quickWidgetHub);
 
-    for (int i = 0; i < 50; i++) {
-        addCard("Midnight club", "sfsdfss", "ssffs", ui->listWidgetPopular);
+    QList<HubStruct> hubs;
+    hubs = database->getHubQuery()->getPopularHub();
+    foreach(HubStruct hub, hubs) {
+        this->addCard(hub.name, QString::number(hub.numberOfDiscussions), "sff", ui->listWidgetPopular);
     }
-    ui->resultListWidget->resize(ui->resultListWidget->width(), 50 * 52);
-    ui->scrollArea->widget()->adjustSize();
 
-    this->showResult("sf");
+    hubs.clear();
+    hubs = database->getHubQuery()->getUserLastActivity("keyvan");
+    foreach(HubStruct hub, hubs) {
+        this->addCard(hub.name, hub.description, "sff", ui->listWidgetRecentViewed);
+    }
 }
 
 Hub::~Hub()
@@ -114,14 +124,14 @@ void Hub::setUpHubQmlFromPopular(QListWidgetItem *item)
     this->loadQmlHub();
 }
 
-void Hub::setUpHubQmlFromResult(QListWidgetItem *item)
+void Hub::setUpHubQmlFromRecentList(QListWidgetItem *item)
 {
     HubCard *hubcard = qobject_cast<HubCard *>(ui->listWidgetRecentViewed->itemWidget(item));
     this->getHub(hubcard->getHubName());
     this->loadQmlHub();
 }
 
-void Hub::setUpHubQmlFromRecentList(QListWidgetItem *item)
+void Hub::setUpHubQmlFromResult(QListWidgetItem *item)
 {
     ResultCard *resultcard = qobject_cast<ResultCard *>(ui->resultListWidget->itemWidget(item));
     this->getHub(resultcard->getHubName());
@@ -138,7 +148,7 @@ void Hub::stackSbilingWidget(QWidget *top, QWidget *bottom)
     bottom->stackUnder(top);
 }
 
-void Hub::addCard(QString hubName, QString numberOfRecentDiscussion, QString imagePath, QListWidget *listwidget)
+QListWidgetItem* Hub::addCard(QString hubName, QString numberOfRecentDiscussion, QString imagePath, QListWidget *listwidget)
 {
     HubCard *hcard = new HubCard();
     hcard->setHubName(hubName);
@@ -148,9 +158,10 @@ void Hub::addCard(QString hubName, QString numberOfRecentDiscussion, QString ima
     item->setSizeHint(QSize(hcard->width(), hcard->height()));
     listwidget->addItem(item);
     listwidget->setItemWidget(item, hcard);
+    return item;
 }
 
-void Hub::addResultCard(QString title, QString extra, QString imagePath, QListWidget *listwidget)
+QListWidgetItem* Hub::addResultCard(QString title, QString extra, QString imagePath, QListWidget *listwidget)
 {
     ResultCard *rcard = new ResultCard();
     rcard->setTitle(title);
@@ -160,6 +171,7 @@ void Hub::addResultCard(QString title, QString extra, QString imagePath, QListWi
     item->setSizeHint(QSize(rcard->width(), rcard->height()));
     listwidget->addItem(item);
     listwidget->setItemWidget(item, rcard);
+    return item;
 }
 
 void Hub::styleListWidgetsAndScrollBar()
@@ -194,4 +206,32 @@ void Hub::hideResult()
     ui->resultListWidget->setVisible(false);
     ui->dividerResultLabel->setEnabled(false);
     ui->dividerResultLabel->setVisible(false);
+}
+
+void Hub::on_hubButton_clicked()
+{
+    ui->resultListWidget->clear();
+    QList<HubStruct> hubs;
+    int totalHeight = 0;
+    hubs = database->getHubQuery()->getHubsBySimilarity(ui->hubSearchLine->text());
+    foreach(HubStruct hub, hubs) {
+        totalHeight += this->addResultCard(hub.name, hub.description, "sff", ui->resultListWidget)->sizeHint().height();
+    }
+    ui->resultListWidget->resize(ui->resultListWidget->size().width(), totalHeight);
+    this->showResult("List of related hubs");
+    ui->scrollArea->widget()->adjustSize();
+}
+
+void Hub::on_discussionButton_clicked()
+{
+    ui->resultListWidget->clear();
+    QList<Discussion> discussions;
+    int totalHeight = 0;
+    discussions = database->getHubQuery()->getDiscussionBySimilarity(ui->discussionSearchLine->text());
+    foreach(Discussion discussion, discussions) {
+        totalHeight += this->addResultCard(discussion.title, discussion.last_comment_date, "sff", ui->resultListWidget)->sizeHint().height();
+    }
+    ui->resultListWidget->resize(ui->resultListWidget->size().width(), totalHeight);
+    this->showResult("List of related discussions");
+    ui->scrollArea->widget()->adjustSize();
 }

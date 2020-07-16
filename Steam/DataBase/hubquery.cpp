@@ -113,6 +113,80 @@ QList<Comment> HubQuery::getDiscussionComments(int discussionId)
     return comments;
 }
 
+QList<HubStruct> HubQuery::getPopularHub()
+{
+    QSqlQuery hubQ;
+    hubQ.prepare("select D.discussionCount, hub.* from (select id, count(*) as discussionCount from (select hub.* from discussion"
+                 " left join hub on hub.id = discussion.hub_id where discussion.start_time > NOW() - INTERVAL '5 Year')"
+                 " as lastDiscussion group by id) as D left join hub on D.id = hub.id order by D.discussionCount desc limit 10;");
+    hubQ.exec();
+    qInfo() << hubQ.executedQuery();
+    QSqlQueryModel model;
+    model.setQuery(hubQ);
+    QList<HubStruct> hubs;
+    for(int i = 0; i < model.rowCount(); i++) {
+        HubStruct hubS = this->toOnlyHub(model.record(i));
+        hubS.numberOfDiscussions = model.record(i).value("discussioncount").toInt();
+        hubs.push_back(hubS);
+    }
+    return hubs;
+}
+
+QList<HubStruct> HubQuery::getUserLastActivity(QString username)
+{
+    QSqlQuery hubQ;
+    hubQ.prepare("select hub.*, sent_date from ((select users.username, comment.discussion_id, comment.sent_date  from comment left join users on comment.sender_id = users.id) as comments left join"
+                 " discussion on comments.discussion_id = discussion.id) as discussion_comment left join hub on hub.id = discussion_comment.hub_id"
+                 " where username = :username order by sent_date desc limit 10;");
+    hubQ.bindValue(":username", username);
+    hubQ.exec();
+    qInfo() << hubQ.executedQuery();
+    QSqlQueryModel model;
+    model.setQuery(hubQ);
+    QList<HubStruct> hubs;
+    for(int i = 0; i < model.rowCount(); i++) {
+        HubStruct hubS = this->toOnlyHub(model.record(i));
+        hubS.description = model.record(i).value("sent_date").toString();
+        hubs.push_back(hubS);
+    }
+    return hubs;
+}
+
+QList<HubStruct> HubQuery::getHubsBySimilarity(QString hubName)
+{
+    QSqlQuery hubQ;
+    hubQ.prepare("select * from (select hub.*, similarity(name, :name) as sm from hub order by sm desc)"
+                 " as similarity where similarity.sm > 0.005 limit 50;");
+    hubQ.bindValue(":name", hubName);
+    hubQ.exec();
+    qInfo() << hubQ.executedQuery();
+    QSqlQueryModel model;
+    model.setQuery(hubQ);
+    QList<HubStruct> hubs;
+    for(int i = 0; i < model.rowCount(); i++) {
+        HubStruct hubS = this->toOnlyHub(model.record(i));
+        hubs.push_back(hubS);
+    }
+    return hubs;
+}
+
+QList<Discussion> HubQuery::getDiscussionBySimilarity(QString discussionTitle)
+{
+    QSqlQuery discussionQ;
+    discussionQ.prepare("select * from (select discussion.*, similarity(title, :title) as sm from discussion order by sm desc)"
+                 " as similarity where similarity.sm > 0.005 limit 50;");
+    discussionQ.bindValue(":title", discussionTitle);
+    discussionQ.exec();
+    qInfo() << discussionQ.executedQuery();
+    QSqlQueryModel model;
+    model.setQuery(discussionQ);
+    QList<Discussion> discussions;
+    for(int i = 0; i < model.rowCount(); i++) {
+        discussions.push_back(this->toDiscussion(model.record(i)));
+    }
+    return discussions;
+}
+
 HubStruct HubQuery::toHub(QSqlRecord hubQ)
 {
     HubStruct hub;
@@ -126,6 +200,14 @@ HubStruct HubQuery::toHub(QSqlRecord hubQ)
     hub.game.number_of_purchase = hubQ.value("number_of_purchase").toString();
     hub.numberOfDiscussions = this->getHubDiscussionsCount(hubQ.value("id").toInt());
     hub.numberOfNews = this->getHubNewsCount(hubQ.value("id").toInt());
+    return hub;
+}
+
+HubStruct HubQuery::toOnlyHub(QSqlRecord hubQ)
+{
+    HubStruct hub;
+    hub.description = hubQ.value("description").toString();
+    hub.name = hubQ.value("name").toString();
     return hub;
 }
 

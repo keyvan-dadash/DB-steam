@@ -26,6 +26,14 @@ public:
     virtual QList<Video> getHubVideos(QString hubName) = 0;
 
     virtual QList<Comment> getDiscussionComments(int discussionId) = 0;
+
+    virtual QList<HubStruct> getPopularHub() = 0;
+
+    virtual QList<HubStruct> getUserLastActivity(QString username) = 0;
+
+    virtual QList<HubStruct> getHubsBySimilarity(QString hubName) = 0;
+
+    virtual QList<Discussion> getDiscussionBySimilarity(QString discussionTitle) = 0;
 };
 
 #endif // HUBQUERYABSTRACT_H
