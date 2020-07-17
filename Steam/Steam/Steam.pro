@@ -17,16 +17,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     copyablewidget.cpp \
+    login.cpp \
     main.cpp \
     mainpresenter.cpp \
     widgethovernotify.cpp
 
 HEADERS += \
     copyablewidget.h \
+    login.h \
     mainpresenter.h \
     widgethovernotify.h
 
 FORMS += \
+    login.ui \
     mainview.ui
 
 

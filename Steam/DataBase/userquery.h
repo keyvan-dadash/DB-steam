@@ -13,6 +13,8 @@ class UserQuery : public UserQueryAbstract
 public:
     UserQuery();
 
+    bool userLogin(QString username, QString password) override;
+
     QList<Game> getUserGames(QString username) override;
 
     int getUserId(QString username) override;

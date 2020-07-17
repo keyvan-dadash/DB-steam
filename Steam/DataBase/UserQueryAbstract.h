@@ -10,6 +10,8 @@
 class UserQueryAbstract
 {
 public:
+    virtual bool userLogin(QString username, QString password) = 0;
+
     virtual QList<Game> getUserGames(QString username) = 0;
 
     virtual int getUserId(QString username) = 0;

@@ -1,5 +1,7 @@
 #include "mainpresenter.h"
+#include "login.h"
 
+#include "QObject"
 #include <QApplication>
 #include <QList>
 
@@ -12,7 +14,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     const char* driverName = "QPSQL";
     DataBase *database = new DataBase(driverName);
+    Login login(database);
     MainPresenter w(database);
-    w.show();
+    QObject::connect(&login, &Login::loginStatus, &w, &MainPresenter::setVisible);
+    login.show();
     return a.exec();
 }

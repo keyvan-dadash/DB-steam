@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Login</class>
+ <widget class="QDialog" name="Login">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>566</width>
+    <height>356</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Login</string>
+  </property>
+  <property name="accessibleName">
+   <string>btnLogin</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #1b2838;
+
+</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>31</x>
+     <y>101</y>
+     <width>119</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">padding-left: 30px;
+color: #C8C8C8;</string>
+   </property>
+   <property name="text">
+    <string>Account Name</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>92</x>
+     <y>142</y>
+     <width>55</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #C8C8C8;</string>
+   </property>
+   <property name="text">
+    <string>Password</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditAccountName">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>100</y>
+     <width>341</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="accessibleName">
+    <string>lineEditAccountName</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">min-width:300px;
+color:white;
+</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="cbRemember">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>171</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QCheckBox { 
+color: #C8C8C8; 
+ background: none; 
+} 
+QCheckBox:hover{ color: palette(light) }</string>
+   </property>
+   <property name="text">
+    <string>Remember my Password</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>20</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size:50px;
+font-family: Verdana;
+color: #A9A9A9;</string>
+   </property>
+   <property name="text">
+    <string>Steam</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditPassword">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>140</y>
+     <width>341</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="accessibleName">
+    <string>lineEditPassword</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white;</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>300</y>
+     <width>432</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="styleSheet">
+       <string notr="true">color: #C8C8C8;</string>
+      </property>
+      <property name="text">
+       <string>Dont have Account?</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnCreate">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+min-width: 300px;
+background-color:	#888888;
+color: white;
+}
+
+QPushButton:hover{ color: palette(dark); }</string>
+      </property>
+      <property name="text">
+       <string>Create Account</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>92</x>
+     <y>222</y>
+     <width>406</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="btnLogin">
+      <property name="accessibleName">
+       <string>btnLogin</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">min-width: 190px;
+background-color:	#888888;
+color: white;</string>
+      </property>
+      <property name="text">
+       <string>Login</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnCancel">
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+ {
+ min-width: 190px; 
+background-color:	#888888;
+ color: white;
+} 
+QPushButton:hover
+{ 
+ color: palette(dark); 
+}</string>
+      </property>
+      <property name="text">
+       <string>Cancel</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

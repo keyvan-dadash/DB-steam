@@ -5,6 +5,16 @@ UserQuery::UserQuery() : UserQueryAbstract()
 
 }
 
+bool UserQuery::userLogin(QString username, QString password)
+{
+    QSqlQuery user;
+    user.prepare("select * from users where username = :username and password = :password;");
+    user.bindValue(":username", username);
+    user.bindValue(":password", password);
+    user.exec();
+    return user.next();
+}
+
 QList<Game> UserQuery::getUserGames(QString username)
 {
     QSqlQuery userGames;
