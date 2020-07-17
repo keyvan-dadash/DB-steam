@@ -9,6 +9,11 @@ Item {
     property var changeParentHeight
     property var componentHeight: 65 //sry i have no choice but to hardcode this
 
+    property var loadViewFunction
+
+    property var getCommentsFunction
+
+
     property var discussions
 
     width: 1200
@@ -25,6 +30,17 @@ Item {
         delegate: DiscussionComponent {
             z: (listViewDiscussion.count - index)
             discussion: discussions[index]
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    loadViewFunction("DiscussionContentPage.qml", {
+                                         "getComments": getCommentsFunction,
+                                         "changeParentHeight": changeParentHeight,
+                                         "disucssion": parent.discussion
+                                     })
+                }
+            }
         }
         Component.onCompleted: {
             changeParentHeight((componentHeight + listViewDiscussion.spacing) * listViewDiscussion.count + 200)

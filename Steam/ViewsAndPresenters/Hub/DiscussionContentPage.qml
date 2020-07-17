@@ -7,6 +7,14 @@ import QtGraphicalEffects 1.14
 Item {
     property var changeParentHeight
 
+    property var disucssion
+
+    property var comments
+
+    property var numberOfComments : 0
+
+    property var getComments
+
     width: 1200
 
     Flickable {
@@ -44,7 +52,7 @@ Item {
                 height: 21
                 color: "#aedd08"
                 font.pixelSize: 16
-                text: qsTr("UbiQuB3")
+                text: disucssion.author.nickname
             }
 
             Label {
@@ -54,7 +62,7 @@ Item {
                 width: 195
                 height: 21
                 color: "#8f98a0"
-                text: qsTr("Oct 26, 2017 @ 10:55am")
+                text: disucssion.discussion_start_date
             }
 
             Text {
@@ -65,7 +73,7 @@ Item {
                 height: 73
                 color: "#fff"
                 wrapMode: Text.Wrap
-                text: qsTr("Assassin's Creed Origins - Known Issues [Updated: May 15]")
+                text: disucssion.title
                 font.pixelSize: 25
             }
 
@@ -79,23 +87,7 @@ Item {
                 readOnly: true
                 wrapMode: TextArea.Wrap
                 font.pixelSize: 14
-                text: qsTr("Hey everyone,
-
-Please find the current list of known issues below.
-
-
-In-Game Issues
-
-Game crashes
-Description: We’ are currently investigating various user reports of crashes on all platforms.
-Status: Under Investigation
-PC specific note: Please do get in touch with the support team and provide them with ms info and dxdiag.
-
-PC-specific
-
-HBCC causes performance drops
-Description: Enabling HBCC on AMD Radeon settings can result in a drop of performance.
-Workaround: We advise to turn off this setting until AMD resolved the issue with a future")
+                text: disucssion.body
             }
         }
 
@@ -133,7 +125,7 @@ Workaround: We advise to turn off this setting until AMD resolved the issue with
                         height: 21
                         color: "#8f98a0"
                         font.pixelSize: 16
-                        text: qsTr("Oct 26, 2017 @ 10:55am")
+                        text: disucssion.discussion_start_date
                         verticalAlignment: Label.AlignLeft
                     }
 
@@ -171,14 +163,17 @@ Workaround: We advise to turn off this setting until AMD resolved the issue with
             height: newsListView.contentHeight
             spacing: 10
             interactive: false
-            model:20
+            model: numberOfComments
             delegate: DiscussionCommentComponent {
-
-
+                comment: comments[index]
             }
         }
         Component.onCompleted: {
-            changeParentHeight(this.height)
+            getComments(disucssion.id, function (objArray) {
+                comments = objArray
+                numberOfComments = comments.length
+                changeParentHeight(newsListView.height + newsListView.y)
+            })
         }
     }
 }

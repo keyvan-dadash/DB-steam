@@ -21,8 +21,9 @@ Item {
         x: 8
         y: 8
         width: 1184
-        height: 31
+        height: 71
         text: newsObj.title
+        wrapMode: Text.Wrap
         font.pixelSize: 20
         color: '#fff'
         verticalAlignment: Text.AlignVCenter
@@ -31,7 +32,7 @@ Item {
     Text {
         id: dateText
         x: 8
-        y: 53
+        y: 85
         width: 133
         height: 19
         text: newsObj.publish_date
@@ -43,9 +44,9 @@ Item {
     TextArea {
         id: contentTextArea
         x: 8
-        y: 78
+        y: 114
         width: 1184
-        height: 400
+        height: 364
         readOnly: true
         wrapMode: TextArea.Wrap
         font.pixelSize: 15

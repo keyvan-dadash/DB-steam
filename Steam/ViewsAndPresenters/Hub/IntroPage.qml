@@ -88,11 +88,20 @@ Item {
             y: 100
             width: 642
             height: 158
-            text: hub.description
+            text: cutString(hub.description)
             wrapMode: TextArea.Wrap
             readOnly: true
             color: "#8c8b8a"
             font.pixelSize: 17
+
+            function cutString(text : string){
+                var lengthOfVlidString = 550
+                if(text.length < lengthOfVlidString){
+                    return text
+                } else {
+                    return (text.substring(0, lengthOfVlidString - 3).concat("..."))
+                }
+            }
         }
 
         Button {

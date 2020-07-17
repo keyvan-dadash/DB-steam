@@ -49,6 +49,7 @@ void Hub::makeConnection()
     QObject::connect(obj, SIGNAL(getDiscussions(QString)), this, SLOT(getDiscussions(QString)));
     QObject::connect(obj, SIGNAL(getNews(QString)), this, SLOT(getNews(QString)));
     QObject::connect(obj, SIGNAL(getVideos(QString)), this, SLOT(getVideos(QString)));
+    QObject::connect(obj, SIGNAL(getDiscussionsComments(int)), this, SLOT(getComments(int)));
 }
 
 void Hub::listWidgetConnections()
@@ -97,6 +98,17 @@ void Hub::setUpVideos(QList<Video> videos)
                               Q_ARG(QVariant, QVariant::fromValue(videoList)));
 }
 
+void Hub::setUpComments(QList<Comment> comments)
+{
+    QVariantList commentList;
+    foreach(Comment comment, comments) {
+        commentList.push_back(comment.toVariantMap());
+    }
+
+    QMetaObject::invokeMethod(obj, "setCommetnsArray",
+                              Q_ARG(QVariant, QVariant::fromValue(commentList)));
+}
+
 void Hub::getHub(QString hubName)
 {
     this->setUpHub(database->getHubQuery()->getHubByName(hubName));
@@ -115,6 +127,11 @@ void Hub::getNews(QString hubName)
 void Hub::getVideos(QString hubName)
 {
     this->setUpVideos(database->getHubQuery()->getHubVideos(hubName));
+}
+
+void Hub::getComments(int discussionId)
+{
+    this->setUpComments(database->getHubQuery()->getDiscussionComments(discussionId));
 }
 
 void Hub::setUpHubQmlFromPopular(QListWidgetItem *item)

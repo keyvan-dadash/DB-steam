@@ -213,6 +213,7 @@ struct News
 
 struct Discussion
 {
+    int id;
     QString title;
     QString body;
     QString discussion_start_date;
@@ -222,6 +223,7 @@ struct Discussion
 
     QVariantMap toVariantMap() {
         QVariantMap map;
+        map.insert("id", id);
         map.insert("title", title);
         map.insert("body", body);
         map.insert("discussion_start_date", discussion_start_date);

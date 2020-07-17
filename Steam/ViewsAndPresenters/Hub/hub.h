@@ -42,6 +42,8 @@ public:
 
     void setUpVideos(QList<Video> videos);
 
+    void setUpComments(QList<Comment> comments);
+
 public slots:
     void getHub(QString hubName);
 
@@ -50,6 +52,8 @@ public slots:
     void getNews(QString hubName);
 
     void getVideos(QString hubName);
+
+    void getComments(int discussionId);
 
     void setUpHubQmlFromPopular(QListWidgetItem *item);
 

@@ -15,7 +15,17 @@ Item {
     signal getDiscussions(hubName: string)
     signal getNews(hubName: string)
     signal getVideos(hubName: string)
+    signal getDiscussionsComments(discussionId : int)
 
+    property var _callback
+    function getComments(discussionId, callback) {
+        _callback = callback
+        getDiscussionsComments(discussionId)
+    }
+
+    function loadViewFunction(pageQml, properties) {
+        viewLoader.setSource(pageQml, properties)
+    }
 
     function setObjectsArray(sourceArray, destinationArray) {
         destinationArray.length = 0
@@ -47,6 +57,12 @@ Item {
     function setVideosArray(objArray) {
         setObjectsArray(objArray, videos)
         videosButton.loadView()
+    }
+
+    property var comments: []
+    function setCommetnsArray(objArray) {
+        setObjectsArray(objArray, comments)
+        _callback(comments)
     }
 
     id: mainView
@@ -193,7 +209,9 @@ Item {
             function loadView() {
                 viewLoader.setSource("DiscussionPage.qml", {
                                          "changeParentHeight": changePageHeight,
-                                         "discussions": discussions
+                                         "discussions": discussions,
+                                         "loadViewFunction": loadViewFunction,
+                                         "getCommentsFunction": getComments
                                      })
                 currentBackgroundRectangle.visible = false
                 discussionsButtonBackgroundRectangle.visible = true

@@ -8,6 +8,7 @@ Item {
     width: 860
     height: 200
 
+    property var comment
 
     Rectangle {
         anchors.fill: parent
@@ -31,7 +32,7 @@ Item {
         y: 26
         width: 582
         height: 21
-        text: qsTr("Yourname942")
+        text: comment.user_comment.nickname
         color: "#ebebeb"
         font.pixelSize: 16
     }
@@ -43,7 +44,7 @@ Item {
         width: 159
         height: 21
         color: "#999999"
-        text: qsTr("Oct 26, 2017 @ 10:57am")
+        text: comment.sent_date
     }
 
     TextArea {
@@ -54,6 +55,7 @@ Item {
         height: parent.height - this.y - 8
         color: "#acb2b8"
         font.pixelSize: 14
-        text: qsTr("Thanks for the post, but your formatting is showing the brackets")
+        wrapMode: Text.Wrap
+        text: comment.body
     }
 }

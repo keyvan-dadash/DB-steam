@@ -214,6 +214,7 @@ HubStruct HubQuery::toOnlyHub(QSqlRecord hubQ)
 Discussion HubQuery::toDiscussion(QSqlRecord discussionQ)
 {
     Discussion discussion;
+    discussion.id = discussionQ.value("id").toInt();
     discussion.title = discussionQ.value("title").toString();
     discussion.body = discussionQ.value("body").toString();
     discussion.author.nickname = discussionQ.value("nickname").toString();

@@ -64,9 +64,18 @@ Item {
         width: 482
         height: 31
         color: "#ffffff"
-        text: discussion.title
+        text: cutString(discussion.title)
         font.pixelSize: 20
         verticalAlignment: Text.AlignVCenter
+
+        function cutString(text : string){
+            var lengthOfVlidString = 60
+            if(text.length < lengthOfVlidString){
+                return text
+            } else {
+                return (text.substring(0, lengthOfVlidString - 3).concat("..."))
+            }
+        }
     }
 
     Text {
