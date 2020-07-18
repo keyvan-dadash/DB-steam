@@ -50,6 +50,7 @@ void Hub::makeConnection()
     QObject::connect(obj, SIGNAL(getNews(QString)), this, SLOT(getNews(QString)));
     QObject::connect(obj, SIGNAL(getVideos(QString)), this, SLOT(getVideos(QString)));
     QObject::connect(obj, SIGNAL(getDiscussionsComments(int)), this, SLOT(getComments(int)));
+    QObject::connect(obj, SIGNAL(openGamePage(QString)), this, SLOT(openGamePage(QString)));
 }
 
 void Hub::listWidgetConnections()
@@ -61,6 +62,7 @@ void Hub::listWidgetConnections()
 
 void Hub::setUpHub(HubStruct hub)
 {
+
     QMetaObject::invokeMethod(obj, "setHub",
                               Q_ARG(QVariant, QVariant::fromValue(hub.toVariantMap())));
 }
@@ -223,6 +225,14 @@ void Hub::hideResult()
     ui->resultListWidget->setVisible(false);
     ui->dividerResultLabel->setEnabled(false);
     ui->dividerResultLabel->setVisible(false);
+}
+
+void Hub::openGamePage(QString gameName)
+{
+    GamePage *gamepage = new GamePage(database, qobject_cast<QWidget*>(this->parent()));
+    gamepage->setGame(gameName);
+    gamepage->show();
+    this->deleteLater();
 }
 
 void Hub::on_hubButton_clicked()

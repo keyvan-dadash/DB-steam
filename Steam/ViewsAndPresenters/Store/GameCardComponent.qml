@@ -7,6 +7,8 @@ Item {
 
     property var obj
 
+    property var loadGamePage
+
     Rectangle {
         id: rectangleImage1
         anchors.fill: parent
@@ -19,6 +21,13 @@ Item {
             gradient: Gradient {
                 GradientStop { position: 1.0; color: "#407999" }
                 GradientStop { position: 0.0; color: "#2a3e59" }
+            }
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                loadGamePage(obj.title)
             }
         }
 

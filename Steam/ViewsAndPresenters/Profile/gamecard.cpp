@@ -24,6 +24,11 @@ GameCard::GameCard(QWidget *parent, QString gameImagePath, QString gamePlayHours
     this->setFixedSize(680 ,103);
 }
 
+QString GameCard::getGameName()
+{
+    return this->btnGame->text();
+}
+
 void GameCard::styleBtnGame(QString gameName)
 {
     this->btnGame->setFlat(true);

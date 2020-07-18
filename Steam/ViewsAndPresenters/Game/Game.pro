@@ -1,7 +1,9 @@
-QT += widgets gui sql quickwidgets
+QT += gui quickwidgets sql
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TEMPLATE = lib
-DEFINES += PROFILE_LIBRARY
+DEFINES += GAME_LIBRARY
 
 CONFIG += c++11
 
@@ -17,26 +19,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    friendcard.cpp \
-    gamecard.cpp \
-    profile.cpp \
-    ../../Steam/copyablewidget.cpp
+    game.cpp
 
 HEADERS += \
-    Profile_global.h \
-    friendcard.h \
-    gamecard.h \
-    profile.h \
-    ../../Steam/copyablewidget.h
+    Game_global.h \
+    game.h
 
 # Default rules for deployment.
 unix {
     target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target
-
-FORMS += \
-    profile.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
@@ -45,11 +38,11 @@ else:unix: LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
 INCLUDEPATH += $$PWD/../../DataBase
 DEPENDPATH += $$PWD/../../DataBase
 
-win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Game/ -lGame
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Game/ -lGame
+FORMS += \
+    gamepage.ui
 
-INCLUDEPATH += $$PWD/../Game
-DEPENDPATH += $$PWD/../Game
+RESOURCES += \
+    resource.qrc
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Hub/ -lHub
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Hub/ -lHub

@@ -75,3 +75,9 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../DataBase/ -lData
 
 INCLUDEPATH += $$PWD/../DataBase
 DEPENDPATH += $$PWD/../DataBase
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Game/ -lGame
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../ViewsAndPresenters/Game/ -lGame
+
+INCLUDEPATH += $$PWD/../ViewsAndPresenters/Game
+DEPENDPATH += $$PWD/../ViewsAndPresenters/Game

@@ -12,6 +12,7 @@
 #include "gamecard.h"
 #include "friendcard.h"
 #include "database.h"
+#include "game.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Profile; }
@@ -47,11 +48,15 @@ public:
 
     void filterUserFriends(QList<UserFriends> friendList);
 
+public slots:
+    void openGamePage(QListWidgetItem *item);
 
 private:
     Ui::Profile *ui;
 
     DataBase *database;
+
+    void makeConnection();
 };
 
 #endif // PROFILE_H

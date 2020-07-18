@@ -15,6 +15,7 @@ Profile::Profile(DataBase *database, QWidget *parent) :
 
     this->filterUserFriends(database->getUserQuery()->getUserFriends("keyvan"));
     this->filterUserGames(database->getUserQuery()->getUserGames("keyvan"));
+    this->makeConnection();
 }
 
 Profile::~Profile()
@@ -101,4 +102,18 @@ void Profile::filterUserFriends(QList<UserFriends> friendList)
     for(int i = 0; i < 3; i++ ){
         this->addFriendCrad("sfs", friendList[i].username, friendList[i].last_time_online);
     }
+}
+
+void Profile::openGamePage(QListWidgetItem *item)
+{
+    GameCard *gamecard = qobject_cast<GameCard*>(ui->listGames->itemWidget(item));
+    GamePage *gamepage = new GamePage(database, qobject_cast<QWidget*>(this->parent()));
+    gamepage->setGame(gamecard->getGameName());
+    gamepage->show();
+    this->deleteLater();
+}
+
+void Profile::makeConnection()
+{
+    QObject::connect(ui->listGames, &QListWidget::itemClicked, this, &Profile::openGamePage);
 }

@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Friends \
+    Game \
     Hub \
     Library \
     Profile \
@@ -37,3 +38,10 @@ else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/Library/ -lLibraryd
 
 INCLUDEPATH += $$PWD/Library
 DEPENDPATH += $$PWD/Library
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/Game/ -lGame
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/Game/ -lGame
+else:unix: LIBS += -L$$OUT_PWD/Game/ -lGame
+
+INCLUDEPATH += $$PWD/Game
+DEPENDPATH += $$PWD/Game

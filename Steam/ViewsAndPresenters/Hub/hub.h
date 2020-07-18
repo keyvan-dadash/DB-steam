@@ -16,6 +16,7 @@
 #include "database.h"
 #include "hubcard.h"
 #include "resultcard.h"
+#include "game.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Hub; }
@@ -44,6 +45,8 @@ public:
 
     void setUpComments(QList<Comment> comments);
 
+    void loadQmlHub();
+
 public slots:
     void getHub(QString hubName);
 
@@ -66,14 +69,14 @@ private slots:
 
     void on_discussionButton_clicked();
 
+    void openGamePage(QString gameName);
+
 private:
     Ui::Hub *ui;
 
     DataBase *database;
 
     QObject *obj;
-
-    void loadQmlHub();
 
     void stackSbilingWidget(QWidget *top, QWidget *bottom);
 

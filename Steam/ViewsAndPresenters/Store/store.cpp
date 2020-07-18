@@ -8,6 +8,7 @@ Store::Store(DataBase *database, int view, QWidget *parent):
     ui->quickCard->setSource(QUrl(QStringLiteral("qrc:/GameCard.qml")));
 
     obj = ui->quickCard->rootObject();
+    this->makeConnection();
 
     MainView mv = MainView(view);
 
@@ -56,6 +57,19 @@ void Store::setUpTop100GamesView(QList<Game> games)
 {
     this->setGames(games);
     QMetaObject::invokeMethod(obj, "createTop100GamesView");
+}
+
+void Store::openGamePage(QString gameName)
+{
+    GamePage *gamepage = new GamePage(database, qobject_cast<QWidget*>(this->parent()));
+    gamepage->setGame(gameName);
+    gamepage->show();
+    this->deleteLater();
+}
+
+void Store::makeConnection()
+{
+    QObject::connect(obj, SIGNAL(loadGamePage(QString)), this, SLOT(openGamePage(QString)));
 }
 
 template<typename T>

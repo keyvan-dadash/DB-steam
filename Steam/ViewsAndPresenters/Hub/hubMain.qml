@@ -16,6 +16,7 @@ Item {
     signal getNews(hubName: string)
     signal getVideos(hubName: string)
     signal getDiscussionsComments(discussionId : int)
+    signal openGamePage(gameName : string)
 
     property var _callback
     function getComments(discussionId, callback) {
@@ -124,6 +125,9 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
             }
+            onClicked: {
+                openGamePage(hubName)
+            }
         }
 
         Text {
@@ -170,7 +174,8 @@ Item {
             function loadView() {
                 viewLoader.setSource("IntroPage.qml", {
                                          "changeParentHeight": changePageHeight,
-                                         "hub": hub
+                                         "hub": hub,
+                                         "openGamePage": openGamePage
                                      })
                 currentBackgroundRectangle.visible = false
                 introButtonBackgroundRectangle.visible = true

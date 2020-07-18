@@ -13,6 +13,7 @@
 
 #include "../../DataBase/models.h"
 #include "database.h"
+#include "game.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -43,12 +44,17 @@ public:
 
     void setUpTop100GamesView(QList<Game> games);
 
+public slots:
+    void openGamePage(QString gameName);
+
     private:
         Ui::Store *ui;
 
         QObject *obj;
 
         DataBase *database;
+
+        void makeConnection();
 };
 
 #endif // STORE_H

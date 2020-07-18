@@ -11,6 +11,7 @@ Item {
     property var _gameName
     property var _price
     property var gameDescription
+    property var loadGamePage
 
     function getImageSource() {
         var imgSource = "file:///" + images[index % images.length].url
@@ -49,6 +50,14 @@ Item {
         font.pixelSize: 24
         font.family: "Sans-serif"
         color: "#FFF"
+
+        MouseArea {
+            anchors.fill: parent
+
+            onClicked: {
+                loadGamePage(_gameName)
+            }
+        }
     }
 
     Image {

@@ -9,6 +9,7 @@ Item {
     height: 520
 
     property int numberOfPage: 0
+    signal loadGamePage(game : string)
 
 
     property var objects : []
@@ -24,10 +25,6 @@ Item {
 
     function createTop100GamesView() {
         gameCards.addTop100GamesPage(objects)
-    }
-
-    function createNewGamesView() {
-
     }
 
     Rectangle {
@@ -63,7 +60,8 @@ Item {
                                                   "_gameName": obj.title,
                                                   "_price": obj.price,
                                                   "gameDescription": obj.description,
-                                                  "anchors.rightMargin": 38
+                                                  "anchors.rightMargin": 38,
+                                                  "loadGamePage": loadGamePage
                                               });
             return page
         }
@@ -80,7 +78,8 @@ Item {
             var component = Qt.createComponent("Page.qml");
             var page = component.createObject(gameCards,
                                               {
-                                                  "objects" : objArray
+                                                  "objects" : objArray,
+                                                  "loadGamePage": loadGamePage
                                               });
             return page
         }

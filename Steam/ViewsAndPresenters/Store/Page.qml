@@ -21,7 +21,8 @@ Item {
         var instance = component.createObject(gameCard, {
                                                   "x" : x,
                                                   "y": y,
-                                                  "obj": obj
+                                                  "obj": obj,
+                                                  "loadGamePage": loadGamePage
                                               })
     }
 

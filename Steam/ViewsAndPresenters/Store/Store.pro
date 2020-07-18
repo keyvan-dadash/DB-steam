@@ -49,3 +49,15 @@ else:unix: LIBS += -L$$OUT_PWD/../../DataBase/ -lDataBase
 
 INCLUDEPATH += $$PWD/../../DataBase
 DEPENDPATH += $$PWD/../../DataBase
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Game/ -lGame
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Game/ -lGame
+
+INCLUDEPATH += $$PWD/../Game
+DEPENDPATH += $$PWD/../Game
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../Hub/ -lHub
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../Hub/ -lHub
+
+INCLUDEPATH += $$PWD/../Hub
+DEPENDPATH += $$PWD/../Hub

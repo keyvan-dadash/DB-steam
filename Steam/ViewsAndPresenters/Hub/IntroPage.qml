@@ -9,6 +9,8 @@ Item {
 
     property var hub
 
+    property var openGamePage
+
 
     id: itemView
     width: 1190
@@ -122,6 +124,10 @@ Item {
                 font.pixelSize: 18
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
+            }
+
+            onClicked: {
+                openGamePage(hub.game.title)
             }
         }
 
