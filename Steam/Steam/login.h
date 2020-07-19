@@ -32,6 +32,10 @@ private slots:
 
     void on_btnCreate_clicked();
 
+    void on_backPushButton_clicked();
+
+    void on_createAccPushButton_clicked();
+
 private:
     Ui::Login *ui;
 
@@ -42,6 +46,8 @@ private:
     void btnLoginDisableStyle();
 
     void checkBoxHoverStyle(QCheckBox *checkbox);
+
+    bool validateEmail(QString email);
 
 };
 #endif // LOGIN_H

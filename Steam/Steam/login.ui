@@ -21,77 +21,6 @@
 
 </string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>31</x>
-     <y>101</y>
-     <width>119</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">padding-left: 30px;
-color: #C8C8C8;</string>
-   </property>
-   <property name="text">
-    <string>Account Name</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>92</x>
-     <y>142</y>
-     <width>55</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: #C8C8C8;</string>
-   </property>
-   <property name="text">
-    <string>Password</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEditAccountName">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>100</y>
-     <width>341</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="accessibleName">
-    <string>lineEditAccountName</string>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">min-width:300px;
-color:white;
-</string>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="cbRemember">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>180</y>
-     <width>171</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QCheckBox { 
-color: #C8C8C8; 
- background: none; 
-} 
-QCheckBox:hover{ color: palette(light) }</string>
-   </property>
-   <property name="text">
-    <string>Remember my Password</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
@@ -110,92 +39,122 @@ color: #A9A9A9;</string>
     <string>Steam</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditPassword">
+  <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>140</y>
-     <width>341</width>
-     <height>22</height>
+     <x>0</x>
+     <y>81</y>
+     <width>566</width>
+     <height>275</height>
     </rect>
    </property>
-   <property name="accessibleName">
-    <string>lineEditPassword</string>
+   <property name="currentIndex">
+    <number>1</number>
    </property>
-   <property name="styleSheet">
-    <string notr="true">color:white;</string>
-   </property>
-   <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>300</y>
-     <width>432</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="label_3">
-      <property name="styleSheet">
-       <string notr="true">color: #C8C8C8;</string>
-      </property>
-      <property name="text">
-       <string>Dont have Account?</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnCreate">
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
+   <widget class="QWidget" name="loginPage">
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>92</x>
+       <y>62</y>
+       <width>55</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #C8C8C8;</string>
+     </property>
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="cbRemember">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>100</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox { 
+color: #C8C8C8; 
+ background: none; 
+} 
+QCheckBox:hover{ color: palette(light) }</string>
+     </property>
+     <property name="text">
+      <string>Remember my Password</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>220</y>
+       <width>432</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">color: #C8C8C8;</string>
+        </property>
+        <property name="text">
+         <string>Dont have Account?</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnCreate">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
 min-width: 300px;
 background-color:	#888888;
 color: white;
 }
 
 QPushButton:hover{ color: palette(dark); }</string>
-      </property>
-      <property name="text">
-       <string>Create Account</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>92</x>
-     <y>222</y>
-     <width>406</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QPushButton" name="btnLogin">
-      <property name="accessibleName">
-       <string>btnLogin</string>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">min-width: 190px;
+        </property>
+        <property name="text">
+         <string>Create Account</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>92</x>
+       <y>142</y>
+       <width>406</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="btnLogin">
+        <property name="accessibleName">
+         <string>btnLogin</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">min-width: 190px;
 background-color:	#888888;
 color: white;</string>
-      </property>
-      <property name="text">
-       <string>Login</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnCancel">
-      <property name="styleSheet">
-       <string notr="true">QPushButton
+        </property>
+        <property name="text">
+         <string>Login</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnCancel">
+        <property name="styleSheet">
+         <string notr="true">QPushButton
  {
  min-width: 190px; 
 background-color:	#888888;
@@ -205,13 +164,321 @@ QPushButton:hover
 { 
  color: palette(dark); 
 }</string>
-      </property>
-      <property name="text">
-       <string>Cancel</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLineEdit" name="lineEditPassword">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>60</y>
+       <width>341</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="accessibleName">
+      <string>lineEditPassword</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>31</x>
+       <y>21</y>
+       <width>119</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">padding-left: 30px;
+color: #C8C8C8;</string>
+     </property>
+     <property name="text">
+      <string>Account Name</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditAccountName">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>20</y>
+       <width>341</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="accessibleName">
+      <string>lineEditAccountName</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">min-width:300px;
+color:white;
+</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="createAccPage">
+    <widget class="QLabel" name="usernameLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>10</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:27px;
+	color: #C8C8C8;	
+}</string>
+     </property>
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="usernameLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>8</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="passwordLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>45</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:27px;
+	color: #C8C8C8;
+}</string>
+     </property>
+     <property name="text">
+      <string>Password</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="passwordLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>43</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="nicknameLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>78</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="nicknameLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>80</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:26px;
+	color: #C8C8C8;
+}</string>
+     </property>
+     <property name="text">
+      <string>Nickname</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="bioLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>115</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:62px;
+	color: #C8C8C8;
+}</string>
+     </property>
+     <property name="text">
+      <string>Bio</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="bioLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>113</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="birthLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>147</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:53px;
+	color: #C8C8C8;
+}</string>
+     </property>
+     <property name="text">
+      <string>Birth</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="birthLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>145</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="emailLabel">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>182</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:47px;
+	color: #C8C8C8;
+}</string>
+     </property>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="emailLIneEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>180</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="profileImgLabel">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>217</y>
+       <width>101</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel
+{
+	padding-left:2px;
+	color: #C8C8C8;
+}</string>
+     </property>
+     <property name="text">
+      <string>ProfileImg Path</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="profileImgLineEdit">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>215</y>
+       <width>411</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="createAccPushButton">
+     <property name="geometry">
+      <rect>
+       <x>395</x>
+       <y>245</y>
+       <width>141</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+	background-color:	#888888;
+	color: white;
+}</string>
+     </property>
+     <property name="text">
+      <string>Create Account</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="backPushButton">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>245</y>
+       <width>121</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+	background-color:	#888888;
+	color: white;
+}</string>
+     </property>
+     <property name="text">
+      <string>Back</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>
