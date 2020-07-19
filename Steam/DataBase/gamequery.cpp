@@ -103,7 +103,7 @@ QList<Game> GameQuery::getGamesOrderedByNumberOfPurchase()
 QList<Game> GameQuery::getNewGames()
 {
     QSqlQuery gameQ;
-    gameQ.prepare("select * from game where date_of_publish > NOW() - INTERVAL '1 MONTH';");
+    gameQ.prepare("select * from game order by date_of_publish desc;");
     gameQ.exec();
     qInfo() << gameQ.executedQuery();
 

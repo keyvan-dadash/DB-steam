@@ -37,6 +37,8 @@ public:
 
     void setUpInviteCode(QString inviteCode);
 
+    void setUpProgileImage(QString imageUrl);
+
     void makeConnection();
 
     template <typename T>

@@ -12,7 +12,10 @@ Friends::Friends(DataBase *database, QWidget *parent):
 
     this->makeConnection();
 
-    this->setUpInviteCode(database->getUserQuery()->getUser("keyvan").inviteCode);
+    User user = database->getUserQuery()->getUser("keyvan");
+
+    this->setUpInviteCode(user.inviteCode);
+    this->setUpProgileImage(user.profileImg.url);
 }
 
 Friends::~Friends()
@@ -78,6 +81,11 @@ void Friends::setUpReceive(QList<UserInvites> receives)
 void Friends::setUpInviteCode(QString inviteCode)
 {
     this->obj->setProperty("inviteCode", QVariant(inviteCode));
+}
+
+void Friends::setUpProgileImage(QString imageUrl)
+{
+    this->obj->setProperty("imageUrl", QVariant(imageUrl));
 }
 
 void Friends::makeConnection()

@@ -200,3 +200,14 @@ QList<UserInvites> UserQuery::getUserReceive(QString username)
     }
     return userReceiveList;
 }
+
+bool UserQuery::hasGame(QString gameName, QString username)
+{
+    QSqlQuery userG;
+    userG.prepare("select * from (select * from users left join game_purchase on users.id = game_purchase.users_id) as ug"
+                 " left join game on ug.game_id = game.id where username = :username and game.title = :title");
+    userG.bindValue(":username", username);
+    userG.bindValue(":title", gameName);
+    userG.exec();
+    return userG.next();
+}

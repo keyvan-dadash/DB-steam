@@ -34,6 +34,7 @@ public:
     QList<Game> getFeaturedGames() override;
 
     QList<Game> getGamesByGenres(QList<QString> genres) override;
+
 };
 
 #endif // GAMEQUERY_H

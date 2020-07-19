@@ -39,7 +39,11 @@ private:
 
     DataBase *database;
 
+    QString gameName;
+
     void insertGame(Game game);
+
+    void makeGamePlayable();
 
     void makeconnection();
 };

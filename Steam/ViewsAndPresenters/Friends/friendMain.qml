@@ -28,6 +28,7 @@ Item {
 
     //invite code
     property var inviteCode
+    property var imageUrl
 
     property var objects : []
     property var lengthOfModels: 0
@@ -108,7 +109,7 @@ Item {
             width: 80
             height: 80
             fillMode: Image.Stretch
-            source: "qrc:/D:/fucking uni/DB/project/maxresdefault.jpg"
+            source: "file:///" + imageUrl
         }
 
         Text {

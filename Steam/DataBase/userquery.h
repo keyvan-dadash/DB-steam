@@ -30,6 +30,8 @@ public:
     QList<UserInvites> getUserPending(QString username) override;
 
     QList<UserInvites> getUserReceive(QString username) override;
+
+    bool hasGame(QString gameName, QString username) override;
 };
 
 #endif // USERQUERY_H

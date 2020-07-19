@@ -25,6 +25,16 @@ Item {
         game = obj
     }
 
+    function makeGamePlayable() {
+        addToCartButton.text = "Play"
+        addToCartButton.x = 6
+        addToCartButton.y = 3
+        addToCartButton.width += 58
+        gamePriceText.width = 0
+        gamePriceText.text = ""
+        buyGameText.text = "Play " + game.title
+    }
+
     Flickable {
         id: pageFlickable
         anchors.fill: parent
@@ -149,7 +159,7 @@ Item {
             width: 197
             height: 16
             color: "#66C0F4"
-            text: game.companyName
+            text: game.company
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
@@ -169,7 +179,7 @@ Item {
             width: 197
             height: 16
             color: "#66C0F4"
-            text: game.companyName
+            text: game.company
             MouseArea {
                 anchors.fill: parent
                 hoverEnabled: true
@@ -180,6 +190,86 @@ Item {
                     parent.color = "#66C0F4"
                 }
             }
+        }
+
+        Label {
+            id: likesLabel
+            x: 856
+            y: 579
+            width: 99
+            height: 16
+            text: qsTr("Likes")
+            color: "#556772"
+        }
+
+        Label {
+            id: numberOfLikesLabel
+            x: 1039
+            y: 579
+            width: 197
+            height: 16
+            text: game.likes
+            color: "#66C0F4"
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    parent.color = "#fff"
+                }
+                onExited: {
+                    parent.color = "#66C0F4"
+                }
+            }
+        }
+
+        Label {
+            id: dislikesLabel
+            x: 856
+            y: 614
+            width: 99
+            height: 16
+            color: "#556772"
+            text: qsTr("Dislikes")
+        }
+
+        Label {
+            id: numberOfDislikesLabel
+            x: 1039
+            y: 614
+            width: 197
+            height: 16
+            text: game.dislikes
+            color: "#66C0F4"
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+                onEntered: {
+                    parent.color = "#fff"
+                }
+                onExited: {
+                    parent.color = "#66C0F4"
+                }
+            }
+        }
+
+        Label {
+            id: purchaseLabel
+            x: 856
+            y: 649
+            width: 99
+            height: 16
+            color: "#556772"
+            text: qsTr("Purchase")
+        }
+
+        Label {
+            id: numberOfPurchaseLabel
+            x: 1039
+            y: 649
+            width: 197
+            height: 16
+            text: game.number_of_purchase
+            color: "#7cc53f"
         }
 
         Image {
@@ -425,7 +515,7 @@ Item {
             }
         }
 
-
     }
+
 
 }

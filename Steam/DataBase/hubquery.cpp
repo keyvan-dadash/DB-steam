@@ -47,7 +47,8 @@ QList<Discussion> HubQuery::getHubDiscussions(QString hubName)
     discussionQ.prepare("with discussions as ("
                         " select * from discussion left join hub on hub.id = discussion.hub_id where hub.name = :name"
                         " )"
-                        " select discussions.*, users.nickname from discussions left join users on users.id = discussions.author_id;");
+                        " select discussions.*, users.nickname from discussions left join users on users.id = discussions.author_id"
+                        " order by start_time desc;");
     discussionQ.bindValue(":name", hubName);
     discussionQ.exec();
     qInfo() << discussionQ.executedQuery();
@@ -63,7 +64,7 @@ QList<Discussion> HubQuery::getHubDiscussions(QString hubName)
 QList<News> HubQuery::getHubNews(QString hubName)
 {
     QSqlQuery newsQ;
-    newsQ.prepare("select * from news left join hub on hub.id = news.hub_id where hub.name = :name;");
+    newsQ.prepare("select * from news left join hub on hub.id = news.hub_id where hub.name = :name order by publishdate desc;");
     newsQ.bindValue(":name", hubName);
     newsQ.exec();
     qInfo() << newsQ.executedQuery();
@@ -100,7 +101,8 @@ QList<Comment> HubQuery::getDiscussionComments(int discussionId)
                      " select comment.* from comment left join discussion on"
                      " discussion.id = comment.discussion_id where comment.discussion_id = :id"
                      " )"
-                     " select discussionCommens.*, users.nickname from discussionCommens left join users on users.id = discussionCommens.sender_id;");
+                     " select discussionCommens.*, users.nickname from discussionCommens left join users on users.id = discussionCommens.sender_id"
+                     " order by sent_date desc;");
     commentQ.bindValue(":id", discussionId);
     commentQ.exec();
     qInfo() << commentQ.executedQuery();

@@ -21,7 +21,9 @@ void GamePage::setGame(QString gameName)
 
 void GamePage::setGame(Game game)
 {
+    this->gameName = game.title;
     this->insertGame(game);
+    this->makeGamePlayable();
 }
 
 void GamePage::openHubPage(QString gameName)
@@ -37,6 +39,13 @@ void GamePage::insertGame(Game game)
 {
     QMetaObject::invokeMethod(obj, "setGame",
                               Q_ARG(QVariant, QVariant::fromValue(game.toVariantMap())));
+}
+
+void GamePage::makeGamePlayable()
+{
+    if(this->database->getUserQuery()->hasGame(gameName, "keyvan")){
+        QMetaObject::invokeMethod(obj, "makeGamePlayable");
+    }
 }
 
 void GamePage::makeconnection()
