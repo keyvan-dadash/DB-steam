@@ -84,11 +84,18 @@ void Login::on_createAccPushButton_clicked()
 {
     User user;
     user.username = ui->usernameLineEdit->text();
+    user.password = ui->passwordLineEdit->text();
     if(!this->validateEmail(ui->emailLIneEdit->text())) return;
     user.email = ui->emailLIneEdit->text();
     user.bio = ui->bioLineEdit->text();
     user.birth = ui->birthLineEdit->text();
     user.nickname = ui->nicknameLineEdit->text();
     user.profileImg.url = ui->profileImgLineEdit->text();
-    qInfo() << user.toVariantMap();
+    if(this->database->getUserQuery()->insertUser(user)){
+        emit loginStatus(true);
+        this->accept();
+    }
+    else {
+        // say error
+    }
 }

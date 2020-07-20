@@ -114,6 +114,7 @@ struct User
 {
     QString username;
     QString email;
+    QString password;
     QString bio;
     QString level;
     QString wallet;

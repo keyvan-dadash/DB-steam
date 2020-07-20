@@ -4,6 +4,7 @@
 #include <QList>
 #include <QString>
 #include <QtSql>
+#include <QDateTime>
 
 #include "UserQueryAbstract.h"
 #include "models.h"
@@ -30,6 +31,8 @@ public:
     QList<UserInvites> getUserPending(QString username) override;
 
     QList<UserInvites> getUserReceive(QString username) override;
+
+    bool insertUser(User user) override;
 
     bool hasGame(QString gameName, QString username) override;
 };

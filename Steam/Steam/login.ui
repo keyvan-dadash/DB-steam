@@ -257,6 +257,9 @@ color:white;
        <height>22</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
     </widget>
     <widget class="QLabel" name="passwordLabel">
      <property name="geometry">
@@ -287,6 +290,9 @@ color:white;
        <height>22</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
     </widget>
     <widget class="QLineEdit" name="nicknameLineEdit">
      <property name="geometry">
@@ -296,6 +302,9 @@ color:white;
        <width>411</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
      </property>
     </widget>
     <widget class="QLabel" name="nicknameLabel">
@@ -347,6 +356,9 @@ color:white;
        <height>22</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
     </widget>
     <widget class="QLabel" name="birthLabel">
      <property name="geometry">
@@ -376,6 +388,9 @@ color:white;
        <width>411</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
      </property>
     </widget>
     <widget class="QLabel" name="emailLabel">
@@ -407,6 +422,9 @@ color:white;
        <height>22</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
+     </property>
     </widget>
     <widget class="QLabel" name="profileImgLabel">
      <property name="geometry">
@@ -436,6 +454,9 @@ color:white;
        <width>411</width>
        <height>22</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;</string>
      </property>
     </widget>
     <widget class="QPushButton" name="createAccPushButton">

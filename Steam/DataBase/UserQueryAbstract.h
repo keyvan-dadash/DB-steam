@@ -28,6 +28,8 @@ public:
 
     virtual QList<UserInvites> getUserReceive(QString username) = 0;
 
+    virtual bool insertUser(User user) = 0;
+
     virtual bool hasGame(QString gameName, QString username) = 0;
 };
 

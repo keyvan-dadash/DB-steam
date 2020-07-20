@@ -201,6 +201,22 @@ QList<UserInvites> UserQuery::getUserReceive(QString username)
     return userReceiveList;
 }
 
+bool UserQuery::insertUser(User user)
+{
+    QSqlQuery userI;
+    userI.prepare("insert into Users(username,email,password,last_time_online,bio,wallet,nickname,invitecode,birth,level)"
+                  " values (:username, :email, :password, now(), :bio, 60, :nickname,:invitecode, date(:birth),:level);");
+    userI.bindValue(":username", user.username);
+    userI.bindValue(":email", user.email);
+    userI.bindValue(":password", user.password);
+    userI.bindValue(":bio", user.bio);
+    userI.bindValue(":nickname", user.nickname);
+    userI.bindValue(":invitecode", QDateTime::currentMSecsSinceEpoch());
+    userI.bindValue(":birth", user.birth);
+    userI.bindValue(":level", 0);
+    return userI.exec();
+}
+
 bool UserQuery::hasGame(QString gameName, QString username)
 {
     QSqlQuery userG;
