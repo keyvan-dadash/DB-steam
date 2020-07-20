@@ -19,7 +19,11 @@ public:
 
     Game toGame(QSqlQuery gameQ);
 
+    Genre toGenre(QSqlQuery genreQ);
+
     QList<Game> toGameList(QSqlQuery gameQ);
+
+    QList<Genre> toGenreList(QSqlQuery genreQ);
 
     QList<File> getGameFiles(QString name) override;
 
@@ -44,6 +48,8 @@ public:
     QList<Game> getFreeGames() override;
 
     QList<Game> mostPlayedGames() override;
+
+    QList<Genre> getGenres() override;
 
 };
 

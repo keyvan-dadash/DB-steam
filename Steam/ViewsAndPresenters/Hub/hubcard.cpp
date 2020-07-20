@@ -9,7 +9,6 @@ HubCard::HubCard(QWidget *parent) : QWidget(parent)
     qlabelTopicsCount->setStyleSheet("QLabel{ color: #2f89bc; background:transparent; font-size:12px; }");
     qVboxLayout->addWidget(qlabelName);
     qVboxLayout->addWidget(qlabelTopicsCount);
-    qlabelHubImg->setStyleSheet("QLabel{ background:red; }");
     qlabelHubImg->setFixedSize(QSize(30, 30));
     qHboxLayout->addWidget(qlabelHubImg);
     qHboxLayout->addLayout(qVboxLayout);

@@ -35,6 +35,12 @@ void GamePage::openHubPage(QString gameName)
     this->deleteLater();
 }
 
+void GamePage::purchaseGame()
+{
+    if(this->database->getUserQuery()->purchaseGame("keyvan", gameName))
+        this->makeGamePlayable();
+}
+
 void GamePage::insertGame(Game game)
 {
     QMetaObject::invokeMethod(obj, "setGame",
@@ -51,4 +57,5 @@ void GamePage::makeGamePlayable()
 void GamePage::makeconnection()
 {
     QObject::connect(obj, SIGNAL(openHubPage(QString)), this, SLOT(openHubPage(QString)));
+    QObject::connect(obj, SIGNAL(buyGame()), this, SLOT(purchaseGame()));
 }

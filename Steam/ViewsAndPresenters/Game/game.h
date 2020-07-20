@@ -32,6 +32,8 @@ public:
 private slots:
     void openHubPage(QString gameName);
 
+    void purchaseGame();
+
 private:
     Ui::GamePage *ui;
 
@@ -46,6 +48,7 @@ private:
     void makeGamePlayable();
 
     void makeconnection();
+
 };
 
 #endif // GAME_H

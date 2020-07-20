@@ -11,6 +11,7 @@
 
 struct File;
 struct Game;
+struct Genre;
 struct Company;
 struct User;
 struct UserFriends;
@@ -85,6 +86,19 @@ struct Game
         }
         map.insert("images", files);
         map.insert("company", companyName);
+        return map;
+    }
+};
+
+struct Genre
+{
+    int id;
+    QString type;
+
+    QVariantMap toVariantMap() {
+        QVariantMap map;
+        map.insert("id", id);
+        map.insert("type", type);
         return map;
     }
 };

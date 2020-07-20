@@ -227,3 +227,23 @@ bool UserQuery::hasGame(QString gameName, QString username)
     userG.exec();
     return userG.next();
 }
+
+bool UserQuery::purchaseGame(QString username, QString gameName)
+{
+    QSqlQuery gameQ;
+    gameQ.prepare("select * from game where title = :gameName");
+    gameQ.bindValue(":gameName", gameName);
+    gameQ.exec();
+    QSqlQueryModel model;
+    model.setQuery(gameQ);
+    if(this->getUser(username).wallet.toInt() < model.record(0).value("price").toInt()) {
+        return false;
+    }
+    QSqlQuery userG;
+    userG.prepare("insert into game_purchase(total_gameplay, date_of_purchase, game_id, users_id) values"
+                  " (33, now(), :game_id, :user_id)");
+    userG.bindValue(":user_id", this->getUserId(username));
+    userG.bindValue(":game_id", model.record(0).value("id").toInt());
+    userG.exec();
+    return userG.next();
+}

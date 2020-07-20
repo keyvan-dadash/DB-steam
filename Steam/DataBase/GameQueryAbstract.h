@@ -36,6 +36,8 @@ public:
 
     virtual QList<Game> mostPlayedGames() = 0;
 
+    virtual QList<Genre> getGenres() = 0;
+
 };
 
 #endif // GAMEQUERYABSTRACT_H

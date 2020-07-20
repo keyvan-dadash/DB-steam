@@ -9,7 +9,6 @@ ResultCard::ResultCard(QWidget *parent) : QWidget(parent)
     qlabelExtraAttribute->setStyleSheet("QLabel{ color: #2f89bc; background:transparent; font-size:16px; }");
     qVboxLayout->addWidget(qlabelTitle);
     qVboxLayout->addWidget(qlabelExtraAttribute);
-    qlabelImg->setStyleSheet("QLabel{ background:red; }");
     qlabelImg->setFixedSize(QSize(60, 60));
     qHboxLayout->addWidget(qlabelImg);
     qHboxLayout->addLayout(qVboxLayout);

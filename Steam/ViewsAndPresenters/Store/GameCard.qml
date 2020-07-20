@@ -83,7 +83,6 @@ Item {
 
         function addFetureGamesPage(objects) {
             for (var i=0; i < objects.length; i++) {
-                console.log(objects[i].title)
                 addPage(createFeatureGamesPage(objects[i]))
             }
             numberOfPage = objects.length

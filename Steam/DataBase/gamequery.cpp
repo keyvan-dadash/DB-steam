@@ -24,6 +24,16 @@ Game GameQuery::toGame(QSqlQuery gameQ)
     return game;
 }
 
+Genre GameQuery::toGenre(QSqlQuery genreQ)
+{
+    QSqlQueryModel model;
+    model.setQuery(genreQ);
+    Genre genre;
+    genre.id = model.record(0).value("id").toInt();
+    genre.type = model.record(0).value("type").toString();
+    return genre;
+}
+
 QList<Game> GameQuery::toGameList(QSqlQuery gameQ)
 {
     QSqlQueryModel model;
@@ -45,6 +55,20 @@ QList<Game> GameQuery::toGameList(QSqlQuery gameQ)
         gameList.push_back(game);
     }
     return gameList;
+}
+
+QList<Genre> GameQuery::toGenreList(QSqlQuery genreQ)
+{
+    QSqlQueryModel model;
+    QList<Genre> genreList;
+    model.setQuery(genreQ);
+    for(int i = 0; i < model.rowCount(); i++) {
+        Genre genre;
+        genre.id = model.record(i).value("id").toInt();
+        genre.type = model.record(i).value("type").toString();
+        genreList.push_back(genre);
+    }
+    return genreList;
 }
 
 QList<File> GameQuery::getGameFiles(QString name)
@@ -144,10 +168,15 @@ QList<Game> GameQuery::getGamesByGenres(QList<QString> genres)
 {
     QString genresStr = "";
 
-    foreach(QString genre, genres) {
-        genresStr.append("'" + genre + "'");
-        if(genres.indexOf(genre) != genres.size() - 1)
-            genresStr.append(", ");
+    if (genres.size() == 1) {
+        genresStr.append("'" + genres[0] + "'");
+    }
+    else {
+        foreach(QString genre, genres) {
+            genresStr.append("'" + genre + "'");
+            if(genres.indexOf(genre) != genres.size() - 1)
+                genresStr.append(", ");
+        }
     }
     qInfo() << genresStr;
     QSqlQuery gameQ;
@@ -190,4 +219,13 @@ QList<Game> GameQuery::mostPlayedGames()
     gameQ.exec();
     qInfo() << gameQ.executedQuery();
     return this->toGameList(gameQ);
+}
+
+QList<Genre> GameQuery::getGenres()
+{
+    QSqlQuery genreQ;
+    genreQ.prepare("select * from genre order by id");
+    genreQ.exec();
+    qInfo() << genreQ.executedQuery();
+    return this->toGenreList(genreQ);
 }

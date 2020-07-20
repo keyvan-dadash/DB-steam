@@ -174,7 +174,7 @@ QAbstractItemView
      </property>
     </item>
    </widget>
-   <widget class="QComboBox" name="comboBoxSoftware">
+   <widget class="QComboBox" name="comboBoxGenre">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -191,7 +191,7 @@ QAbstractItemView
 	border-right-color:black;
 	border-right-width: 1px;
 	border-right-style: solid;
-	padding-left:20px;
+	padding-left:29px;
 	color: #d9dadd;
 	font-size:20px;
 	font-family: Sans-serif;
@@ -225,17 +225,7 @@ QAbstractItemView
     </property>
     <item>
      <property name="text">
-      <string>Software</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Audio Production</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Photo Editing</string>
+      <string>Genres</string>
      </property>
     </item>
    </widget>

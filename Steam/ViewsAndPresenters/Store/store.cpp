@@ -9,6 +9,7 @@ Store::Store(DataBase *database, int view, QWidget *parent):
 
     obj = ui->quickCard->rootObject();
     this->makeConnection();
+    this->addGenres();
 
     MainView mv = MainView(view);
 
@@ -110,11 +111,28 @@ void Store::gameChangeItem(int item)
     }
 }
 
+void Store::genreChangeItem(int item)
+{
+    ui->comboBoxGenre->setCurrentIndex(0);
+    if(item == 0) return;
+    this->setUpTop100GamesView(this->database->getGameQuery()->getGamesByGenres(
+                                   QList<QString>{ui->comboBoxGenre->itemText(item)}));
+}
+
 void Store::makeConnection()
 {
     QObject::connect(obj, SIGNAL(loadGamePage(QString)), this, SLOT(openGamePage(QString)));
     QObject::connect(ui->comboBoxStore, SIGNAL(currentIndexChanged(int)), this, SLOT(storeChangeItem(int)));
     QObject::connect(ui->comboBoxGames, SIGNAL(currentIndexChanged(int)), this, SLOT(gameChangeItem(int)));
+    QObject::connect(ui->comboBoxGenre, SIGNAL(currentIndexChanged(int)), this, SLOT(genreChangeItem(int)));
+}
+
+void Store::addGenres()
+{
+    QList<Genre> genreList = this->database->getGameQuery()->getGenres();
+    foreach(Genre genre, genreList) {
+        ui->comboBoxGenre->addItem(genre.type);
+    }
 }
 
 template<typename T>

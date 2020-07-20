@@ -11,6 +11,7 @@ Item {
     height: 622
 
     signal openHubPage(gameName : string)
+    signal buyGame()
 
     property var game
 
@@ -497,6 +498,11 @@ Item {
                     onExited: {
                         startGarient.color = "#799905"
                         endGarient.color = "#536904"
+                    }
+                    onClicked: {
+                        if(addToCartButton.text == "Purchase") {
+                            buyGame()
+                        }
                     }
                 }
             }

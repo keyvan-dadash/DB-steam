@@ -31,6 +31,8 @@ public:
     virtual bool insertUser(User user) = 0;
 
     virtual bool hasGame(QString gameName, QString username) = 0;
+
+    virtual bool purchaseGame(QString username, QString gameName) = 0;
 };
 
 #endif // USERQUERYABSTRACT_H

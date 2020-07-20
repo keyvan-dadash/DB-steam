@@ -57,6 +57,8 @@ private slots:
 
     void gameChangeItem(int item);
 
+    void genreChangeItem(int item);
+
 private:
     Ui::Store *ui;
 
@@ -67,6 +69,8 @@ private:
     int view = 0;
 
     void makeConnection();
+
+    void addGenres();
 };
 
 #endif // STORE_H

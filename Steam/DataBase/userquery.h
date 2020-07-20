@@ -35,6 +35,8 @@ public:
     bool insertUser(User user) override;
 
     bool hasGame(QString gameName, QString username) override;
+
+    bool purchaseGame(QString username, QString gameName) override;
 };
 
 #endif // USERQUERY_H
