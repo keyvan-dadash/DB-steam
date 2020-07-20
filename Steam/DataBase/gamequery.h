@@ -33,7 +33,17 @@ public:
 
     QList<Game> getFeaturedGames() override;
 
+    QList<Game> getBestOfferGames() override;
+
+    QList<Game> getEarlyAccessGames() override;
+
     QList<Game> getGamesByGenres(QList<QString> genres) override;
+
+    QList<Game> getLastUpdatedGames() override;
+
+    QList<Game> getFreeGames() override;
+
+    QList<Game> mostPlayedGames() override;
 
 };
 

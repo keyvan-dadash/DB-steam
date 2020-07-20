@@ -24,7 +24,17 @@ public:
 
     virtual QList<Game> getFeaturedGames() = 0;
 
+    virtual QList<Game> getBestOfferGames() = 0;
+
+    virtual QList<Game> getEarlyAccessGames() = 0;
+
     virtual QList<Game> getGamesByGenres(QList<QString> genres) = 0;
+
+    virtual QList<Game> getLastUpdatedGames() = 0;
+
+    virtual QList<Game> getFreeGames() = 0;
+
+    virtual QList<Game> mostPlayedGames() = 0;
 
 };
 

@@ -52,16 +52,21 @@ public:
 public slots:
     void openGamePage(QString gameName);
 
-    private:
-        Ui::Store *ui;
+private slots:
+    void storeChangeItem(int item);
 
-        QObject *obj;
+    void gameChangeItem(int item);
 
-        DataBase *database;
+private:
+    Ui::Store *ui;
 
-        int view = 0;
+    QObject *obj;
 
-        void makeConnection();
+    DataBase *database;
+
+    int view = 0;
+
+    void makeConnection();
 };
 
 #endif // STORE_H

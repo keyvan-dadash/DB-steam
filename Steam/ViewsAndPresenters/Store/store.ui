@@ -100,12 +100,12 @@ QAbstractItemView
     </item>
     <item>
      <property name="text">
-      <string>Free to Play</string>
+      <string>Early Access</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Early Access</string>
+      <string>Most Played</string>
      </property>
     </item>
    </widget>

@@ -17,7 +17,7 @@ Store::Store(DataBase *database, int view, QWidget *parent):
         this->setUpFeatureGamesView(this->database->getGameQuery()->getFeaturedGames().mid(0, 5));
         break;
     case newGames:
-        this->setUpNewGamesView(this->database->getGameQuery()->getNewGames());
+        this->setUpNewGamesView(this->database->getGameQuery()->getNewGames().mid(0, 15));
         break;
     case topGames:
         this->setUpTop100GamesView(this->database->getGameQuery()->getGamesOrderedByLikes());
@@ -78,9 +78,43 @@ void Store::openGamePage(QString gameName)
     this->deleteLater();
 }
 
+void Store::storeChangeItem(int item)
+{
+    ui->comboBoxStore->setCurrentIndex(0);
+    switch (item) {
+    case 1:
+        this->setUpTop100GamesView(this->database->getGameQuery()->getBestOfferGames().mid(0,100));
+        break;
+    case 2:
+        this->setUpTop100GamesView(this->database->getGameQuery()->getFreeGames().mid(0,100));
+        break;
+    }
+}
+
+void Store::gameChangeItem(int item)
+{
+    ui->comboBoxGames->setCurrentIndex(0);
+    switch (item) {
+    case 1:
+        this->setUpFeatureGamesView(this->database->getGameQuery()->getGamesOrderedByLikes().mid(0,10));
+        break;
+    case 2:
+        this->setUpFeatureGamesView(this->database->getGameQuery()->getLastUpdatedGames().mid(0,10));
+        break;
+    case 3:
+        this->setUpTop100GamesView(this->database->getGameQuery()->getEarlyAccessGames().mid(0,100));
+        break;
+    case 4:
+        this->setUpFeatureGamesView(this->database->getGameQuery()->mostPlayedGames().mid(0,10));
+        break;
+    }
+}
+
 void Store::makeConnection()
 {
     QObject::connect(obj, SIGNAL(loadGamePage(QString)), this, SLOT(openGamePage(QString)));
+    QObject::connect(ui->comboBoxStore, SIGNAL(currentIndexChanged(int)), this, SLOT(storeChangeItem(int)));
+    QObject::connect(ui->comboBoxGames, SIGNAL(currentIndexChanged(int)), this, SLOT(gameChangeItem(int)));
 }
 
 template<typename T>

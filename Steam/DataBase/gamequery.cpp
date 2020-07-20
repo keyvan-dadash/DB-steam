@@ -113,7 +113,27 @@ QList<Game> GameQuery::getNewGames()
 QList<Game> GameQuery::getFeaturedGames()
 {
     QSqlQuery gameQ;
-    gameQ.prepare("select * from game order by number_of_purchase desc;"); //we must decied about attr in game model
+    gameQ.prepare("select * from game where attr like '1%' order by date_of_publish desc;");
+    gameQ.exec();
+    qInfo() << gameQ.executedQuery();
+
+    return this->toGameList(gameQ);
+}
+
+QList<Game> GameQuery::getBestOfferGames()
+{
+    QSqlQuery gameQ;
+    gameQ.prepare("select * from game where attr like '_%1%_' order by date_of_publish desc;");
+    gameQ.exec();
+    qInfo() << gameQ.executedQuery();
+
+    return this->toGameList(gameQ);
+}
+
+QList<Game> GameQuery::getEarlyAccessGames()
+{
+    QSqlQuery gameQ;
+    gameQ.prepare("select * from game where attr like '%1' order by date_of_publish desc;");
     gameQ.exec();
     qInfo() << gameQ.executedQuery();
 
@@ -141,5 +161,33 @@ QList<Game> GameQuery::getGamesByGenres(QList<QString> genres)
     gameQ.exec();
     qInfo() << gameQ.executedQuery();
 
+    return this->toGameList(gameQ);
+}
+
+QList<Game> GameQuery::getLastUpdatedGames()
+{
+    QSqlQuery gameQ;
+    gameQ.prepare("select distinct * from updatetable left join game on game.id = updatetable.game_id order by updatetable.update_date desc limit 10;");
+    gameQ.exec();
+    qInfo() << gameQ.executedQuery();
+    return this->toGameList(gameQ);
+}
+
+QList<Game> GameQuery::getFreeGames()
+{
+    QSqlQuery gameQ;
+    gameQ.prepare("select * from game where price = 0 limit 100;");
+    gameQ.exec();
+    qInfo() << gameQ.executedQuery();
+    return this->toGameList(gameQ);
+}
+
+QList<Game> GameQuery::mostPlayedGames()
+{
+    QSqlQuery gameQ;
+    gameQ.prepare("select * from (select game_id, sum(total_gameplay) from game_purchase group by game_id) gpl"
+                  " left join game on game.id = gpl.game_id order by sum desc limit 10;");
+    gameQ.exec();
+    qInfo() << gameQ.executedQuery();
     return this->toGameList(gameQ);
 }

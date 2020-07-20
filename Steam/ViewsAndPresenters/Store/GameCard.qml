@@ -14,20 +14,24 @@ Item {
 
     property var objects : []
     function setObjectsArray(objArray) {
+        objects.length = 0
         for (var i=0; i < objArray.length; i++) {
             objects.push(objArray[i])
         }
     }
 
     function createFeatureGamesView() {
+        gameCards.clearView()
         gameCards.addFetureGamesPage(objects)
     }
 
     function createTop100GamesView() {
+        gameCards.clearView()
         gameCards.addTop100GamesPage(objects)
     }
 
     function createNewGamesView() {
+        gameCards.clearView()
         gameCards.addNewGamesPage(objects)
     }
 
@@ -49,6 +53,13 @@ Item {
 
         currentIndex: 0
         anchors.fill: parent
+
+        function clearView() {
+            var count = gameCards.count
+            for(var i = 0; i < count; i++) {
+                removeItem(0)
+            }
+        }
 
         function addPage(page) {
             addItem(page)
@@ -72,6 +83,7 @@ Item {
 
         function addFetureGamesPage(objects) {
             for (var i=0; i < objects.length; i++) {
+                console.log(objects[i].title)
                 addPage(createFeatureGamesPage(objects[i]))
             }
             numberOfPage = objects.length
@@ -118,7 +130,7 @@ Item {
         id: indicator
         wheelEnabled: false
 
-        count: gameCards.count
+        count: numberOfPage
         currentIndex: gameCards.currentIndex
 
         anchors.bottom: gameCards.bottom
