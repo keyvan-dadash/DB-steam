@@ -14,6 +14,7 @@
 #include "../../DataBase/models.h"
 #include "database.h"
 #include "game.h"
+#include "../../Steam/copyablewidget.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -21,7 +22,7 @@ namespace Ui { class Store; }
 QT_END_NAMESPACE
 
 
-class STORE_EXPORT Store : public QWidget
+class STORE_EXPORT Store : public CopyableWidget
 {
     Q_OBJECT
 public:
@@ -35,6 +36,8 @@ public:
     Store(DataBase *database, int view = 0, QWidget *parent = nullptr);
     ~Store();
 
+    CopyableWidget * copy() override;
+
     template <typename T>
     QVariantList toVariantList(const QList<T> &list);
 
@@ -43,6 +46,8 @@ public:
     void setUpFeatureGamesView(QList<Game> games);
 
     void setUpTop100GamesView(QList<Game> games);
+
+    void setUpNewGamesView(QList<Game> games);
 
 public slots:
     void openGamePage(QString gameName);
@@ -53,6 +58,8 @@ public slots:
         QObject *obj;
 
         DataBase *database;
+
+        int view = 0;
 
         void makeConnection();
 };

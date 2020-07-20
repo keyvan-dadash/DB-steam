@@ -2,7 +2,7 @@
 #include "ui_store.h"
 
 Store::Store(DataBase *database, int view, QWidget *parent):
-    QWidget(parent), ui(new Ui::Store), database(database)
+    CopyableWidget(parent), ui(new Ui::Store), database(database), view(view)
 {
     ui->setupUi(this);
     ui->quickCard->setSource(QUrl(QStringLiteral("qrc:/GameCard.qml")));
@@ -17,7 +17,7 @@ Store::Store(DataBase *database, int view, QWidget *parent):
         this->setUpFeatureGamesView(this->database->getGameQuery()->getFeaturedGames().mid(0, 5));
         break;
     case newGames:
-        this->setUpTop100GamesView(this->database->getGameQuery()->getNewGames());
+        this->setUpNewGamesView(this->database->getGameQuery()->getNewGames());
         break;
     case topGames:
         this->setUpTop100GamesView(this->database->getGameQuery()->getGamesOrderedByLikes());
@@ -34,6 +34,11 @@ Store::Store(DataBase *database, int view, QWidget *parent):
 Store::~Store()
 {
     delete ui;
+}
+
+CopyableWidget *Store::copy()
+{
+    return new Store(database, view);
 }
 
 void Store::setGames(QList<Game> &games)
@@ -57,6 +62,12 @@ void Store::setUpTop100GamesView(QList<Game> games)
 {
     this->setGames(games);
     QMetaObject::invokeMethod(obj, "createTop100GamesView");
+}
+
+void Store::setUpNewGamesView(QList<Game> games)
+{
+    this->setGames(games);
+    QMetaObject::invokeMethod(obj, "createNewGamesView");
 }
 
 void Store::openGamePage(QString gameName)

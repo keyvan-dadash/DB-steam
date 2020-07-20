@@ -27,6 +27,10 @@ Item {
         gameCards.addTop100GamesPage(objects)
     }
 
+    function createNewGamesView() {
+        gameCards.addNewGamesPage(objects)
+    }
+
     Rectangle {
         id: backgroundRectangle
         x: 0
@@ -90,6 +94,24 @@ Item {
             }
             numberOfPage = Math.ceil(objects.length / 10)
         }
+
+
+        function createNewGamesPage(objArray) {
+            var component = Qt.createComponent("NewGamesPage.qml");
+            var page = component.createObject(gameCards,
+                                              {
+                                                  "objects" : objArray,
+                                                  "loadGamePage": loadGamePage
+                                              });
+            return page
+        }
+
+        function addNewGamesPage(objects) {
+            for (var i=0; i < objects.length; i = i + 3) {
+                addPage(createNewGamesPage(objects.slice(i, i + 3)))
+            }
+            numberOfPage = Math.ceil(objects.length / 3)
+        }
     }
 
     PageIndicator {
@@ -114,7 +136,7 @@ Item {
     }
     Timer {
         id: timer
-        interval: 5000
+        interval: 10000
         running: true
         repeat: true
         onTriggered: gameCards.currentIndex = (gameCards.currentIndex + 1) % numberOfPage

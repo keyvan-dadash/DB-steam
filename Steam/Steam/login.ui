@@ -455,6 +455,11 @@ color:white;
        <height>22</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>MS Shell Dlg 2</family>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">color:white;</string>
      </property>

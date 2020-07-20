@@ -39,10 +39,10 @@ public:
     };
 
     QList<ButtonAndPresenterPair> storeSubButtonTexts = {
-        ButtonAndPresenterPair{"Featured", nullptr},
-        ButtonAndPresenterPair{"News", nullptr},
-        ButtonAndPresenterPair{"Top Games", nullptr},
-        ButtonAndPresenterPair{"Top Sales", nullptr}
+        ButtonAndPresenterPair{"Featured", new Store(database, 0)},
+        ButtonAndPresenterPair{"News", new Store(database, 1)},
+        ButtonAndPresenterPair{"Top Games", new Store(database, 2)},
+        ButtonAndPresenterPair{"Top Sales", new Store(database, 3)}
     };
 
     QList<ButtonAndPresenterPair> librarySubButtonTexts = {
@@ -87,8 +87,6 @@ private slots:
     void widgetEnterHover();
 
     void widgetExitHover();
-
-    void on_listWidgetStore_currentRowChanged(int currentRow);
 
 private:
     Ui::MainPresenter *ui;

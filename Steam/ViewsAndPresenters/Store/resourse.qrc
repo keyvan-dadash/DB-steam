@@ -21,5 +21,7 @@
         <file>GameCardPage.qml</file>
         <file>GameCardComponent.qml</file>
         <file>Page.qml</file>
+        <file>GameCardComponentV2.qml</file>
+        <file>NewGamesPage.qml</file>
     </qresource>
 </RCC>

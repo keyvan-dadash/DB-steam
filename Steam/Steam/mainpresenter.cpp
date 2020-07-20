@@ -154,8 +154,3 @@ void MainPresenter::makeConnectionForHoverWidget(QWidget *widget)
     connect(widget, SIGNAL(enterHover()), this, SLOT(widgetEnterHover()));
     connect(widget, SIGNAL(exitHover()), this, SLOT(widgetExitHover()));
 }
-
-void MainPresenter::on_listWidgetStore_currentRowChanged(int currentRow)
-{
-    changePresenter(new Store(database, currentRow));
-}
