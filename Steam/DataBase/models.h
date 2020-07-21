@@ -234,6 +234,7 @@ struct Discussion
     QString discussion_start_date;
     QString last_comment_date;
     QString last_comment_nickname;
+    QString hubName;
     User author;
 
     QVariantMap toVariantMap() {
@@ -244,6 +245,7 @@ struct Discussion
         map.insert("discussion_start_date", discussion_start_date);
         map.insert("last_comment_date", last_comment_date);
         map.insert("last_comment_username", last_comment_nickname);
+        map.insert("hubName", hubName);
         map.insert("author", author.toVariantMap());
         return map;
     }

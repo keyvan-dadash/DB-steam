@@ -180,12 +180,13 @@ QListWidgetItem* Hub::addCard(QString hubName, QString numberOfRecentDiscussion,
     return item;
 }
 
-QListWidgetItem* Hub::addResultCard(QString title, QString extra, QString imagePath, QListWidget *listwidget)
+QListWidgetItem* Hub::addResultCard(QString hubName, QString title, QString extra, QString imagePath, QListWidget *listwidget)
 {
     ResultCard *rcard = new ResultCard();
     rcard->setTitle(title);
     rcard->setExtraAttribute(extra);
     rcard->setImg(imagePath);
+    rcard->setHubName(hubName);
     QListWidgetItem *item = new QListWidgetItem();
     item->setSizeHint(QSize(rcard->width(), rcard->height()));
     listwidget->addItem(item);
@@ -242,7 +243,7 @@ void Hub::on_hubButton_clicked()
     int totalHeight = 0;
     hubs = database->getHubQuery()->getHubsBySimilarity(ui->hubSearchLine->text());
     foreach(HubStruct hub, hubs) {
-        totalHeight += this->addResultCard(hub.name, hub.description, "sff", ui->resultListWidget)->sizeHint().height();
+        totalHeight += this->addResultCard(hub.name, hub.name, hub.description, "sff", ui->resultListWidget)->sizeHint().height();
     }
     ui->resultListWidget->resize(ui->resultListWidget->size().width(), totalHeight);
     this->showResult("List of related hubs");
@@ -256,7 +257,7 @@ void Hub::on_discussionButton_clicked()
     int totalHeight = 0;
     discussions = database->getHubQuery()->getDiscussionBySimilarity(ui->discussionSearchLine->text());
     foreach(Discussion discussion, discussions) {
-        totalHeight += this->addResultCard(discussion.title, discussion.last_comment_date, "sff", ui->resultListWidget)->sizeHint().height();
+        totalHeight += this->addResultCard(discussion.hubName, discussion.title, discussion.last_comment_date, "sff", ui->resultListWidget)->sizeHint().height();
     }
     ui->resultListWidget->resize(ui->resultListWidget->size().width(), totalHeight);
     this->showResult("List of related discussions");

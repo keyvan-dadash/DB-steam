@@ -22,6 +22,8 @@ public:
 
     QString getHubName();
 
+    void setHubName(QString hubName);
+
 signals:
 
 private:
@@ -30,6 +32,8 @@ private:
     QLabel *qlabelExtraAttribute = new QLabel();
 
     QLabel *qlabelImg = new QLabel();
+
+    QString hubName;
 };
 
 #endif // RESULTCARD_H

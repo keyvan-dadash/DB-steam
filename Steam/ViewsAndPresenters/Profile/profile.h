@@ -38,8 +38,6 @@ public:
 
     void setLastOnlineTime(QString lastTime);
 
-    void setVisiableEditButton(bool visiable);
-
     void addGameCard(QString gameImagePath, QString gamePlayHours, QString gameName, QString lastTimePlayed);
 
     void addFriendCrad(QString profileImagePath, QString profileName, QString lastSeen);

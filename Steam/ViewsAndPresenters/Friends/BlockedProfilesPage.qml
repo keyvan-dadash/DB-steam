@@ -64,7 +64,7 @@ Item {
                 text: qsTr("")
                 Image {
                     id: buttonImage1
-                    source: "qrc:/D:/fucking uni/DB/project/searchbox_workshop_submit.jpg"
+                    source: "qrc:/../../../Images/searchbox_workshop_submit.jpg"
                     anchors.centerIn: parent
                 }
                 palette {

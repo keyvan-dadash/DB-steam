@@ -43,7 +43,7 @@ Item {
         Image {
             id: background
             anchors.fill: parent
-            source: "qrc:/D:/fucking uni/DB/project/colored_body_top2.png"
+            source: "qrc:/../../../Images/colored_body_top2.png"
         }
     }
     SwipeView {
@@ -164,7 +164,7 @@ Item {
             color: Qt.rgba(0, 0, 0, 0.2)
             Image {
                 id: leftButtonArrow
-                source: "qrc:/D:/fucking uni/DB/project/arrowsLeft.png"
+                source: "qrc:/../../../Images/arrowsLeft.png"
                 width: 23;
                 height: 36;
                 anchors.centerIn: parent
@@ -187,7 +187,7 @@ Item {
             clip: true
             Image {
                 id: rightButtonArrow
-                source: "qrc:/D:/fucking uni/DB/project/arrowsRight.png"
+                source: "qrc:/../../../Images/arrowsRight.png"
                 width: 23;
                 height: 36;
                 anchors.centerIn: parent

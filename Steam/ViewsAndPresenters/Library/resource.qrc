@@ -4,7 +4,8 @@
         <file>GameNameComponent.qml</file>
         <file>GamePreViewComponent.qml</file>
         <file>libraryMain.qml</file>
-        <file>D:/fucking uni/DB/project/collection.png</file>
-        <file>D:/fucking uni/DB/project/collectionHover.png</file>
+        <file>../../../Images/collection.png</file>
+        <file>../../../Images/collectionHover.png</file>
+        <file>../../../Images/searchbox_workshop_submit.jpg</file>
     </qresource>
 </RCC>

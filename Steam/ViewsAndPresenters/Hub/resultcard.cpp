@@ -35,5 +35,10 @@ void ResultCard::setImg(QString path)
 
 QString ResultCard::getHubName()
 {
-    return qlabelTitle->text();
+    return hubName;
+}
+
+void ResultCard::setHubName(QString hubName)
+{
+    this->hubName = hubName;
 }

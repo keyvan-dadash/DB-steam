@@ -31,7 +31,7 @@ Item {
             Image {
                 id: back
                 anchors.fill: parent
-                source: "qrc:/D:/fucking uni/DB/project/HubPage/forum_op_gradient.png"
+                source: "qrc:/../../../Images/HubPage/forum_op_gradient.png"
             }
 
             Image {

@@ -90,7 +90,7 @@ Item {
                 width: 23
                 height: 23
                 fillMode: Image.PreserveAspectFit
-                source: "qrc:/D:/fucking uni/DB/project/HubPage/icon_rate.png"
+                source: "qrc:/../../../Images/HubPage/icon_rate.png"
 
             }
 

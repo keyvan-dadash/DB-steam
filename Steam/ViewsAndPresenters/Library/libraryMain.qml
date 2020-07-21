@@ -63,17 +63,17 @@ Item {
                 Image {
                     id: collectionIconImage
                     anchors.fill: parent
-                    source: "qrc:/D:/fucking uni/DB/project/collection.png"
+                    source: "qrc:/../../../Images/collection.png"
                 }
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
                     onEntered: {
-                        collectionIconImage.source = "qrc:/D:/fucking uni/DB/project/collectionHover.png"
+                        collectionIconImage.source = "qrc:/../../../Images/collectionHover.png"
                         yourCollectionHoverBackgroundRectangle.visible = true
                     }
                     onExited: {
-                        collectionIconImage.source = "qrc:/D:/fucking uni/DB/project/collection.png"
+                        collectionIconImage.source = "qrc:/../../../Images/collection.png"
                         yourCollectionHoverBackgroundRectangle.visible = false
                     }
                 }
@@ -115,7 +115,7 @@ Item {
                 }
                 Image {
                     id: buttonImage
-                    source: "qrc:/D:/fucking uni/DB/project/searchbox_workshop_submit.jpg"
+                    source: "qrc:/../../../Images/searchbox_workshop_submit.jpg"
                     anchors.centerIn: parent
                 }
                 onClicked: {

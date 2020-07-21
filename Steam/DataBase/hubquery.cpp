@@ -175,8 +175,9 @@ QList<HubStruct> HubQuery::getHubsBySimilarity(QString hubName)
 QList<Discussion> HubQuery::getDiscussionBySimilarity(QString discussionTitle)
 {
     QSqlQuery discussionQ;
-    discussionQ.prepare("select * from (select discussion.*, similarity(title, :title) as sm from discussion order by sm desc)"
-                 " as similarity where similarity.sm > 0.005 limit 50;");
+    discussionQ.prepare("select * from (select discussion.*, similarity(title, :title) as sm from discussion order by sm desc) as similarity"
+                        " left join hub on hub.id = similarity.hub_id"
+                        " where similarity.sm > 0.005 limit 50;");
     discussionQ.bindValue(":title", discussionTitle);
     discussionQ.exec();
     qInfo() << discussionQ.executedQuery();
@@ -223,6 +224,7 @@ Discussion HubQuery::toDiscussion(QSqlRecord discussionQ)
     discussion.discussion_start_date = discussionQ.value("start_time").toString();
     discussion.last_comment_date = discussionQ.value("last_comment_time").toString();
     discussion.last_comment_nickname = discussionQ.value("last_comment_nickname").toString();
+    discussion.hubName = discussionQ.value("name").toString();
     return discussion;
 }
 

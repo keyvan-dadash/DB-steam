@@ -56,11 +56,6 @@ void Profile::setLastOnlineTime(QString lastTime)
     ui->lastOnlineLabel->setText(lastTime);
 }
 
-void Profile::setVisiableEditButton(bool visiable)
-{
-    ui->btnEditProfile->setVisible(visiable);
-}
-
 void Profile::addGameCard(QString gameImagePath, QString gamePlayHours, QString gameName, QString lastTimePlayed)
 {
     GameCard *game = new GameCard(this, gameImagePath, gamePlayHours, gameName, lastTimePlayed);

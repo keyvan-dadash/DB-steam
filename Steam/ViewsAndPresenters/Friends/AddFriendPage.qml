@@ -165,7 +165,7 @@ Item {
                 }
                 Image {
                     id: buttonImage
-                    source: "qrc:/D:/fucking uni/DB/project/searchbox_workshop_submit.jpg"
+                    source: "qrc:/../../../Images/searchbox_workshop_submit.jpg"
                     anchors.centerIn: parent
                 }
             }

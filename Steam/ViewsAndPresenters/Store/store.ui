@@ -63,7 +63,7 @@ QComboBox:hover
 	color:black;
 }
 QComboBox::drop-down {
-	image: url('D:/fucking uni/DB/project/arrow.png');
+	image:  url(E:/SimpleSteam/DB-steam/Images/arrow.png);
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;
@@ -138,7 +138,7 @@ QComboBox:hover
 	color:black;
 }
 QComboBox::drop-down {
-	image: url('D:/fucking uni/DB/project/arrow.png');
+	image: url(E:/SimpleSteam/DB-steam/Images/arrow.png);
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;
@@ -203,7 +203,7 @@ QComboBox:hover
 	color:black;
 }
 QComboBox::drop-down {
-	image: url('D:/fucking uni/DB/project/arrow.png');
+	image: url(E:/SimpleSteam/DB-steam/Images/arrow.png);
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;
@@ -258,7 +258,7 @@ QComboBox:hover
 	color:black;
 }
 QComboBox::drop-down {
-	image: url('D:/fucking uni/DB/project/arrow.png');
+	image: url(E:/SimpleSteam/DB-steam/Images/arrow.png);
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 20px;
@@ -309,7 +309,7 @@ QAbstractItemView
     <property name="styleSheet">
      <string notr="true">QPushButton
 {
-	background-image: url('D://fucking uni//DB//project//new_search.jpg');
+	background-image: url('E:/SimpleSteam/DB-steam/Images/new_search.jpg');
 	background-repeat: no-repeat;
 	border: none;
 	border-radius: 3px;

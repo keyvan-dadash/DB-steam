@@ -48,7 +48,7 @@ Item {
             Image {
                 id: backgroundImage
                 anchors.fill: parent
-                source: "qrc:/D:/fucking uni/DB/project/colored_body_top2.png"
+                source: "qrc:/../../../Images/colored_body_top2.png"
             }
         }
 

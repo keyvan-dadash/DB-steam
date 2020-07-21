@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>gamePage.qml</file>
-        <file>D:/fucking uni/DB/project/colored_body_top2.png</file>
+        <file>../../../Images/colored_body_top2.png</file>
     </qresource>
 </RCC>

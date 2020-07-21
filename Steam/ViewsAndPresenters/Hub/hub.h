@@ -82,7 +82,7 @@ private:
 
     QListWidgetItem* addCard(QString hubName, QString numberOfRecentDiscussion, QString imagePath, QListWidget *listwidget);
 
-    QListWidgetItem* addResultCard(QString title, QString extra, QString imagePath, QListWidget *listwidget);
+    QListWidgetItem* addResultCard(QString hubName, QString title, QString extra, QString imagePath, QListWidget *listwidget);
 
     void styleListWidgetsAndScrollBar();
 

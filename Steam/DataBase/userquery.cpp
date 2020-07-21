@@ -96,6 +96,7 @@ User UserQuery::getUser(QString username)
     user.last_time_online = model.record(0).value("last_time_online").toString();
     user.nickname = model.record(0).value("nickname").toString();
     user.birth = model.record(0).value("birth").toString();
+    user.inviteCode = model.record(0).value("invitecode").toString();
     user.profileImg.url = model.record(0).value("file_url").toString();
     return user;
 }
