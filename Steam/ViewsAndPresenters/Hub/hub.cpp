@@ -27,7 +27,7 @@ Hub::Hub(DataBase *database, QWidget *parent):
     }
 
     hubs.clear();
-    hubs = database->getHubQuery()->getUserLastActivity("keyvan");
+    hubs = database->getHubQuery()->getUserLastActivity(this->database->username);
     foreach(HubStruct hub, hubs) {
         this->addCard(hub.name, hub.description, "sff", ui->listWidgetRecentViewed);
     }

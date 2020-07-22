@@ -11,6 +11,7 @@ Item {
         anchors.fill: parent
         color: "#1d1f24"
         opacity: 0.8
+
         Image {
             id: profileImage
             x: 0
@@ -27,6 +28,7 @@ Item {
                 anchors.fill: parent
                 border.color: "#57cbde"
                 border.width: 4
+                color: "transparent"
             }
         }
 

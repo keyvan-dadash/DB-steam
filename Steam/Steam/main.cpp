@@ -9,16 +9,15 @@
 #include "database.h"
 #include "UserQueryAbstract.h"
 
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     const char* driverName = "QPSQL";
     DataBase *database = new DataBase(driverName);
-    //Login login(database);
+    Login login(database);
     MainPresenter w(database);
-    //QObject::connect(&login, &Login::loginStatus, &w, &MainPresenter::setVisible);
-    //login.show();
-    w.show();
+    QObject::connect(&login, &Login::loginStatus, &w, &MainPresenter::setVisible);
+    QObject::connect(&login, &Login::rejected, &w, &MainPresenter::reject);
+    login.show();
     return a.exec();
 }

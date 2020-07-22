@@ -15,6 +15,13 @@ MainPresenter::~MainPresenter()
     delete ui;
 }
 
+void MainPresenter::setVisible(bool visible)
+{
+    if(visible)
+        ui->btnProfile->setText(this->database->getUserQuery()->getUser(this->database->username).nickname);
+    QDialog::setVisible(visible);
+}
+
 
 void MainPresenter::on_btnStore_clicked()
 {
@@ -49,6 +56,7 @@ void MainPresenter::widgetExitHover()
 void MainPresenter::initialize()
 {
     ui->labelLogoImg->setPixmap(QPixmap("D:\\fucking uni\\DB\\project\\globalheader_logo.png"));
+    ui->btnProfile->setText(this->database->getUserQuery()->getUser(this->database->username).nickname);
 
     //create drop button for each button
     makeStoreDropDownButtons();

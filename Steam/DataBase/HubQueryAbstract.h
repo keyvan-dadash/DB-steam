@@ -13,6 +13,7 @@
 class HubQueryAbstract
 {
 public:
+
     virtual int getHubId(QString hubName) = 0;
 
     virtual HubStruct getHubByName(QString hubName) = 0;

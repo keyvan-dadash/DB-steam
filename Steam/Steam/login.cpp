@@ -31,10 +31,10 @@ void Login::btnLoginEnableStyle()
     ui->btnLogin->setEnabled(true);
     ui->btnLogin->setStyleSheet("QPushButton { \
                                 min-width: 190px; \
-                                background-color:	#888888; \
-                                color: white; } \
-                                QPushButton:hover{ \
-                                color: palette(dark); }");
+            background-color:	#888888; \
+color: white; } \
+QPushButton:hover{ \
+color: palette(dark); }");
 }
 
 void Login::btnLoginDisableStyle()
@@ -61,11 +61,13 @@ void Login::on_btnLogin_clicked()
     QString username = ui->lineEditAccountName->text();
     QString password = ui->lineEditPassword->text();
     if(this->database->getUserQuery()->userLogin(username, password)){
+        this->database->setUsername(username);
         emit loginStatus(true);
         this->accept();
     }
     else {
-        //create acc and wrong pass login here
+        ui->lineEditAccountName->setStyleSheet("border: 1px solid red;color:white;");
+        ui->lineEditPassword->setStyleSheet("border: 1px solid red;color:white;");
     }
 }
 
@@ -90,12 +92,14 @@ void Login::on_createAccPushButton_clicked()
     user.bio = ui->bioLineEdit->text();
     user.birth = ui->birthLineEdit->text();
     user.nickname = ui->nicknameLineEdit->text();
-    user.profileImg.url = ui->profileImgLineEdit->text();
     if(this->database->getUserQuery()->insertUser(user)){
+        this->database->getUserQuery()->setProfileImg(ui->profileImgLineEdit->text(), user.username);
+        this->database->setUsername(user.username);
         emit loginStatus(true);
         this->accept();
     }
     else {
-        // say error
+        ui->usernameLineEdit->setStyleSheet("border: 1px solid red;color:white;");
+        ui->emailLIneEdit->setStyleSheet("border: 1px solid red;color:white;");
     }
 }

@@ -29,6 +29,7 @@ Item {
     //invite code
     property var inviteCode
     property var imageUrl
+    property var name
 
     property var objects : []
     property var lengthOfModels: 0
@@ -119,7 +120,7 @@ Item {
             width: 181
             height: 34
             color: "#ffffff"
-            text: qsTr("ddssee71")
+            text: name
             font.family: "Motiva Sans"
             font.pixelSize: 24
         }

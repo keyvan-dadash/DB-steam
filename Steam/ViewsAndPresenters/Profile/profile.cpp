@@ -1,20 +1,19 @@
 #include "profile.h"
 #include "ui_profile.h"
 
-
 Profile::Profile(DataBase *database, QWidget *parent) :
     CopyableWidget(parent), ui(new Ui::Profile), database(database)
 {
     ui->setupUi(this);
-    User user = database->getUserQuery()->getUser("keyvan");
+    User user = database->getUserQuery()->getUser(this->database->username);
     this->setName(user.username);
     this->setLevel(user.level);
     this->setBio(user.bio);
     this->setLastOnlineTime(user.last_time_online);
     this->setProfileImage(user.profileImg.url);
 
-    this->filterUserFriends(database->getUserQuery()->getUserFriends("keyvan"));
-    this->filterUserGames(database->getUserQuery()->getUserGames("keyvan"));
+    this->filterUserFriends(database->getUserQuery()->getUserFriends(this->database->username));
+    this->filterUserGames(database->getUserQuery()->getUserGames(this->database->username));
     this->makeConnection();
 }
 
@@ -78,24 +77,30 @@ void Profile::addFriendCrad(QString profileImagePath, QString profileName, QStri
 
 void Profile::filterUserGames(QList<Game> gameList)
 {
+    if(gameList.size() == 0) return;
     std::sort(gameList.begin(), gameList.end(), [](Game &g1, Game &g2){
         return g1.number_of_purchase < g2.number_of_purchase;
     });
-
-    for(int i = 0; i < 3; i++ ){
-        this->addGameCard("sfs", gameList[i].number_of_purchase, gameList[i].title, gameList[i].price);
+    for(int i = 0; i < gameList.size(); i++ ){
+        if(i == 3) return;
+        if(gameList[i].images.size() > 0)
+            this->addGameCard(gameList[i].images[0].url, gameList[i].number_of_purchase, gameList[i].title, gameList[i].price);
+        else
+            this->addGameCard("No Image", gameList[i].number_of_purchase, gameList[i].title, gameList[i].companyName);
     }
 }
 
 void Profile::filterUserFriends(QList<UserFriends> friendList)
 {
+    if(friendList.size() == 0) return;
     std::sort(friendList.begin(), friendList.end(), [](UserFriends &uf1, UserFriends &uf2)
     {
         return uf2.last_time_online < uf1.last_time_online;
     });
 
-    for(int i = 0; i < 3; i++ ){
-        this->addFriendCrad("sfs", friendList[i].username, friendList[i].last_time_online);
+    for(int i = 0; i < friendList.size(); i++ ){
+        if(i == 3) return;
+        this->addFriendCrad(friendList[i].profileImg.url, friendList[i].username, friendList[i].last_time_online);
     }
 }
 

@@ -38,6 +38,10 @@ public:
 
     HubQueryAbstract *getHubQuery();
 
+    void setUsername(QString username);
+
+    QString username;
+
 private:
     QSqlDatabase* db;
 };

@@ -10,7 +10,7 @@
 class UserQueryAbstract
 {
 public:
-    virtual bool userLogin(QString username, QString password) = 0;
+    virtual bool userLogin(QString password, QString username) = 0;
 
     virtual QList<Game> getUserGames(QString username) = 0;
 
@@ -32,7 +32,9 @@ public:
 
     virtual bool hasGame(QString gameName, QString username) = 0;
 
-    virtual bool purchaseGame(QString username, QString gameName) = 0;
+    virtual bool purchaseGame(QString gameName, QString username) = 0;
+
+    virtual bool setProfileImg(QString path, QString username) = 0;
 };
 
 #endif // USERQUERYABSTRACT_H

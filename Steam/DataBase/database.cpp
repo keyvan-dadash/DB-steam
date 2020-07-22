@@ -64,3 +64,8 @@ HubQueryAbstract *DataBase::getHubQuery()
 {
     return new HubQuery();
 }
+
+void DataBase::setUsername(QString username)
+{
+    this->username = username;
+}

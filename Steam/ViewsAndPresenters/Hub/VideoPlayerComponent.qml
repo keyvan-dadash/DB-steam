@@ -6,11 +6,10 @@ import QtGraphicalEffects 1.14
 import QtMultimedia 5.14
 
 Item {
+    property var video
     property var index: 1
     width: 600
     height: 458
-
-    property var video
 
     Rectangle {
         anchors.fill: parent
@@ -50,7 +49,7 @@ Item {
                 anchors.leftMargin: 7
                 anchors.rightMargin: 7
                 anchors.topMargin: 7
-                source: video.url
+                source: video.url.split("\\\\").join("/")
                 fillMode: VideoOutput.PreserveAspectFit
                 MouseArea {
                     anchors.fill: parent
@@ -100,7 +99,7 @@ Item {
                 y: 30
                 width: 571
                 height: 26
-                text: video.title
+                text: video.name
                 font.pixelSize: 15
                 color: "#636363"
                 verticalAlignment: Text.AlignVCenter

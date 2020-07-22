@@ -14,7 +14,7 @@ class UserQuery : public UserQueryAbstract
 public:
     UserQuery();
 
-    bool userLogin(QString username, QString password) override;
+    bool userLogin(QString password, QString username) override;
 
     QList<Game> getUserGames(QString username) override;
 
@@ -36,7 +36,9 @@ public:
 
     bool hasGame(QString gameName, QString username) override;
 
-    bool purchaseGame(QString username, QString gameName) override;
+    bool purchaseGame(QString gameName, QString username) override;
+
+    bool setProfileImg(QString path, QString username) override;
 };
 
 #endif // USERQUERY_H

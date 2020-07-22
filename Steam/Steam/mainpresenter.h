@@ -74,6 +74,8 @@ public:
                                            "color:#fff;"
                                        "}";
 
+public slots:
+    void setVisible(bool visible) override;
 
 private slots:
     void on_btnStore_clicked();

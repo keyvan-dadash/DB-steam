@@ -12,10 +12,11 @@ Friends::Friends(DataBase *database, QWidget *parent):
 
     this->makeConnection();
 
-    User user = database->getUserQuery()->getUser("keyvan");
+    User user = database->getUserQuery()->getUser(this->database->username);
 
     this->setUpInviteCode(user.inviteCode);
     this->setUpProgileImage(user.profileImg.url);
+    this->setUpName(user.nickname);
 }
 
 Friends::~Friends()
@@ -88,6 +89,11 @@ void Friends::setUpProgileImage(QString imageUrl)
     this->obj->setProperty("imageUrl", QVariant(imageUrl));
 }
 
+void Friends::setUpName(QString nickname)
+{
+    this->obj->setProperty("name", QVariant(nickname));
+}
+
 void Friends::makeConnection()
 {
     QObject::connect(obj, SIGNAL(getFriends()), this, SLOT(getFriendsSlot()));
@@ -98,22 +104,22 @@ void Friends::makeConnection()
 
 void Friends::getFriendsSlot()
 {
-    this->setUpFriends(this->database->getUserQuery()->getUserFriends("keyvan"));
+    this->setUpFriends(this->database->getUserQuery()->getUserFriends(this->database->username));
 }
 
 void Friends::getPendingSlot()
 {
-    this->setUpPending(this->database->getUserQuery()->getUserPending("keyvan"));
+    this->setUpPending(this->database->getUserQuery()->getUserPending(this->database->username));
 }
 
 void Friends::getReceiveSlot()
 {
-    this->setUpReceive(this->database->getUserQuery()->getUserReceive("keyvan"));
+    this->setUpReceive(this->database->getUserQuery()->getUserReceive(this->database->username));
 }
 
 void Friends::getBlockedSlot()
 {
-    this->setUpBlocked(this->database->getUserQuery()->getUserBlocked("keyvan"));
+    this->setUpBlocked(this->database->getUserQuery()->getUserBlocked(this->database->username));
 }
 
 template <typename T>

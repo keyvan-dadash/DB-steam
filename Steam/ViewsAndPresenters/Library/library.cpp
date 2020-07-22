@@ -8,7 +8,7 @@ Library::Library(DataBase *database, QWidget *parent):
     ui->quickWidgetLibrary->setSource(QUrl(QStringLiteral("qrc:/libraryMain.qml")));
     this->obj = ui->quickWidgetLibrary->rootObject();
 
-    this->setUpLibrary(database->getUserQuery()->getUserGames("keyvan"));
+    this->setUpLibrary(database->getUserQuery()->getUserGames(this->database->username));
 }
 
 Library::~Library()

@@ -37,7 +37,7 @@ void GamePage::openHubPage(QString gameName)
 
 void GamePage::purchaseGame()
 {
-    if(this->database->getUserQuery()->purchaseGame("keyvan", gameName))
+    if(this->database->getUserQuery()->purchaseGame(gameName, this->database->username))
         this->makeGamePlayable();
 }
 
@@ -49,7 +49,7 @@ void GamePage::insertGame(Game game)
 
 void GamePage::makeGamePlayable()
 {
-    if(this->database->getUserQuery()->hasGame(gameName, "keyvan")){
+    if(this->database->getUserQuery()->hasGame(gameName, this->database->username)){
         QMetaObject::invokeMethod(obj, "makeGamePlayable");
     }
 }

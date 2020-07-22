@@ -39,6 +39,8 @@ public:
 
     void setUpProgileImage(QString imageUrl);
 
+    void setUpName(QString nickname);
+
     void makeConnection();
 
     template <typename T>

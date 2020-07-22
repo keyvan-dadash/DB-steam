@@ -5,7 +5,7 @@ UserQuery::UserQuery() : UserQueryAbstract()
 
 }
 
-bool UserQuery::userLogin(QString username, QString password)
+bool UserQuery::userLogin(QString password, QString username)
 {
     QSqlQuery user;
     user.prepare("select * from users where username = :username and password = :password;");
@@ -229,7 +229,7 @@ bool UserQuery::hasGame(QString gameName, QString username)
     return userG.next();
 }
 
-bool UserQuery::purchaseGame(QString username, QString gameName)
+bool UserQuery::purchaseGame(QString gameName, QString username)
 {
     QSqlQuery gameQ;
     gameQ.prepare("select * from game where title = :gameName");
@@ -242,9 +242,24 @@ bool UserQuery::purchaseGame(QString username, QString gameName)
     }
     QSqlQuery userG;
     userG.prepare("insert into game_purchase(total_gameplay, date_of_purchase, game_id, users_id) values"
-                  " (33, now(), :game_id, :user_id)");
+                  " (0, now(), :game_id, :user_id)");
     userG.bindValue(":user_id", this->getUserId(username));
     userG.bindValue(":game_id", model.record(0).value("id").toInt());
+    userG.exec();
+    return userG.next();
+}
+
+bool UserQuery::setProfileImg(QString path, QString username)
+{
+    QSqlQuery userG;
+    userG.prepare("with getUserParty as ("
+                  " select party.id from users left join party on users.id = party.tuple_id And"
+                  " party.tuple_type = 'Users' where username = :username"
+                  " )"
+                  " insert into file(size, type, file_url, party_id) values (50, 'Image',"
+                                  " :path, (select id from getUserParty limit 1))");
+    userG.bindValue(":username", username);
+    userG.bindValue(":path", path);
     userG.exec();
     return userG.next();
 }
